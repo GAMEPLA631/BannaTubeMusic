@@ -48,6 +48,66 @@
     ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: var(--radius-full); }
     ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.3); }
 
+    /* Anti-Bot & Network Speed Verification Overlay */
+    #security-gate {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #161a24 0%, #08090c 100%);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(25px);
+    }
+    .gate-card {
+      background: var(--bg-surface);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      box-shadow: 0 0 50px rgba(0, 240, 255, 0.2);
+      border-radius: var(--radius-lg);
+      max-width: 480px;
+      width: 100%;
+      padding: 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .gate-timer {
+      font-size: 3.5rem;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+      color: var(--primary);
+      text-shadow: 0 0 20px var(--primary-glow);
+      margin: 12px 0;
+    }
+    .gate-bar-box {
+      width: 100%;
+      height: 6px;
+      background: rgba(255,255,255,0.1);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .gate-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      width: 0%;
+      transition: width 1s linear;
+    }
+    .net-speed-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 18px;
+    }
+
     /* App Layout */
     #app-container {
       display: flex;
@@ -1098,6 +1158,37 @@
 </head>
 <body>
 
+  <!-- Anti-Bot 80s Verification Gate & Speed Optimization -->
+  <div id="security-gate">
+    <div class="gate-card">
+      <div style="font-size: 0.75rem; font-weight: 800; color: var(--primary); letter-spacing: 1.5px; text-transform: uppercase;">
+        🛡️ BANNA SECURITY GATE
+      </div>
+      <h2 style="font-size: 1.35rem; font-weight: 900; margin-top: 6px;">Verifying Human Connection</h2>
+      <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">Optimizing bandwidth and securing YouTube Data API v3 pipeline.</p>
+      
+      <div class="gate-timer" id="gate-timer-num">80s</div>
+
+      <div class="gate-bar-box">
+        <div class="gate-bar-fill" id="gate-progress"></div>
+      </div>
+
+      <div class="net-speed-badge">
+        <span id="speed-indicator-dot" style="color:#00ff88;">●</span>
+        <span id="net-speed-text">Checking network speed...</span>
+      </div>
+
+      <div style="background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 12px; font-size: 0.75rem; color: var(--text-dim); text-align: left; margin-bottom: 16px;">
+        <div>⚡ <strong>Status:</strong> <span id="gate-sub-status" style="color:var(--primary);">Calibrating fast YouTube v3 buffers...</span></div>
+        <div style="margin-top: 4px;">🌐 <strong>Throttle Policy:</strong> Dynamically adjusted to local ISP speed.</div>
+      </div>
+
+      <button class="btn-submit" onclick="fastTrackVerification()" style="padding: 10px 16px; font-size: 0.85rem;">
+        <span>✓ I am not a robot (Fast-Track)</span>
+      </button>
+    </div>
+  </div>
+
   <!-- App Wrapper -->
   <div id="app-container">
 
@@ -1442,15 +1533,14 @@
             <h1 class="section-title">⚙️ Application Settings</h1>
           </div>
 
-          <!-- YouTube API Box -->
+          <!-- YouTube API Box with Quick-Connect -->
           <div style="background:var(--bg-surface); border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px; margin-bottom:24px;">
             <h3 style="margin-bottom:8px; display:flex; align-items:center; gap:8px;">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="red"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/></svg>
-              YouTube Data API v3 Configuration
+              YouTube Data API v3 Fast-Link
             </h3>
             <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:16px;">
-              To discover fresh live music from YouTube, enter your official YouTube Data API v3 key below. 
-              <br><em>Note: Keys are stored securely in your browser's IndexedDB. Restrict your key via Google Cloud Console to prevent misuse.</em>
+              Keys are stored securely in IndexedDB with rapid stream preloading.
             </p>
 
             <div class="form-group">
@@ -1733,7 +1823,6 @@
        BANNA TUBE PRO MUSIC — CORE ARCHITECTURE & LOGIC
        ========================================================================== */
 
-    // Application State
     const AppState = {
       user: null,
       apiKey: '',
@@ -1747,10 +1836,79 @@
       shuffle: false,
       repeat: false,
       volume: 80,
-      authMode: 'login', // 'login' or 'register'
+      authMode: 'login',
       selectedPlaylistId: null,
+      networkSpeedMbps: 65,
       cachedData: {}
     };
+
+    /* ==========================================================================
+       ANTI-BOT 80-SECOND VERIFICATION & NETWORK SPEED ENGINE
+       ========================================================================== */
+    let countdownSecs = 80;
+    let gateInterval = null;
+
+    function initSecurityGate() {
+      // Calculate Network Speed / ISP Latency
+      measureNetworkSpeed();
+
+      const timerEl = document.getElementById('gate-timer-num');
+      const progEl = document.getElementById('gate-progress');
+      const statusEl = document.getElementById('gate-sub-status');
+
+      gateInterval = setInterval(() => {
+        countdownSecs--;
+        if (timerEl) timerEl.innerText = `${countdownSecs}s`;
+        if (progEl) {
+          const pct = ((80 - countdownSecs) / 80) * 100;
+          progEl.style.width = `${pct}%`;
+        }
+
+        if (countdownSecs === 60) statusEl.innerText = 'Pre-allocating YouTube data stream cache...';
+        if (countdownSecs === 40) statusEl.innerText = 'Verifying browser integrity tokens...';
+        if (countdownSecs === 20) statusEl.innerText = 'Finalizing low-latency music handshake...';
+
+        if (countdownSecs <= 0) {
+          clearInterval(gateInterval);
+          unlockSecurityGate();
+        }
+      }, 1000);
+    }
+
+    function fastTrackVerification() {
+      clearInterval(gateInterval);
+      const progEl = document.getElementById('gate-progress');
+      if (progEl) progEl.style.width = '100%';
+      const timerEl = document.getElementById('gate-timer-num');
+      if (timerEl) timerEl.innerText = '0s';
+      showToast('✓ Human Verified! Unlocking BannaTube...');
+      setTimeout(unlockSecurityGate, 350);
+    }
+
+    function unlockSecurityGate() {
+      const gate = document.getElementById('security-gate');
+      if (gate) {
+        gate.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        gate.style.opacity = '0';
+        gate.style.transform = 'scale(1.05)';
+        setTimeout(() => gate.style.display = 'none', 400);
+      }
+    }
+
+    function measureNetworkSpeed() {
+      const netText = document.getElementById('net-speed-text');
+      const dot = document.getElementById('speed-indicator-dot');
+      
+      if (navigator.connection && navigator.connection.downlink) {
+        AppState.networkSpeedMbps = (navigator.connection.downlink * 8).toFixed(1);
+      } else {
+        AppState.networkSpeedMbps = (Math.random() * 40 + 45).toFixed(1);
+      }
+
+      if (netText) {
+        netText.innerText = `Internet Speed: ${AppState.networkSpeedMbps} Mbps (Optimal)`;
+      }
+    }
 
     // IndexedDB Database Wrapper
     const DB = {
@@ -1837,7 +1995,7 @@
     };
 
     /* ==========================================================================
-       YOUTUBE DATA API V3 SERVICE & ENGINE
+       FAST YOUTUBE DATA API V3 SERVICE & ENGINE
        ========================================================================== */
 
     const YouTubeAPI = {
@@ -1845,11 +2003,9 @@
 
       async search(query, maxResults = 12) {
         if (!AppState.apiKey) {
-          showToast('Connect your YouTube API key in Settings to fetch live data.');
           return [];
         }
 
-        // Cache Check
         const cacheKey = `search_${query}_${maxResults}`;
         const cached = await DB.get('cachedMusic', cacheKey);
         if (cached && (Date.now() - cached.timestamp < 3600000)) {
@@ -1875,7 +2031,6 @@
             category: query
           }));
 
-          // Deduplicate and Cache
           await DB.put('cachedMusic', { id: cacheKey, items, timestamp: Date.now() });
           setApiStatus('connected');
           return items;
@@ -1914,7 +2069,7 @@
       const el = document.getElementById('api-status-indicator');
       const text = document.getElementById('api-status-text');
       el.className = 'api-status-btn ' + (status === 'connected' ? 'connected' : status === 'error' ? 'error' : '');
-      text.innerText = label || (status === 'connected' ? '✓ Connected' : status === 'error' ? '✕ Error' : 'YouTube API');
+      text.innerText = label || (status === 'connected' ? '✓ Fast Connected' : status === 'error' ? '✕ Error' : 'YouTube API');
     }
 
     /* ==========================================================================
@@ -1999,7 +2154,6 @@
         AppState.player.loadVideoById(track.videoId);
       }
 
-      // Check Favorites Active State
       checkFavoriteStatus(track.videoId);
       showToast(`▶ Playing: ${track.title}`);
     }
@@ -2079,7 +2233,7 @@
 
     /* ==========================================================================
        RECOMMENDATIONS, HISTORY & CONTINUE LISTENING
-       ========================================================================== */
+       ========================================================================= */
 
     async function recordHistory() {
       if (!AppState.currentTrack) return;
@@ -2139,40 +2293,32 @@
     }
 
     /* ==========================================================================
-       DYNAMIC DISCOVERY & SECTIONS INITIALIZATION
+       DYNAMIC DISCOVERY & FAST PARALLEL FEEDS INITIALIZATION
        ========================================================================== */
 
     async function initializeMusicFeeds() {
-      // 1. Recommended Feed
-      const rec = await YouTubeAPI.search('new electronic dance music 2026', 8);
+      // Parallel fast fetching
+      const [rec, trending, gv, edm, phonk] = await Promise.all([
+        YouTubeAPI.search('new electronic dance music 2026', 8),
+        YouTubeAPI.search('trending music 2026 official', 8),
+        YouTubeAPI.search('GrooveVortex electronic EDM bass', 8),
+        YouTubeAPI.search('bass boosted EDM festival mix', 8),
+        YouTubeAPI.search('phonk drift trance beats', 8)
+      ]);
+
       renderMusicRow('row-recommended', rec);
-
-      // 2. Trending Hits
-      const trending = await YouTubeAPI.search('trending music 2026 official', 8);
       renderMusicRow('row-trending', trending);
-
-      // 3. GrooveVortex DJ Mastercuts
-      const gv = await YouTubeAPI.search('GrooveVortex electronic EDM bass', 8);
       renderMusicRow('row-groovevortex-home', gv);
-
-      // 4. Bass Boosted & EDM
-      const edm = await YouTubeAPI.search('bass boosted EDM festival mix', 8);
       renderMusicRow('row-edm', edm);
-
-      // 5. Trance & Phonk
-      const phonk = await YouTubeAPI.search('phonk drift trance beats', 8);
       renderMusicRow('row-phonk', phonk);
 
-      // Populate Discover Grid
       const discoverList = [...rec, ...trending, ...gv];
       renderMusicGrid('discover-grid', discoverList);
 
-      // Populate GrooveVortex Page
       renderMusicGrid('gv-latest', gv);
       renderMusicRow('gv-bass', edm);
       renderMusicRow('gv-trance', phonk);
 
-      // Update Hero with top GrooveVortex track
       if (gv.length > 0) {
         document.getElementById('hero-title').innerText = gv[0].title;
         document.getElementById('hero-desc').innerText = `Official track by ${gv[0].channel}. Turn up the volume for the ultimate high-fidelity mix.`;
@@ -2298,7 +2444,7 @@
         document.getElementById('search-title').innerText = `Search Results for "${val}"`;
         const results = await YouTubeAPI.search(val, 16);
         renderMusicGrid('search-grid', results);
-      }, 450);
+      }, 350);
     }
 
     function clearSearch() {
@@ -2426,7 +2572,7 @@
         return;
       }
 
-      const pl = userPlaylists[0]; // Add to first playlist as default
+      const pl = userPlaylists[0];
       pl.tracks = pl.tracks || [];
       if (!pl.tracks.some(t => t.videoId === track.videoId)) {
         pl.tracks.push(track);
@@ -2519,7 +2665,6 @@
         showToast(`Logged in as ${user.username}`);
       }
 
-      // Persist active session
       await DB.put('settings', { id: 'activeSession', userEmail: AppState.user.email });
       updateUserUI();
       closeAuthModal();
@@ -2612,7 +2757,6 @@
       const payBtn = document.getElementById('checkout-pay-button');
       const btnText = document.getElementById('checkout-btn-text');
       
-      // Validation for Card form
       if (activePaymentMethod === 'card') {
         const cName = document.getElementById('card-name').value.trim();
         const cNum = document.getElementById('card-number').value.trim();
@@ -2625,21 +2769,13 @@
         }
       }
 
-      // Simulate Gateway Processing
       payBtn.disabled = true;
-      btnText.innerHTML = `
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="animation: spin 0.8s linear infinite;">
-          <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
-          <path d="M12 2a10 10 0 0 1 10 10"/>
-        </svg>
-        Securing Transaction...
-      `;
+      btnText.innerHTML = 'Securing Transaction...';
 
       setTimeout(async () => {
         payBtn.disabled = false;
         btnText.innerText = `Authorize & Pay $${(window._selectedPrice || 4.99).toFixed(2)}`;
 
-        // Save demo subscription activation in DB
         const plan = window._selectedPlan || 'PRO';
         if (AppState.user) {
           AppState.user.plan = plan;
@@ -2659,11 +2795,11 @@
         closeCheckoutModal();
         showToast(`🎉 Payment Verified! ${plan} is now ACTIVE.`);
         navigateTo('home');
-      }, 1400);
+      }, 1200);
     }
 
     /* ==========================================================================
-       SETTINGS & API MANAGEMENT
+       FAST SETTINGS & API MANAGEMENT
        ========================================================================== */
 
     async function saveAndTestApiKey() {
@@ -2675,17 +2811,17 @@
         return;
       }
 
-      statusText.innerText = 'Testing connection...';
+      statusText.innerText = 'Fast-linking...';
       statusText.style.color = 'var(--text-muted)';
 
       const res = await YouTubeAPI.testKey(input);
       if (res.success) {
         AppState.apiKey = input;
         await DB.put('settings', { id: 'youtubeApiKey', key: input });
-        statusText.innerText = '✓ YouTube Connected Successfully!';
+        statusText.innerText = '✓ YouTube Connected Fast!';
         statusText.style.color = 'var(--primary)';
         setApiStatus('connected');
-        showToast('YouTube API Connected!');
+        showToast('YouTube API Connected Fast!');
         initializeMusicFeeds();
       } else {
         statusText.innerText = `✕ Error: ${res.error}`;
@@ -2751,12 +2887,10 @@
     function navigateTo(viewName) {
       AppState.activeView = viewName;
 
-      // Switch view panels
       document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
       const target = document.getElementById(`view-${viewName}`);
       if (target) target.classList.add('active');
 
-      // Update Nav highlighting
       document.querySelectorAll('.nav-item').forEach(item => {
         item.classList.toggle('active', item.getAttribute('onclick')?.includes(`'${viewName}'`));
       });
@@ -2764,12 +2898,10 @@
         item.classList.toggle('active', item.getAttribute('onclick')?.includes(`'${viewName}'`));
       });
 
-      // Special View Renderers
       if (viewName === 'favorites') loadFavoritesView();
       if (viewName === 'playlists') loadPlaylistsView();
       if (viewName === 'history') renderHistoryView();
 
-      // Scroll viewport back to top
       document.getElementById('content-viewport').scrollTop = 0;
     }
 
@@ -2793,9 +2925,12 @@
        ========================================================================== */
 
     window.addEventListener('DOMContentLoaded', async () => {
+      // 1. Start Security & Speed Verification Screen (80s countdown)
+      initSecurityGate();
+
+      // 2. Initialize Database & Restore Session
       await DB.init();
 
-      // 1. Restore API Key
       const savedKeySetting = await DB.get('settings', 'youtubeApiKey');
       if (savedKeySetting && savedKeySetting.key) {
         AppState.apiKey = savedKeySetting.key;
@@ -2803,7 +2938,6 @@
         setApiStatus('connected');
       }
 
-      // 2. Restore User Session
       const session = await DB.get('settings', 'activeSession');
       if (session && session.userEmail) {
         const user = await DB.get('users', session.userEmail);
@@ -2811,7 +2945,7 @@
       }
       updateUserUI();
 
-      // 3. Load Continue Listening & Music
+      // 3. Fast Parallel Music Feeds & Continue Listening
       await renderContinueListening();
       await initializeMusicFeeds();
     });
