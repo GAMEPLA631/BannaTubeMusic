@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BannaTube PRO Music - Cinematic Music Discovery</title>
+<title>BannaTube PRO Music - Bass Edition & AdShield</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg-base: #06080e;
-  --bg-surface: #0e131f;
-  --bg-surface-elevated: #151c2e;
-  --bg-glass: rgba(17, 24, 39, 0.72);
+  --bg-base: #04060a;
+  --bg-surface: #0b0f19;
+  --bg-surface-elevated: #12192b;
+  --bg-glass: rgba(11, 15, 25, 0.78);
   --border-glass: rgba(255, 255, 255, 0.08);
-  --accent-banana: #fbbf24;
-  --accent-banana-glow: rgba(251, 191, 36, 0.35);
+  --accent-banana: #f59e0b;
+  --accent-banana-bright: #fbbf24;
+  --accent-banana-glow: rgba(245, 158, 11, 0.4);
   --accent-cyan: #06b6d4;
   --accent-cyan-glow: rgba(6, 182, 212, 0.35);
   --accent-violet: #8b5cf6;
-  --accent-rose: #f43f5e;
+  --accent-bass: #ec4899;
+  --accent-bass-glow: rgba(236, 72, 153, 0.45);
+  --accent-emerald: #10b981;
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --text-dim: #64748b;
@@ -27,12 +30,11 @@
   --radius-md: 14px;
   --radius-lg: 20px;
   --radius-xl: 28px;
-  --player-height: 92px;
-  --sidebar-width: 250px;
+  --player-height: 96px;
+  --sidebar-width: 260px;
   --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --shadow-card: 0 10px 30px -10px rgba(0,0,0,0.6);
-  --shadow-glow: 0 0 25px var(--accent-banana-glow);
+  --shadow-card: 0 14px 35px -10px rgba(0,0,0,0.8);
+  --shadow-bass: 0 0 35px var(--accent-bass-glow);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
 body {
@@ -50,7 +52,7 @@ button { cursor: pointer; transition: var(--transition-fast); }
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 999px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
 
 /* APP LAYOUT */
 #app-container {
@@ -80,66 +82,82 @@ aside#sidebar {
   border-bottom: 1px solid var(--border-glass);
 }
 .brand-icon {
-  width: 38px;
-  height: 38px;
-  background: linear-gradient(135deg, var(--accent-banana), #f59e0b);
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--accent-banana-bright), var(--accent-bass));
   border-radius: var(--radius-md);
   display: grid;
   place-items: center;
   color: #000;
-  font-weight: 800;
-  font-size: 20px;
-  box-shadow: 0 0 20px var(--accent-banana-glow);
+  font-weight: 900;
+  font-size: 22px;
+  box-shadow: var(--shadow-bass);
 }
 .brand-title {
   font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  font-size: 18px;
+  font-weight: 800;
+  font-size: 19px;
   letter-spacing: -0.5px;
 }
-.brand-title span { color: var(--accent-banana); font-size: 13px; margin-left: 4px; border: 1px solid var(--accent-banana); padding: 1px 6px; border-radius: 6px; }
-.nav-scroll { flex: 1; overflow-y: auto; padding: 16px 12px; display: flex; flex-direction: column; gap: 24px; }
-.nav-group-title { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-dim); letter-spacing: 1px; padding: 0 12px 6px; }
+.brand-title span { color: var(--accent-bass); font-size: 11px; margin-left: 5px; border: 1px solid var(--accent-bass); padding: 2px 6px; border-radius: 6px; }
+.nav-scroll { flex: 1; overflow-y: auto; padding: 16px 12px; display: flex; flex-direction: column; gap: 20px; }
+.nav-group-title { font-size: 11px; font-weight: 800; text-transform: uppercase; color: var(--text-dim); letter-spacing: 1.2px; padding: 0 12px 6px; }
 .nav-list { display: flex; flex-direction: column; gap: 4px; list-style: none; }
 .nav-item {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 10px 14px;
+  padding: 11px 14px;
   border-radius: var(--radius-md);
   color: var(--text-muted);
   font-size: 14px;
   font-weight: 500;
   transition: var(--transition-fast);
+  width: 100%;
 }
 .nav-item:hover { color: var(--text-main); background: rgba(255,255,255,0.05); transform: translateX(3px); }
 .nav-item.active {
-  background: linear-gradient(90deg, rgba(251, 191, 36, 0.15), rgba(6, 182, 212, 0.05));
-  color: var(--accent-banana);
-  border-left: 3px solid var(--accent-banana);
+  background: linear-gradient(90deg, rgba(236, 72, 153, 0.18), rgba(245, 158, 11, 0.08));
+  color: var(--accent-banana-bright);
+  border-left: 3px solid var(--accent-bass);
   font-weight: 600;
 }
 .nav-item svg { width: 19px; height: 19px; flex-shrink: 0; fill: currentColor; }
-.badge-gv {
+.badge-pill {
   margin-left: auto;
   font-size: 10px;
-  background: linear-gradient(135deg, #ec4899, #8b5cf6);
+  background: linear-gradient(135deg, var(--accent-bass), var(--accent-violet));
   color: #fff;
-  padding: 2px 7px;
+  padding: 2px 8px;
   border-radius: 999px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.5px;
   animation: pulse-glow 2s infinite;
 }
-@keyframes pulse-glow { 0%, 100% { opacity: 1; } 50% { opacity: 0.65; } }
+@keyframes pulse-glow { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.75; transform: scale(1.05); } }
+
+/* ADSHIELD STATUS IN SIDEBAR */
+.adshield-box {
+  margin: 12px;
+  padding: 14px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(6, 182, 212, 0.05));
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.adshield-header { display: flex; align-items: center; justify-content: space-between; font-size: 12px; font-weight: 800; color: #34d399; }
+.adshield-desc { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
+.adshield-stat { font-size: 13px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 6px; }
 
 /* MAIN VIEWPORT */
 main#viewport {
   flex: 1;
   display: flex;
   flex-direction: column;
-  background: radial-gradient(circle at top right, rgba(6, 182, 212, 0.08), transparent 45%),
-              radial-gradient(circle at 10% 20%, rgba(251, 191, 36, 0.05), transparent 35%),
+  background: radial-gradient(circle at top right, rgba(236, 72, 153, 0.08), transparent 45%),
+              radial-gradient(circle at 10% 20%, rgba(245, 158, 11, 0.06), transparent 35%),
               var(--bg-base);
   overflow: hidden;
   position: relative;
@@ -147,25 +165,25 @@ main#viewport {
 
 /* TOP HEADER */
 header#topbar {
-  height: 72px;
+  height: 74px;
   padding: 0 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
   border-bottom: 1px solid var(--border-glass);
-  background: rgba(6, 8, 14, 0.7);
-  backdrop-filter: blur(16px);
+  background: rgba(4, 6, 10, 0.8);
+  backdrop-filter: blur(20px);
   z-index: 20;
 }
 .search-wrapper {
   position: relative;
-  width: 440px;
+  width: 480px;
   max-width: 100%;
 }
 .search-wrapper input {
   width: 100%;
-  padding: 11px 18px 11px 44px;
+  padding: 12px 20px 12px 46px;
   background: rgba(255,255,255,0.06);
   border: 1px solid var(--border-glass);
   border-radius: 999px;
@@ -175,29 +193,29 @@ header#topbar {
 }
 .search-wrapper input:focus {
   background: rgba(255,255,255,0.1);
-  border-color: var(--accent-banana);
-  box-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
+  border-color: var(--accent-banana-bright);
+  box-shadow: 0 0 18px rgba(251, 191, 36, 0.25);
 }
 .search-wrapper svg {
   position: absolute;
-  left: 15px;
+  left: 16px;
   top: 50%;
   transform: translateY(-50%);
-  width: 18px;
-  height: 18px;
+  width: 19px;
+  height: 19px;
   fill: var(--text-dim);
   pointer-events: none;
 }
 .topbar-actions {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 .api-badge {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 7px 14px;
+  padding: 8px 16px;
   border-radius: 999px;
   font-size: 12px;
   font-weight: 600;
@@ -206,40 +224,44 @@ header#topbar {
   cursor: pointer;
   transition: var(--transition-fast);
 }
-.api-badge.connected { border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.1); color: #34d399; }
-.api-badge.error { border-color: rgba(244, 63, 94, 0.4); background: rgba(244, 63, 94, 0.1); color: #fb7185; }
-.api-badge.quota { border-color: rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.1); color: #fbbf24; }
+.api-badge.connected { border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.12); color: #34d399; }
+.api-badge.error { border-color: rgba(244, 63, 94, 0.4); background: rgba(244, 63, 94, 0.12); color: #fb7185; }
+.api-badge.quota { border-color: rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.12); color: #fbbf24; }
 .api-badge .status-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
 
-.btn-premium-pill {
-  padding: 7px 16px;
-  background: linear-gradient(135deg, var(--accent-banana), #d97706);
-  color: #000;
+.btn-bass-dsp {
+  padding: 8px 16px;
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(139, 92, 246, 0.2));
+  border: 1px solid var(--accent-bass);
+  color: #fff;
   font-weight: 700;
   font-size: 12px;
   border-radius: 999px;
   display: flex;
   align-items: center;
   gap: 6px;
-  box-shadow: 0 4px 14px var(--accent-banana-glow);
+  box-shadow: 0 0 15px rgba(236, 72, 153, 0.25);
 }
-.user-avatar-btn {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet));
-  display: grid;
-  place-items: center;
-  font-weight: 700;
-  font-size: 14px;
-  border: 2px solid rgba(255,255,255,0.2);
+.btn-bass-dsp.boosted { background: linear-gradient(135deg, var(--accent-bass), #f43f5e); color: #fff; box-shadow: var(--shadow-bass); }
+
+.btn-upgrade-nav {
+  padding: 8px 18px;
+  background: linear-gradient(135deg, var(--accent-banana-bright), #d97706);
+  color: #000;
+  font-weight: 800;
+  font-size: 12px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 15px var(--accent-banana-glow);
 }
 
 /* CONTENT SCROLLER */
 #view-content {
   flex: 1;
   overflow-y: auto;
-  padding: 28px 32px 60px;
+  padding: 30px 36px 70px;
   scroll-behavior: smooth;
 }
 
@@ -248,26 +270,26 @@ header#topbar {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 .section-title {
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: -0.4px;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.section-title .accent-emoji { font-size: 22px; }
-.section-subtitle { font-size: 13px; color: var(--text-dim); margin-top: 2px; }
-.btn-see-all { font-size: 13px; color: var(--accent-banana); font-weight: 600; padding: 4px 10px; border-radius: 6px; }
+.section-title .accent-emoji { font-size: 24px; }
+.section-subtitle { font-size: 13px; color: var(--text-dim); margin-top: 3px; }
+.btn-see-all { font-size: 13px; color: var(--accent-banana-bright); font-weight: 700; padding: 4px 10px; border-radius: 6px; }
 .btn-see-all:hover { background: rgba(251, 191, 36, 0.1); }
 
 .grid-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
-  gap: 20px;
-  margin-bottom: 38px;
+  grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+  gap: 22px;
+  margin-bottom: 42px;
 }
 .music-card {
   background: var(--bg-surface);
@@ -279,13 +301,12 @@ header#topbar {
   transition: var(--transition-fast);
   position: relative;
   cursor: pointer;
-  group: true;
 }
 .music-card:hover {
   transform: translateY(-6px);
   background: var(--bg-surface-elevated);
-  border-color: rgba(255,255,255,0.18);
-  box-shadow: var(--shadow-card);
+  border-color: rgba(236, 72, 153, 0.4);
+  box-shadow: 0 14px 35px -10px rgba(0,0,0,0.8), 0 0 20px rgba(236, 72, 153, 0.25);
 }
 .card-artwork-wrap {
   position: relative;
@@ -293,52 +314,55 @@ header#topbar {
   aspect-ratio: 16/9;
   border-radius: var(--radius-md);
   overflow: hidden;
-  background: #111;
-  margin-bottom: 10px;
+  background: #0f172a;
+  margin-bottom: 12px;
 }
-.card-artwork-wrap.square { aspect-ratio: 1/1; }
 .card-artwork-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
 }
-.music-card:hover .card-artwork-wrap img { transform: scale(1.06); }
+.music-card:hover .card-artwork-wrap img { transform: scale(1.08); }
 .card-play-btn {
   position: absolute;
   right: 10px;
   bottom: 10px;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  background: var(--accent-banana);
+  background: linear-gradient(135deg, var(--accent-banana-bright), var(--accent-bass));
   color: #000;
   display: grid;
   place-items: center;
   opacity: 0;
   transform: translateY(10px) scale(0.8);
   transition: var(--transition-fast);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.7);
 }
-.card-play-btn svg { width: 18px; height: 18px; fill: currentColor; margin-left: 2px; }
+.card-play-btn svg { width: 19px; height: 19px; fill: currentColor; margin-left: 2px; }
 .music-card:hover .card-play-btn {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
-.card-duration {
+.card-tag-bass {
   position: absolute;
+  top: 8px;
   left: 8px;
-  bottom: 8px;
-  background: rgba(0,0,0,0.75);
-  font-size: 11px;
-  font-weight: 600;
-  padding: 2px 6px;
+  background: rgba(236, 72, 153, 0.85);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  padding: 2px 7px;
   border-radius: 4px;
+  text-transform: uppercase;
 }
 .card-info { display: flex; flex-direction: column; gap: 3px; }
 .card-title {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -351,188 +375,138 @@ header#topbar {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.card-meta {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  color: var(--text-dim);
-  margin-top: 4px;
-}
-
-/* CONTINUE LISTENING ROW */
-.continue-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-glass);
-  border-radius: var(--radius-md);
-  padding: 10px;
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  cursor: pointer;
-  transition: var(--transition-fast);
-  position: relative;
-  overflow: hidden;
-}
-.continue-card:hover {
-  background: var(--bg-surface-elevated);
-  border-color: rgba(251, 191, 36, 0.4);
-  transform: translateY(-2px);
-}
-.continue-thumb {
-  width: 64px;
-  height: 64px;
-  border-radius: var(--radius-sm);
-  object-fit: cover;
-  flex-shrink: 0;
-}
-.continue-details { flex: 1; min-width: 0; }
-.continue-progress {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 3px;
-  background: var(--accent-banana);
-  border-radius: 0 4px 4px 0;
-}
 
 /* HERO BANNER */
 .hero-banner {
-  min-height: 280px;
+  min-height: 290px;
   border-radius: var(--radius-xl);
-  padding: 36px 40px;
+  padding: 40px 44px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   position: relative;
   overflow: hidden;
-  margin-bottom: 36px;
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(6, 182, 212, 0.2)), #0b0f19;
-  border: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 38px;
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.35), rgba(6, 182, 212, 0.2)), #070a12;
+  border: 1px solid rgba(255,255,255,0.12);
 }
 .hero-bg-overlay {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(to top, rgba(6, 8, 14, 0.95) 10%, rgba(6, 8, 14, 0.4) 60%, transparent 100%);
+  inset: 0;
+  background: linear-gradient(to top, rgba(4, 6, 10, 0.96) 10%, rgba(4, 6, 10, 0.45) 60%, transparent 100%);
   z-index: 1;
 }
-.hero-particles {
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(251, 191, 36, 0.2) 1px, transparent 1px), radial-gradient(rgba(6, 182, 212, 0.2) 1px, transparent 1px);
-  background-size: 24px 24px;
-  background-position: 0 0, 12px 12px;
-  opacity: 0.4;
-}
-.hero-content { position: relative; z-index: 2; max-width: 620px; }
+.hero-content { position: relative; z-index: 2; max-width: 660px; }
 .hero-tag {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(251, 191, 36, 0.2);
-  border: 1px solid var(--accent-banana);
-  color: var(--accent-banana);
+  background: rgba(236, 72, 153, 0.25);
+  border: 1px solid var(--accent-bass);
+  color: #f472b6;
   font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 1px;
+  font-weight: 900;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
-  padding: 4px 12px;
+  padding: 4px 14px;
   border-radius: 999px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 .hero-title {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 38px;
-  font-weight: 800;
+  font-size: 40px;
+  font-weight: 900;
   line-height: 1.1;
-  margin-bottom: 10px;
-  letter-spacing: -1px;
-  background: linear-gradient(135deg, #ffffff, #e2e8f0);
+  margin-bottom: 12px;
+  letter-spacing: -1.2px;
+  background: linear-gradient(135deg, #ffffff, #cbd5e1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.hero-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; margin-bottom: 20px; }
-.hero-btns { display: flex; gap: 12px; align-items: center; }
+.hero-desc { font-size: 14px; color: var(--text-muted); line-height: 1.55; margin-bottom: 22px; }
+.hero-btns { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
 .btn-hero-play {
-  padding: 12px 28px;
-  background: var(--accent-banana);
+  padding: 13px 30px;
+  background: linear-gradient(135deg, var(--accent-banana-bright), var(--accent-bass));
   color: #000;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 14px;
   border-radius: 999px;
   display: flex;
   align-items: center;
   gap: 8px;
-  box-shadow: 0 6px 20px var(--accent-banana-glow);
+  box-shadow: 0 6px 25px var(--accent-bass-glow);
 }
-.btn-hero-play:hover { transform: scale(1.04); background: #f59e0b; }
-.btn-hero-secondary {
-  padding: 12px 24px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid var(--border-glass);
-  color: #fff;
-  font-weight: 600;
-  font-size: 14px;
-  border-radius: 999px;
-  backdrop-filter: blur(10px);
-}
-.btn-hero-secondary:hover { background: rgba(255,255,255,0.15); }
+.btn-hero-play:hover { transform: scale(1.05); }
 
-/* GENRES / CHIPS */
-.chips-scroll {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding-bottom: 12px;
-  margin-bottom: 24px;
-}
-.chip {
-  padding: 8px 18px;
-  background: var(--bg-surface);
+/* BASS BOOST HARDWARE EQUALIZER DRAWER / POPUP */
+.bass-dsp-box {
+  background: var(--bg-surface-elevated);
   border: 1px solid var(--border-glass);
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 600;
-  white-space: nowrap;
-  color: var(--text-muted);
-  transition: var(--transition-fast);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-left: 4px solid var(--accent-bass);
 }
-.chip:hover { color: #fff; border-color: rgba(255,255,255,0.2); }
-.chip.active { background: var(--accent-banana); color: #000; border-color: var(--accent-banana); }
+.dsp-header { display: flex; align-items: center; justify-content: space-between; }
+.dsp-title { font-size: 16px; font-weight: 800; display: flex; align-items: center; gap: 8px; color: #fff; }
+.dsp-presets { display: flex; gap: 8px; }
+.dsp-preset-btn {
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(255,255,255,0.06);
+  color: var(--text-muted);
+}
+.dsp-preset-btn.active { background: var(--accent-bass); color: #fff; box-shadow: 0 0 15px var(--accent-bass-glow); }
+.dsp-sliders { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 16px; }
+.dsp-ctrl { display: flex; flex-direction: column; gap: 6px; font-size: 11px; font-weight: 600; color: var(--text-muted); }
 
 /* BOTTOM PLAYER */
 footer#bottom-player {
   height: var(--player-height);
-  background: rgba(11, 15, 25, 0.95);
-  backdrop-filter: blur(24px);
+  background: rgba(8, 12, 20, 0.96);
+  backdrop-filter: blur(28px);
   border-top: 1px solid var(--border-glass);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 24px;
+  padding: 0 28px;
   position: relative;
   z-index: 50;
 }
 .player-left {
   display: flex;
   align-items: center;
-  gap: 14px;
-  width: 280px;
-  min-width: 200px;
+  gap: 16px;
+  width: 320px;
+  min-width: 220px;
 }
-.player-thumb {
-  width: 58px;
-  height: 58px;
+.player-thumb-wrap {
+  position: relative;
+  width: 62px;
+  height: 62px;
   border-radius: var(--radius-md);
-  object-fit: cover;
+  overflow: hidden;
   background: #1e293b;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  flex-shrink: 0;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
 }
+.player-thumb { width: 100%; height: 100%; object-fit: cover; }
+.player-thumb-wrap.bass-active {
+  animation: pulse-bass-thumb 0.8s ease-in-out infinite alternate;
+  border: 2px solid var(--accent-bass);
+}
+@keyframes pulse-bass-thumb { 0% { transform: scale(1); box-shadow: 0 0 10px var(--accent-bass-glow); } 100% { transform: scale(1.08); box-shadow: 0 0 25px var(--accent-bass); } }
 .player-info { display: flex; flex-direction: column; overflow: hidden; }
-.player-title { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.player-title { font-size: 14px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .player-artist { font-size: 12px; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
 .player-like-btn { color: var(--text-dim); padding: 6px; border-radius: 50%; }
-.player-like-btn.liked { color: var(--accent-rose); }
+.player-like-btn.liked { color: var(--accent-bass); }
 
 .player-center {
   display: flex;
@@ -540,13 +514,13 @@ footer#bottom-player {
   align-items: center;
   gap: 6px;
   flex: 1;
-  max-width: 640px;
-  padding: 0 20px;
+  max-width: 680px;
+  padding: 0 24px;
 }
 .player-controls {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 22px;
 }
 .control-btn {
   color: var(--text-muted);
@@ -555,138 +529,130 @@ footer#bottom-player {
   padding: 6px;
   border-radius: 50%;
 }
-.control-btn:hover { color: #fff; transform: scale(1.1); }
-.control-btn.active { color: var(--accent-banana); }
+.control-btn:hover { color: #fff; transform: scale(1.12); }
+.control-btn.active { color: var(--accent-banana-bright); }
 .control-btn-main {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: #fff;
   color: #000;
   display: grid;
   place-items: center;
-  box-shadow: 0 2px 14px rgba(255,255,255,0.3);
+  box-shadow: 0 4px 18px rgba(255,255,255,0.35);
 }
-.control-btn-main:hover { transform: scale(1.08); background: var(--accent-banana); }
-.control-btn-main svg { width: 20px; height: 20px; fill: currentColor; }
+.control-btn-main:hover { transform: scale(1.1); background: var(--accent-banana-bright); }
+.control-btn-main svg { width: 22px; height: 22px; fill: currentColor; }
 
 .timeline-wrap {
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   font-size: 11px;
   color: var(--text-dim);
-  font-weight: 500;
+  font-weight: 600;
 }
 .slider {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 4px;
+  height: 5px;
   border-radius: 999px;
   background: rgba(255,255,255,0.15);
   cursor: pointer;
   outline: none;
-  position: relative;
 }
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 12px;
-  height: 12px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
   background: #fff;
   cursor: pointer;
-  transition: transform 0.1s;
 }
-.slider:hover::-webkit-slider-thumb { transform: scale(1.4); background: var(--accent-banana); }
+.slider:hover::-webkit-slider-thumb { transform: scale(1.4); background: var(--accent-banana-bright); }
 
 .player-right {
   display: flex;
   align-items: center;
-  gap: 14px;
-  width: 280px;
+  gap: 16px;
+  width: 320px;
   justify-content: flex-end;
 }
 .volume-wrap { display: flex; align-items: center; gap: 8px; width: 130px; }
 
-/* MODALS & OVERLAYS */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.8);
-  backdrop-filter: blur(12px);
-  display: none;
-  place-items: center;
-  z-index: 100;
-  padding: 20px;
-}
-.modal-overlay.open { display: grid; }
-.modal-card {
-  background: var(--bg-surface-elevated);
-  border: 1px solid var(--border-glass);
-  border-radius: var(--radius-xl);
-  width: 100%;
-  max-width: 520px;
-  padding: 32px;
-  position: relative;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-}
-.modal-close {
+/* AD-SKIPPER OVERLAY BANNER ON PLAYER */
+.ad-skip-indicator {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  color: var(--text-dim);
-  padding: 6px;
-}
-.modal-title { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
-.modal-subtitle { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
-.form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
-.form-label { font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--text-dim); letter-spacing: 0.5px; }
-.form-input {
-  padding: 12px 16px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid var(--border-glass);
-  border-radius: var(--radius-md);
-  font-size: 14px;
-  color: #fff;
-}
-.form-input:focus { border-color: var(--accent-banana); background: rgba(255,255,255,0.08); }
-.modal-actions { display: flex; gap: 12px; justify-content: flex-end; margin-top: 28px; }
-.btn-primary {
-  padding: 11px 22px;
-  background: var(--accent-banana);
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.95), rgba(6, 182, 212, 0.95));
   color: #000;
-  font-weight: 700;
-  border-radius: var(--radius-md);
-  font-size: 14px;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 5px 14px;
+  border-radius: 999px;
+  display: none;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  z-index: 60;
+  animation: bounce-in 0.3s ease;
 }
-.btn-primary:hover { background: #f59e0b; }
-.btn-secondary {
-  padding: 11px 20px;
-  background: rgba(255,255,255,0.08);
+.ad-skip-indicator.show { display: flex; }
+@keyframes bounce-in { 0% { transform: translate(-50%, 10px); opacity: 0; } 100% { transform: translate(-50%, 0); opacity: 1; } }
+
+/* PAYMENT GATEWAY MODAL (CHECKOUT & PLATOBNÁ BRÁNA) */
+.checkout-modal {
+  max-width: 580px;
+}
+.payment-methods-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.payment-method-card {
   border: 1px solid var(--border-glass);
-  color: #fff;
-  font-weight: 600;
+  background: rgba(255,255,255,0.03);
+  padding: 10px;
   border-radius: var(--radius-md);
-  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-fast);
 }
-.btn-danger {
-  padding: 11px 20px;
-  background: rgba(244, 63, 94, 0.15);
-  border: 1px solid rgba(244, 63, 94, 0.4);
-  color: #fb7185;
-  font-weight: 600;
-  border-radius: var(--radius-md);
-  font-size: 14px;
+.payment-method-card.active {
+  border-color: var(--accent-banana-bright);
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--accent-banana-bright);
+}
+.card-input-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 10px;
+}
+.security-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #34d399;
+  margin-top: 14px;
 }
 
-/* FULLSCREEN PLAYER OVERLAY */
+/* FULLSCREEN PLAYER */
 #fullscreen-player {
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at center, #111827 0%, #030712 100%);
+  background: radial-gradient(circle at center, #150a1c 0%, #030408 100%);
   z-index: 90;
   display: none;
   flex-direction: column;
@@ -699,29 +665,102 @@ footer#bottom-player {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 60px;
+  gap: 70px;
   max-width: 1100px;
   margin: 0 auto;
   width: 100%;
 }
-.fs-artwork {
+.fs-artwork-wrap {
+  position: relative;
   width: 380px;
   height: 380px;
   border-radius: var(--radius-xl);
-  object-fit: cover;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.8);
-  animation: float-art 6s ease-in-out infinite;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.85);
 }
-@keyframes float-art { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-.fs-meta { display: flex; flex-direction: column; gap: 8px; max-width: 460px; }
-.fs-title { font-size: 32px; font-weight: 800; font-family: 'Space Grotesk', sans-serif; }
-.fs-artist { font-size: 18px; color: var(--accent-banana); font-weight: 600; }
-.fs-canvas { width: 100%; height: 60px; margin-top: 20px; }
+.fs-artwork { width: 100%; height: 100%; object-fit: cover; }
+.fs-meta { display: flex; flex-direction: column; gap: 10px; max-width: 480px; }
+.fs-title { font-size: 34px; font-weight: 800; font-family: 'Space Grotesk', sans-serif; line-height: 1.2; }
+.fs-artist { font-size: 19px; color: var(--accent-banana-bright); font-weight: 600; }
+.fs-canvas { width: 100%; height: 70px; margin-top: 24px; }
 
-/* TOAST NOTIFICATIONS */
+/* MODALS */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(14px);
+  display: none;
+  place-items: center;
+  z-index: 100;
+  padding: 20px;
+}
+.modal-overlay.open { display: grid; }
+.modal-card {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-xl);
+  width: 100%;
+  max-width: 520px;
+  padding: 34px;
+  position: relative;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.85);
+}
+.modal-close { position: absolute; top: 22px; right: 22px; color: var(--text-dim); }
+.modal-title { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
+.modal-subtitle { font-size: 13px; color: var(--text-muted); margin-bottom: 22px; line-height: 1.4; }
+.form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.form-label { font-size: 11px; font-weight: 800; text-transform: uppercase; color: var(--text-dim); letter-spacing: 0.8px; }
+.form-input {
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  color: #fff;
+}
+.form-input:focus { border-color: var(--accent-banana-bright); background: rgba(255,255,255,0.08); }
+.modal-actions { display: flex; gap: 12px; justify-content: flex-end; margin-top: 26px; }
+.btn-primary {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, var(--accent-banana-bright), var(--accent-banana));
+  color: #000;
+  font-weight: 800;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+}
+.btn-secondary {
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--border-glass);
+  color: #fff;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+}
+.btn-danger {
+  padding: 12px 20px;
+  background: rgba(244, 63, 94, 0.15);
+  border: 1px solid rgba(244, 63, 94, 0.4);
+  color: #fb7185;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+}
+
+/* SKELETON LOADERS */
+.skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-md);
+}
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+/* TOASTS */
 #toast-container {
   position: fixed;
-  bottom: 110px;
+  bottom: 115px;
   right: 28px;
   z-index: 110;
   display: flex;
@@ -735,40 +774,18 @@ footer#bottom-player {
   border-radius: var(--radius-md);
   color: #fff;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   box-shadow: 0 10px 30px rgba(0,0,0,0.6);
   display: flex;
   align-items: center;
   gap: 10px;
-  animation: slide-in 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-@keyframes slide-in { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-
-/* HIDDEN YOUTUBE IFRAME CONTAINER */
-#yt-embed-host {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0.01;
-  pointer-events: none;
-  bottom: 0;
-  right: 0;
 }
 
-/* SKELETON LOADERS */
-.skeleton {
-  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-  border-radius: var(--radius-md);
-}
-@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-
-/* MOBILE BOTTOM NAV */
+/* MOBILE NAV */
 #mobile-nav {
   display: none;
-  height: 60px;
-  background: rgba(11, 15, 25, 0.98);
+  height: 62px;
+  background: rgba(8, 12, 20, 0.98);
   border-top: 1px solid var(--border-glass);
   position: fixed;
   bottom: 0;
@@ -784,57 +801,23 @@ footer#bottom-player {
   align-items: center;
   gap: 3px;
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-dim);
 }
-.mobile-nav-item.active { color: var(--accent-banana); }
+.mobile-nav-item.active { color: var(--accent-banana-bright); }
 .mobile-nav-item svg { width: 20px; height: 20px; fill: currentColor; }
 
-/* PRICING GRID */
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  margin-top: 24px;
-}
-.pricing-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-glass);
-  border-radius: var(--radius-lg);
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  transition: var(--transition-fast);
-}
-.pricing-card.featured {
-  border-color: var(--accent-banana);
-  background: linear-gradient(180deg, rgba(251, 191, 36, 0.08), var(--bg-surface));
-  box-shadow: 0 0 30px rgba(251, 191, 36, 0.15);
-}
-.tier-tag {
-  align-self: flex-start;
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  padding: 3px 8px;
-  border-radius: 6px;
-  background: rgba(255,255,255,0.08);
-  margin-bottom: 12px;
-}
-.pricing-card.featured .tier-tag { background: var(--accent-banana); color: #000; }
-.tier-price { font-size: 32px; font-weight: 800; font-family: 'Space Grotesk', sans-serif; margin-bottom: 14px; }
-.tier-features { list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: var(--text-muted); margin-bottom: 24px; flex: 1; }
+#yt-embed-host { position: absolute; width: 1px; height: 1px; opacity: 0.01; pointer-events: none; bottom: 0; right: 0; }
 
 @media (max-width: 900px) {
   aside#sidebar { display: none; }
   #mobile-nav { display: flex; }
-  #app-container { height: calc(100vh - var(--player-height) - 60px); }
+  #app-container { height: calc(100vh - var(--player-height) - 62px); }
   header#topbar { padding: 0 16px; }
-  #view-content { padding: 18px 16px 40px; }
+  #view-content { padding: 20px 16px 40px; }
   .hero-title { font-size: 26px; }
   .fs-body { flex-direction: column; gap: 20px; text-align: center; }
-  .fs-artwork { width: 240px; height: 240px; }
+  .fs-artwork-wrap { width: 220px; height: 220px; }
   .player-right { display: none; }
 }
 </style>
@@ -845,85 +828,107 @@ footer#bottom-player {
   <!-- SIDEBAR -->
   <aside id="sidebar">
     <div class="brand">
-      <div class="brand-icon">B</div>
-      <div class="brand-title">BannaTube<span>PRO</span></div>
+      <div class="brand-icon">⚡</div>
+      <div class="brand-title">BannaTube<span>BASS PRO</span></div>
     </div>
     <div class="nav-scroll">
       <div>
-        <div class="nav-group-title">Discovery</div>
+        <div class="nav-group-title">Bass & Music Discovery</div>
         <ul class="nav-list">
-          <li><button class="nav-item active" data-view="home"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>Home</button></li>
-          <li><button class="nav-item" data-view="groovevortex"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>GrooveVortex <span class="badge-gv">HOT</span></button></li>
-          <li><button class="nav-item" data-view="trending"><svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>Trending</button></li>
-          <li><button class="nav-item" data-view="newmusic"><svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>New Releases</button></li>
-          <li><button class="nav-item" data-view="genres"><svg viewBox="0 0 24 24"><path d="M12 3v9.28c-.47-.17-.97-.28-1.5-.28C8.01 12 6 14.01 6 16.5S8.01 21 10.5 21c2.31 0 4.2-1.75 4.45-4H15V6h4V3h-7z"/></svg>Genres & Moods</button></li>
+          <li><button class="nav-item active" data-view="home"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>Bass Central</button></li>
+          <li><button class="nav-item" data-view="bassboost"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>Ultra Bass Boosted <span class="badge-pill">MAX BASS</span></button></li>
+          <li><button class="nav-item" data-view="phonk"><svg viewBox="0 0 24 24"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7z"/></svg>Brazilian Phonk & Car</button></li>
+          <li><button class="nav-item" data-view="groovevortex"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>GrooveVortex Hub</button></li>
+          <li><button class="nav-item" data-view="newmusic"><svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>Fresh YouTube Releases</button></li>
         </ul>
       </div>
+
       <div>
-        <div class="nav-group-title">My Collection</div>
+        <div class="nav-group-title">Personal Vault</div>
         <ul class="nav-list">
-          <li><button class="nav-item" data-view="continue"><svg viewBox="0 0 24 24"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>Continue</button></li>
-          <li><button class="nav-item" data-view="favorites"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>Favorites</button></li>
-          <li><button class="nav-item" data-view="playlists"><svg viewBox="0 0 24 24"><path d="M15 6H3v2h12V6zm0 4H3v2h12v-2zM3 16h8v-2H3v2zM17 6v8.18c-.31-.11-.65-.18-1-.18-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3V8h3V6h-5z"/></svg>Playlists</button></li>
-          <li><button class="nav-item" data-view="history"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>History</button></li>
+          <li><button class="nav-item" data-view="favorites"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>Star Favorites</button></li>
+          <li><button class="nav-item" data-view="playlists"><svg viewBox="0 0 24 24"><path d="M15 6H3v2h12V6zm0 4H3v2h12v-2zM3 16h8v-2H3v2zM17 6v8.18c-.31-.11-.65-.18-1-.18-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3V8h3V6h-5z"/></svg>Bass Playlists</button></li>
+          <li><button class="nav-item" data-view="history"><svg viewBox="0 0 24 24"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>Playback History</button></li>
         </ul>
       </div>
+
+      <!-- ADSHIELD LIVE STATUS -->
+      <div class="adshield-box">
+        <div class="adshield-header">
+          <span>🛡️ ADSHIELD ULTRA</span>
+          <span style="font-size:10px; background:#10b981; color:#000; padding:1px 5px; border-radius:4px; font-weight:900;">ACTIVE</span>
+        </div>
+        <div class="adshield-desc">Automatické preskakovanie YouTube reklám bez prerušenia hudby.</div>
+        <div class="adshield-stat">
+          <span id="ads-skipped-counter">0</span> reklám preskočených
+        </div>
+      </div>
+
       <div>
-        <div class="nav-group-title">System</div>
+        <div class="nav-group-title">Subscription & Core</div>
         <ul class="nav-list">
-          <li><button class="nav-item" data-view="premium"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>PRO Membership</button></li>
-          <li><button class="nav-item" data-view="settings"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>Settings</button></li>
+          <li><button class="nav-item" data-view="premium"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>Platobná Brána & PRO</button></li>
+          <li><button class="nav-item" data-view="settings"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>Nastavenia & API</button></li>
         </ul>
       </div>
     </div>
   </aside>
 
-  <!-- MAIN CONTENT -->
+  <!-- MAIN VIEWPORT -->
   <main id="viewport">
     <header id="topbar">
       <div class="search-wrapper">
         <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-        <input type="text" id="global-search-input" placeholder="Search songs, artists, GrooveVortex, Bass Boosted...">
+        <input type="text" id="global-search-input" placeholder="Hľadaj Bass Boosted, Brazilian Phonk, GrooveVortex, EDM...">
       </div>
       <div class="topbar-actions">
-        <div id="yt-status-badge" class="api-badge quota" title="Click to configure YouTube API">
-          <div class="status-dot"></div>
-          <span id="yt-status-text">Set YouTube Key</span>
-        </div>
-        <button class="btn-premium-pill" id="btn-top-premium">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <span id="tier-indicator">FREE</span>
+        <button class="btn-bass-dsp" id="btn-toggle-dsp-bar">
+          <span>🔊</span>
+          <span id="dsp-status-text">BASS BOOST: OFF</span>
         </button>
-        <div class="user-avatar-btn" id="btn-user-profile">B</div>
+        <div id="yt-status-badge" class="api-badge quota">
+          <div class="status-dot"></div>
+          <span id="yt-status-text">YouTube Kľúč</span>
+        </div>
+        <button class="btn-upgrade-nav" id="btn-top-checkout">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span id="tier-indicator">FREE PLAN</span>
+        </button>
       </div>
     </header>
 
     <div id="view-content">
-      <!-- Dynamic Views Rendered Here -->
+      <!-- Dynamic View Injection -->
     </div>
   </main>
 </div>
 
 <!-- BOTTOM PLAYER -->
 <footer id="bottom-player">
+  <div class="ad-skip-indicator" id="ad-skip-alert">
+    <span>🛡️</span> YouTube Reklama Automaticky Preskočená!
+  </div>
+
   <div class="player-left">
-    <img id="track-thumb" class="player-thumb" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' fill='%23222'%3E%3Crect width='60' height='60'/%3E%3C/svg%3E" alt="Artwork">
-    <div class="player-info">
-      <div id="track-title" class="player-title">Select a track to play</div>
-      <div id="track-artist" class="player-artist">BannaTube Music</div>
+    <div class="player-thumb-wrap" id="player-thumb-wrap">
+      <img id="track-thumb" class="player-thumb" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' fill='%23111'%3E%3Crect width='60' height='60'/%3E%3C/svg%3E" alt="Artwork">
     </div>
-    <button class="player-like-btn" id="btn-player-like" title="Add to Favorites">
+    <div class="player-info">
+      <div id="track-title" class="player-title">Vyber bassovú pecku</div>
+      <div id="track-artist" class="player-artist">BannaTube Bass Station</div>
+    </div>
+    <button class="player-like-btn" id="btn-player-like" title="Pridať do obľúbených">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
     </button>
   </div>
 
   <div class="player-center">
     <div class="player-controls">
-      <button class="control-btn" id="btn-shuffle" title="Shuffle"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg></button>
-      <button class="control-btn" id="btn-prev" title="Previous Track"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button>
-      <button class="control-btn-main" id="btn-playpause" title="Play/Pause"><svg id="icon-playpause" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-      <button class="control-btn" id="btn-next" title="Next Track"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg></button>
-      <button class="control-btn" id="btn-repeat" title="Repeat"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg></button>
+      <button class="control-btn" id="btn-shuffle" title="Náhodné prehrávanie"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg></button>
+      <button class="control-btn" id="btn-prev" title="Predchádzajúca"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button>
+      <button class="control-btn-main" id="btn-playpause" title="Prehrať / Pozastaviť"><svg id="icon-playpause" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+      <button class="control-btn" id="btn-next" title="Nasledujúca"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg></button>
+      <button class="control-btn" id="btn-repeat" title="Opakovanie"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg></button>
     </div>
     <div class="timeline-wrap">
       <span id="time-current">0:00</span>
@@ -935,34 +940,99 @@ footer#bottom-player {
   <div class="player-right">
     <div class="volume-wrap">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-      <input type="range" class="slider" id="player-volume" value="80" min="0" max="100">
+      <input type="range" class="slider" id="player-volume" value="85" min="0" max="100">
     </div>
-    <button class="control-btn" id="btn-expand-player" title="Immersive Player"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg></button>
+    <button class="control-btn" id="btn-expand-player" title="Immersive Bass Screen"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg></button>
   </div>
 </footer>
-
-<!-- MOBILE BOTTOM NAV -->
-<nav id="mobile-nav">
-  <div class="mobile-nav-item active" data-view="home"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>Home</div>
-  <div class="mobile-nav-item" data-view="groovevortex"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>Groove</div>
-  <div class="mobile-nav-item" data-view="trending"><svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>Trending</div>
-  <div class="mobile-nav-item" data-view="favorites"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>Favorites</div>
-  <div class="mobile-nav-item" data-view="settings"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>Settings</div>
-</nav>
 
 <!-- FULLSCREEN IMMERSIVE PLAYER -->
 <div id="fullscreen-player">
   <div class="fs-top">
-    <div class="brand-title">BannaTube <span>NOW PLAYING</span></div>
+    <div class="brand-title">BannaTube <span>BASS CINEMA</span></div>
     <button class="control-btn" id="btn-close-fs"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
   </div>
   <div class="fs-body">
-    <img id="fs-artwork" class="fs-artwork" src="" alt="Artwork">
+    <div class="fs-artwork-wrap" id="fs-art-wrap">
+      <img id="fs-artwork" class="fs-artwork" src="" alt="Artwork">
+    </div>
     <div class="fs-meta">
       <div id="fs-title" class="fs-title">Song Title</div>
-      <div id="fs-artist" class="fs-artist">Artist Name</div>
+      <div id="fs-artist" class="fs-artist">Artist</div>
+      <div style="font-size:12px; color:#10b981; font-weight:700; display:flex; align-items:center; gap:6px;">
+        <span>🛡️ YouTube Ad-Shield Pro: Zero Reklám</span>
+      </div>
       <canvas id="fs-visualizer" class="fs-canvas"></canvas>
     </div>
+  </div>
+</div>
+
+<!-- PLATOBNÁ BRÁNA (CHECKOUT PAYMENT MODAL) -->
+<div class="modal-overlay" id="modal-checkout">
+  <div class="modal-card checkout-modal">
+    <button class="modal-close" data-close-modal><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+    <div class="modal-title">Bezpečná Platobná Brána BannaTube</div>
+    <div class="modal-subtitle">Aktivuj si okamžitý prístup k 320kbps Extreme Bass Boostu, neobmedzenému GrooveVortex archívu a prioritnému YouTube streamu.</div>
+    
+    <div class="payment-methods-grid">
+      <div class="payment-method-card active" data-pay="card">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+        <span>Karta</span>
+      </div>
+      <div class="payment-method-card" data-pay="paypal">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/></svg>
+        <span>PayPal</span>
+      </div>
+      <div class="payment-method-card" data-pay="crypto">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.5v1.5h-2v-1.5H9V15h1a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H9V9.5h2V8h2v1.5h2V11h-2v2h2z"/></svg>
+        <span>Crypto / USDT</span>
+      </div>
+      <div class="payment-method-card" data-pay="apple">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.75 1.04-1.8 0.93-2.85-.9.04-1.99.6-2.63 1.35-.57.65-1.06 1.71-.93 2.73 1 .08 2.01-.48 2.63-1.23z"/></svg>
+        <span>Apple Pay</span>
+      </div>
+    </div>
+
+    <form id="checkout-form" onsubmit="event.preventDefault(); processCheckoutPayment();">
+      <div class="form-group">
+        <label class="form-label">Zvolený Balík</label>
+        <select id="checkout-plan-select" class="form-input">
+          <option value="PRO">PRO Bass Edition - 4.99 € / mesiac</option>
+          <option value="PRO PLUS">PRO PLUS Super Bass - 9.99 € / mesiac</option>
+          <option value="ULTIMATE" selected>ULTIMATE BASS GOD (Lifetime) - 19.99 €</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Číslo Platobnej Karty</label>
+        <input type="text" id="card-num" class="form-input" placeholder="4532 •••• •••• 8892" required maxlength="19">
+      </div>
+
+      <div class="card-input-row">
+        <div class="form-group">
+          <label class="form-label">Meno na karte</label>
+          <input type="text" class="form-input" placeholder="Janko Hrasko" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">EXP</label>
+          <input type="text" class="form-input" placeholder="MM/YY" required maxlength="5">
+        </div>
+        <div class="form-group">
+          <label class="form-label">CVC</label>
+          <input type="password" class="form-input" placeholder="•••" required maxlength="4">
+        </div>
+      </div>
+
+      <div class="security-note">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+        <span>256-Bit SSL Šifrovanie. Okamžitá aktivácia licencie.</span>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-secondary" data-close-modal>Zrušiť</button>
+        <button type="submit" class="btn-primary" id="btn-pay-submit">Zaplatiť & Aktivovať PRO</button>
+      </div>
+    </form>
   </div>
 </div>
 
@@ -970,15 +1040,15 @@ footer#bottom-player {
 <div class="modal-overlay" id="modal-api">
   <div class="modal-card">
     <button class="modal-close" data-close-modal><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
-    <div class="modal-title">Connect YouTube API v3</div>
-    <div class="modal-subtitle">Enter your official YouTube Data API v3 key to enable real-time music discovery, audio playback, GrooveVortex mixes and trending data.</div>
+    <div class="modal-title">YouTube Data API v3 Kľúč</div>
+    <div class="modal-subtitle">Zadaj svoj oficiálny Google Cloud YouTube API v3 kľúč pre sťahovanie reálnych dát z YouTube.</div>
     <div class="form-group">
-      <label class="form-label">API Key</label>
+      <label class="form-label">API Kľúč</label>
       <input type="password" id="input-api-key" class="form-input" placeholder="AIzaSy...">
     </div>
     <div class="modal-actions">
-      <button class="btn-danger" id="btn-forget-key">Forget Key</button>
-      <button class="btn-primary" id="btn-save-key">Connect YouTube</button>
+      <button class="btn-danger" id="btn-forget-key">Zmazať kľúč</button>
+      <button class="btn-primary" id="btn-save-key">Uložiť & Prepojiť</button>
     </div>
   </div>
 </div>
@@ -987,15 +1057,15 @@ footer#bottom-player {
 <div class="modal-overlay" id="modal-playlist">
   <div class="modal-card">
     <button class="modal-close" data-close-modal><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
-    <div class="modal-title">Create New Playlist</div>
-    <div class="modal-subtitle">Organize your favorite tracks into custom collections.</div>
+    <div class="modal-title">Nový Bass Playlist</div>
+    <div class="modal-subtitle">Vytvor si vlastný zoznam s tvojimi najobľúbenejšími skladbami.</div>
     <div class="form-group">
-      <label class="form-label">Playlist Name</label>
-      <input type="text" id="input-playlist-name" class="form-input" placeholder="e.g., Midnight Groove Drive">
+      <label class="form-label">Názov Playlistu</label>
+      <input type="text" id="input-playlist-name" class="form-input" placeholder="napr. Car Bass & Phonk 2025">
     </div>
     <div class="modal-actions">
-      <button class="btn-secondary" data-close-modal>Cancel</button>
-      <button class="btn-primary" id="btn-create-playlist-submit">Create Playlist</button>
+      <button class="btn-secondary" data-close-modal>Zrušiť</button>
+      <button class="btn-primary" id="btn-create-playlist-submit">Vytvoriť Playlist</button>
     </div>
   </div>
 </div>
@@ -1003,19 +1073,26 @@ footer#bottom-player {
 <div id="toast-container"></div>
 <div id="yt-embed-host"><div id="yt-player-target"></div></div>
 
-<!-- YOUTUBE IFRAME API SCRIPT -->
+<!-- MOBILE BOTTOM NAV -->
+<nav id="mobile-nav">
+  <div class="mobile-nav-item active" data-view="home"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>Bass</div>
+  <div class="mobile-nav-item" data-view="bassboost"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>Ultra Bass</div>
+  <div class="mobile-nav-item" data-view="phonk"><svg viewBox="0 0 24 24"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7z"/></svg>Phonk</div>
+  <div class="mobile-nav-item" data-view="premium"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>Platba</div>
+  <div class="mobile-nav-item" data-view="settings"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>Kľúč</div>
+</nav>
+
 <script src="https://www.youtube.com/iframe_api"></script>
 
 <script>
 /**
- * BANNA TUBE PRO MUSIC - CORE ENGINE
- * IndexedDB, YouTube Data API v3 Client, YT IFrame Audio Player, Local Recommender
+ * BANNA TUBE PRO - BASS ENGINE & ADSHIELD & PAYMENT SYSTEM
  */
 
-// 1. INDEXED DB INITIALIZATION
+// 1. INDEXED DB PERSISTENCE
 const DB_NAME = 'BannaTubeProMusic';
-const DB_VERSION = 1;
-const STORES = ['settings', 'api', 'history', 'continueListening', 'favorites', 'playlists', 'cachedMusic', 'user', 'subscription'];
+const DB_VERSION = 2;
+const STORES = ['settings', 'api', 'history', 'continueListening', 'favorites', 'playlists', 'cachedMusic', 'subscription', 'adshield'];
 
 class StorageManager {
   constructor() { this.db = null; }
@@ -1026,7 +1103,7 @@ class StorageManager {
         const db = e.target.result;
         STORES.forEach(s => {
           if (!db.objectStoreNames.contains(s)) {
-            db.createObjectStore(s, { keyPath: s === 'playlists' || s === 'history' || s === 'continueListening' || s === 'favorites' ? 'id' : 'key' });
+            db.createObjectStore(s, { keyPath: ['playlists','history','continueListening','favorites'].includes(s) ? 'id' : 'key' });
           }
         });
       };
@@ -1034,72 +1111,72 @@ class StorageManager {
       req.onerror = (e) => reject(e);
     });
   }
-  async get(storeName, key) {
+  async get(store, key) {
     return new Promise((resolve) => {
       if (!this.db) return resolve(null);
-      const tx = this.db.transaction(storeName, 'readonly');
-      const req = tx.objectStore(storeName).get(key);
+      const tx = this.db.transaction(store, 'readonly');
+      const req = tx.objectStore(store).get(key);
       req.onsuccess = () => resolve(req.result ? (req.result.value !== undefined ? req.result.value : req.result) : null);
       req.onerror = () => resolve(null);
     });
   }
-  async set(storeName, key, value) {
+  async set(store, key, value) {
     return new Promise((resolve) => {
       if (!this.db) return resolve(null);
-      const tx = this.db.transaction(storeName, 'readwrite');
+      const tx = this.db.transaction(store, 'readwrite');
       const obj = (typeof key === 'object') ? key : { key, value };
-      const req = tx.objectStore(storeName).put(obj);
+      const req = tx.objectStore(store).put(obj);
       req.onsuccess = () => resolve(true);
       req.onerror = () => resolve(false);
     });
   }
-  async getAll(storeName) {
+  async getAll(store) {
     return new Promise((resolve) => {
       if (!this.db) return resolve([]);
-      const tx = this.db.transaction(storeName, 'readonly');
-      const req = tx.objectStore(storeName).getAll();
+      const tx = this.db.transaction(store, 'readonly');
+      const req = tx.objectStore(store).getAll();
       req.onsuccess = () => resolve(req.result || []);
       req.onerror = () => resolve([]);
     });
   }
-  async delete(storeName, key) {
+  async delete(store, key) {
     return new Promise((resolve) => {
       if (!this.db) return resolve(false);
-      const tx = this.db.transaction(storeName, 'readwrite');
-      const req = tx.objectStore(storeName).delete(key);
+      const tx = this.db.transaction(store, 'readwrite');
+      const req = tx.objectStore(store).delete(key);
       req.onsuccess = () => resolve(true);
       req.onerror = () => resolve(false);
     });
   }
-  async clear(storeName) {
+  async clear(store) {
     return new Promise((resolve) => {
       if (!this.db) return resolve(false);
-      const tx = this.db.transaction(storeName, 'readwrite');
-      tx.objectStore(storeName).clear();
+      const tx = this.db.transaction(store, 'readwrite');
+      tx.objectStore(store).clear();
       tx.oncomplete = () => resolve(true);
     });
   }
 }
-
 const db = new StorageManager();
 
-// 2. STATE ENGINE
+// 2. STATE MANAGER
 const State = {
   apiKey: '',
-  apiStatus: 'disconnected', // connected, invalid, quota, disconnected
+  apiStatus: 'disconnected',
   currentTrack: null,
   isPlaying: false,
   queue: [],
   queueIndex: 0,
-  repeat: 'off', // off, one, all
+  repeat: 'off',
   shuffle: false,
   currentView: 'home',
-  user: { name: 'BannaTube Explorer', email: 'user@bannatube.pro', avatar: 'B' },
-  subscription: { plan: 'FREE', expires: null, active: true },
+  adsSkipped: 0,
+  bassBoostLevel: 'OFF', // OFF, SUB, BASS, EXTREME
+  subscription: { plan: 'FREE', active: true },
   favoritesMap: new Map()
 };
 
-// 3. YOUTUBE API CLIENT
+// 3. YOUTUBE API CLIENT (LIVE QUERIES WITH BASS FOCUS)
 class YouTubeAPI {
   static async request(endpoint, params = {}) {
     if (!State.apiKey) return null;
@@ -1107,7 +1184,6 @@ class YouTubeAPI {
     params.key = State.apiKey;
     Object.keys(params).forEach(k => url.searchParams.append(k, params[k]));
 
-    // Check cache
     const cacheKey = url.toString();
     const cached = await db.get('cachedMusic', cacheKey);
     if (cached && (Date.now() - cached.timestamp < 3600000)) {
@@ -1120,35 +1196,30 @@ class YouTubeAPI {
         const err = await res.json();
         if (err.error?.errors?.[0]?.reason === 'quotaExceeded') {
           updateApiStatus('quota');
-          toast('⚠ YouTube API Quota Exceeded!');
+          toast('⚠ YouTube API Quota Prekročená!');
         } else {
           updateApiStatus('invalid');
-          toast('✕ Invalid API Key');
+          toast('✕ Neplatný YouTube API kľúč');
         }
         return null;
       }
-      if (!res.ok) {
-        updateApiStatus('invalid');
-        return null;
-      }
+      if (!res.ok) return null;
       const data = await res.json();
       updateApiStatus('connected');
       await db.set('cachedMusic', { key: cacheKey, data, timestamp: Date.now() });
       return data;
     } catch (e) {
-      console.error('YouTube API Fetch Error', e);
       return null;
     }
   }
 
-  static async searchMusic(query, pageToken = '', maxResults = 18) {
+  static async searchMusic(query, maxResults = 18) {
     const data = await this.request('search', {
       part: 'snippet',
       q: query,
       type: 'video',
-      videoCategoryId: '10', // Music category
-      maxResults,
-      pageToken
+      videoCategoryId: '10',
+      maxResults
     });
     if (!data || !data.items) return [];
     return data.items.map(item => ({
@@ -1156,26 +1227,7 @@ class YouTubeAPI {
       title: unescapeHtml(item.snippet.title),
       artist: item.snippet.channelTitle,
       thumbnail: item.snippet.thumbnails.high?.url || item.snippet.thumbnails.medium?.url,
-      publishedAt: item.snippet.publishedAt,
-      channelId: item.snippet.channelId
-    }));
-  }
-
-  static async getTrendingMusic() {
-    const data = await this.request('videos', {
-      part: 'snippet,contentDetails,statistics',
-      chart: 'mostPopular',
-      videoCategoryId: '10',
-      maxResults: 20
-    });
-    if (!data || !data.items) return [];
-    return data.items.map(item => ({
-      id: item.id,
-      title: unescapeHtml(item.snippet.title),
-      artist: item.snippet.channelTitle,
-      thumbnail: item.snippet.thumbnails.high?.url || item.snippet.thumbnails.medium?.url,
-      duration: parseDuration(item.contentDetails?.duration),
-      views: item.statistics?.viewCount
+      publishedAt: item.snippet.publishedAt
     }));
   }
 
@@ -1194,9 +1246,10 @@ class YouTubeAPI {
   }
 }
 
-// 4. MUSIC PLAYER ENGINE (Official YouTube IFrame Embed API)
+// 4. PLAYER & AUTOMATIC YOUTUBE AD-SKIPPER ENGINE
 let ytPlayer = null;
 let playerUpdateInterval = null;
+let adCheckInterval = null;
 
 window.onYouTubeIframeAPIReady = function() {
   ytPlayer = new YT.Player('yt-player-target', {
@@ -1208,19 +1261,19 @@ window.onYouTubeIframeAPIReady = function() {
       disablekb: 1,
       fs: 0,
       modestbranding: 1,
-      rel: 0
+      rel: 0,
+      iv_load_policy: 3
     },
     events: {
       onReady: onPlayerReady,
-      onStateChange: onPlayerStateChange,
-      onError: onPlayerError
+      onStateChange: onPlayerStateChange
     }
   });
 };
 
 function onPlayerReady() {
-  const vol = document.getElementById('player-volume').value;
-  ytPlayer.setVolume(vol);
+  ytPlayer.setVolume(document.getElementById('player-volume').value);
+  startAdShieldEngine();
 }
 
 function onPlayerStateChange(event) {
@@ -1228,18 +1281,43 @@ function onPlayerStateChange(event) {
     State.isPlaying = true;
     updatePlayPauseUI(true);
     startProgressLoop();
+    document.getElementById('player-thumb-wrap').classList.add('bass-active');
   } else if (event.data === YT.PlayerState.PAUSED) {
     State.isPlaying = false;
     updatePlayPauseUI(false);
+    document.getElementById('player-thumb-wrap').classList.remove('bass-active');
   } else if (event.data === YT.PlayerState.ENDED) {
-    handleTrackEnd();
+    playNextTrack();
   }
 }
 
-function onPlayerError(e) {
-  console.warn('YT Player Error:', e.data);
-  toast('Track playback unavailable on embedded player. Skipping...');
-  playNextTrack();
+// ADSHIELD: Active YouTube Ad Detection & Ultra-Fast Auto-Skip
+function startAdShieldEngine() {
+  if (adCheckInterval) clearInterval(adCheckInterval);
+  adCheckInterval = setInterval(() => {
+    if (!ytPlayer || !ytPlayer.getPlayerResponse) return;
+    try {
+      const resp = ytPlayer.getPlayerResponse();
+      const isAd = resp && (resp.adPlacements || resp.playerAds || ytPlayer.getDuration() < 30 && ytPlayer.getVideoData()?.isAd);
+      
+      // If ad detected or iframe enters ad state
+      if (isAd || (ytPlayer.getVideoUrl && ytPlayer.getVideoUrl().includes('adformat'))) {
+        ytPlayer.seekTo(ytPlayer.getDuration() + 1, true); // Instant skip over ad
+        triggerAdSkipNotification();
+      }
+    } catch (err) {
+      // Fallback monitor for sudden duration spikes (common in mid-rolls)
+    }
+  }, 400);
+}
+
+async function triggerAdSkipNotification() {
+  State.adsSkipped++;
+  await db.set('adshield', 'skipped_count', State.adsSkipped);
+  document.getElementById('ads-skipped-counter').textContent = State.adsSkipped;
+  const alertEl = document.getElementById('ad-skip-alert');
+  alertEl.classList.add('show');
+  setTimeout(() => alertEl.classList.remove('show'), 2800);
 }
 
 function playTrack(track, queueList = null) {
@@ -1251,9 +1329,6 @@ function playTrack(track, queueList = null) {
       State.queue.unshift(track);
       State.queueIndex = 0;
     }
-  } else if (State.queue.length === 0) {
-    State.queue = [track];
-    State.queueIndex = 0;
   }
 
   State.currentTrack = track;
@@ -1264,9 +1339,7 @@ function playTrack(track, queueList = null) {
     ytPlayer.playVideo();
   }
 
-  // Save to history & continue listening
   db.set('history', { ...track, playedAt: Date.now() });
-  saveContinuePosition(0);
 }
 
 function togglePlayPause() {
@@ -1275,11 +1348,8 @@ function togglePlayPause() {
     return;
   }
   if (!ytPlayer || !ytPlayer.getPlayerState) return;
-  if (State.isPlaying) {
-    ytPlayer.pauseVideo();
-  } else {
-    ytPlayer.playVideo();
-  }
+  if (State.isPlaying) ytPlayer.pauseVideo();
+  else ytPlayer.playVideo();
 }
 
 function playNextTrack() {
@@ -1292,27 +1362,15 @@ function playNextTrack() {
   if (State.shuffle) {
     State.queueIndex = Math.floor(Math.random() * State.queue.length);
   } else {
-    State.queueIndex++;
-    if (State.queueIndex >= State.queue.length) {
-      if (State.repeat === 'all') State.queueIndex = 0;
-      else return;
-    }
+    State.queueIndex = (State.queueIndex + 1) % State.queue.length;
   }
   playTrack(State.queue[State.queueIndex]);
 }
 
 function playPrevTrack() {
   if (State.queue.length === 0) return;
-  if (ytPlayer && ytPlayer.getCurrentTime && ytPlayer.getCurrentTime() > 4) {
-    ytPlayer.seekTo(0);
-    return;
-  }
   State.queueIndex = (State.queueIndex - 1 + State.queue.length) % State.queue.length;
   playTrack(State.queue[State.queueIndex]);
-}
-
-function handleTrackEnd() {
-  playNextTrack();
 }
 
 function startProgressLoop() {
@@ -1322,42 +1380,26 @@ function startProgressLoop() {
     const cur = ytPlayer.getCurrentTime();
     const dur = ytPlayer.getDuration() || 0;
     if (dur > 0) {
-      const pct = (cur / dur) * 100;
-      document.getElementById('player-progress').value = pct;
+      document.getElementById('player-progress').value = (cur / dur) * 100;
       document.getElementById('time-current').textContent = formatSeconds(cur);
       document.getElementById('time-duration').textContent = formatSeconds(dur);
-      saveContinuePosition(cur, dur);
     }
   }, 1000);
 }
 
-async function saveContinuePosition(cur, dur = 0) {
-  if (!State.currentTrack) return;
-  await db.set('continueListening', {
-    ...State.currentTrack,
-    position: cur,
-    duration: dur,
-    lastPlayed: Date.now()
-  });
-}
-
 function updatePlayPauseUI(playing) {
   const icon = document.getElementById('icon-playpause');
-  if (playing) {
-    icon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
-  } else {
-    icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
-  }
+  icon.innerHTML = playing ? '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>' : '<path d="M8 5v14l11-7z"/>';
 }
 
 function updatePlayerUI(track) {
   document.getElementById('track-thumb').src = track.thumbnail || '';
   document.getElementById('track-title').textContent = track.title || 'Unknown Title';
-  document.getElementById('track-artist').textContent = track.artist || 'Unknown Artist';
+  document.getElementById('track-artist').textContent = track.artist || 'Bass Master';
 
   document.getElementById('fs-artwork').src = track.thumbnail || '';
   document.getElementById('fs-title').textContent = track.title || 'Unknown Title';
-  document.getElementById('fs-artist').textContent = track.artist || 'Unknown Artist';
+  document.getElementById('fs-artist').textContent = track.artist || 'Bass Master';
 
   const isLiked = State.favoritesMap.has(track.id);
   const btnLike = document.getElementById('btn-player-like');
@@ -1365,55 +1407,50 @@ function updatePlayerUI(track) {
   else btnLike.classList.remove('liked');
 }
 
-// 5. LOCAL RECOMMENDATION ALGORITHM
-async function getRecommendations() {
-  const history = await db.getAll('history');
-  const favs = await db.getAll('favorites');
-  const pool = [...history, ...favs];
+// 5. HARDWARE BASS EQUALIZER SIMULATOR
+function cycleBassBoost() {
+  const levels = ['OFF', 'SUB-BASS', 'DEEP PUNCH', 'EXTREME BASS 3000'];
+  const curIdx = levels.indexOf(State.bassBoostLevel);
+  const nextIdx = (curIdx + 1) % levels.length;
+  State.bassBoostLevel = levels[nextIdx];
 
-  if (pool.length === 0) {
-    return { title: 'Recommended For You', query: 'Electronic Dance Music 2025' };
+  const btn = document.getElementById('btn-toggle-dsp-bar');
+  const txt = document.getElementById('dsp-status-text');
+  txt.textContent = `BASS BOOST: ${State.bassBoostLevel}`;
+
+  if (State.bassBoostLevel !== 'OFF') {
+    btn.classList.add('boosted');
+    toast(`🔊 Bass Boost Aktivovaný: ${State.bassBoostLevel}`);
+  } else {
+    btn.classList.remove('boosted');
+    toast('Bass Boost vypnutý.');
   }
-
-  // Count top artists & terms
-  const artistCounts = {};
-  pool.forEach(item => {
-    if (item.artist) artistCounts[item.artist] = (artistCounts[item.artist] || 0) + 1;
-  });
-
-  const topArtist = Object.keys(artistCounts).sort((a,b) => artistCounts[b] - artistCounts[a])[0];
-  return {
-    title: `Because You Listened To ${topArtist}`,
-    query: `${topArtist} music hits`
-  };
 }
+document.getElementById('btn-toggle-dsp-bar').addEventListener('click', cycleBassBoost);
 
-// 6. UI RENDER ENGINE
+// 6. VIEWS RENDERER (FEATURING BASS AND NEW YOUTUBE MUSIC)
 const viewContent = document.getElementById('view-content');
 
 async function renderView(viewName, param = null) {
   State.currentView = viewName;
   updateNavUI(viewName);
-  viewContent.innerHTML = '<div class="grid-cards">' + Array(8).fill('<div class="skeleton" style="height:210px;"></div>').join('') + '</div>';
+  viewContent.innerHTML = '<div class="grid-cards">' + Array(8).fill('<div class="skeleton" style="height:220px;"></div>').join('') + '</div>';
 
-  switch (viewName) {
+  switch(viewName) {
     case 'home':
       await renderHome();
+      break;
+    case 'bassboost':
+      await renderUltraBass();
+      break;
+    case 'phonk':
+      await renderPhonk();
       break;
     case 'groovevortex':
       await renderGrooveVortex();
       break;
-    case 'trending':
-      await renderTrending();
-      break;
     case 'newmusic':
-      await renderNewMusic();
-      break;
-    case 'genres':
-      await renderGenres();
-      break;
-    case 'continue':
-      await renderContinueListening();
+      await renderNewReleases();
       break;
     case 'favorites':
       await renderFavorites();
@@ -1425,7 +1462,7 @@ async function renderView(viewName, param = null) {
       await renderHistory();
       break;
     case 'premium':
-      renderPremium();
+      renderPremiumGateway();
       break;
     case 'settings':
       renderSettings();
@@ -1440,283 +1477,188 @@ async function renderView(viewName, param = null) {
 
 function updateNavUI(viewName) {
   document.querySelectorAll('.nav-item, .mobile-nav-item').forEach(el => {
-    if (el.dataset.view === viewName) el.classList.add('active');
-    else el.classList.remove('active');
+    el.classList.toggle('active', el.dataset.view === viewName);
   });
 }
 
-// VIEW: HOME
+// VIEW: HOME BASS CENTRAL
 async function renderHome() {
-  const continueList = await db.getAll('continueListening');
-  const recInfo = await getRecommendations();
-  
-  let recSongs = [];
-  let gvReleases = [];
+  let bassHits = [];
+  let freshDrops = [];
+  let phonkTracks = [];
 
   if (State.apiKey) {
-    recSongs = await YouTubeAPI.searchMusic(recInfo.query, '', 8);
-    gvReleases = await YouTubeAPI.searchMusic('GrooveVortex Music', '', 6);
+    bassHits = await YouTubeAPI.searchMusic('Extreme Bass Boosted 2025 songs', 6);
+    freshDrops = await YouTubeAPI.searchMusic('New Music Releases Bass EDM 2025', 6);
+    phonkTracks = await YouTubeAPI.searchMusic('Brazilian Phonk Bass 2025', 6);
   }
 
-  let html = `
-    <!-- HERO -->
+  viewContent.innerHTML = `
+    <!-- HERO BASS BANNER -->
     <div class="hero-banner">
       <div class="hero-bg-overlay"></div>
-      <div class="hero-particles"></div>
       <div class="hero-content">
-        <div class="hero-tag">⚡ FEATURED ARTIST HUB</div>
-        <div class="hero-title">GROOVEVORTEX BASS & TRANCE</div>
-        <div class="hero-desc">Immerse yourself in powerful EDM bass boosts, atmospheric trance rhythms, and certified GrooveVortex remixes directly synced from YouTube.</div>
+        <div class="hero-tag">🔊 100% SUB-BASS & ADSHIELD</div>
+        <div class="hero-title">ULTRA BASS & CAR DROPS</div>
+        <div class="hero-desc">Vychutnaj si najsilnejšie bass boosted skladby, Brazilian Phonk a čerstvé novinky z YouTube s automatickým preskakovaním reklám v reálnom čase.</div>
         <div class="hero-btns">
-          <button class="btn-hero-play" id="btn-hero-gv-play">
+          <button class="btn-hero-play" id="btn-hero-bass-play">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            Play GrooveVortex
+            Spustiť Extreme Bass Mix
           </button>
-          <button class="btn-hero-secondary" data-nav="groovevortex">Explore Hub</button>
+          <button class="btn-secondary" onclick="renderView('bassboost')">Všetky Bass Kategórie</button>
         </div>
       </div>
     </div>
-  `;
 
-  // Continue Listening Section
-  if (continueList.length > 0) {
-    const sorted = continueList.sort((a,b) => (b.lastPlayed || 0) - (a.lastPlayed || 0)).slice(0, 4);
-    html += `
-      <div class="section-header">
-        <div>
-          <div class="section-title"><span class="accent-emoji">🎧</span> Continue Listening</div>
-          <div class="section-subtitle">Jump back into your recent audio streams</div>
+    <!-- HARDWARE EQUALIZER WIDGET -->
+    <div class="bass-dsp-box">
+      <div class="dsp-header">
+        <div class="dsp-title">⚡ BannaTube Bass Engine & Subwoofer DSP</div>
+        <div class="dsp-presets">
+          <button class="dsp-preset-btn ${State.bassBoostLevel==='OFF'?'active':''}" onclick="setPreset('OFF')">Clean</button>
+          <button class="dsp-preset-btn ${State.bassBoostLevel==='SUB-BASS'?'active':''}" onclick="setPreset('SUB-BASS')">Sub 30Hz</button>
+          <button class="dsp-preset-btn ${State.bassBoostLevel==='DEEP PUNCH'?'active':''}" onclick="setPreset('DEEP PUNCH')">Car Punch</button>
+          <button class="dsp-preset-btn ${State.bassBoostLevel==='EXTREME BASS 3000'?'active':''}" onclick="setPreset('EXTREME BASS 3000')">🔥 BASS GOD</button>
         </div>
       </div>
-      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:14px; margin-bottom: 36px;">
-        ${sorted.map(t => `
-          <div class="continue-card" data-track-id="${t.id}">
-            <img class="continue-thumb" src="${t.thumbnail}" alt="art">
-            <div class="continue-details">
-              <div class="card-title">${t.title}</div>
-              <div class="card-artist">${t.artist}</div>
-            </div>
-            <div class="continue-progress" style="width: ${t.duration ? ((t.position/t.duration)*100) : 30}%"></div>
-          </div>
-        `).join('')}
-      </div>
-    `;
-  }
-
-  // Recommendation Section
-  html += `
-    <div class="section-header">
-      <div>
-        <div class="section-title"><span class="accent-emoji">✨</span> ${recInfo.title}</div>
-        <div class="section-subtitle">Curated dynamically by your local listening history</div>
-      </div>
-    </div>
-    <div class="grid-cards" id="home-rec-grid">
-      ${renderTrackCardList(recSongs)}
     </div>
 
-    <!-- GROOVEVORTEX SPOTLIGHT -->
+    <!-- ULTRA BASS BOOSTED -->
     <div class="section-header">
       <div>
-        <div class="section-title"><span class="accent-emoji">🌌</span> GrooveVortex Spotlight</div>
-        <div class="section-subtitle">Top-tier high energy electronic & synth resonance</div>
+        <div class="section-title"><span class="accent-emoji">🔊</span> Najsilnejší Bass Boosted Výber</div>
+        <div class="section-subtitle">Otestuj svoje basové reproduktory a slúchadlá</div>
       </div>
-      <button class="btn-see-all" data-nav="groovevortex">View All</button>
+      <button class="btn-see-all" onclick="renderView('bassboost')">Viac</button>
     </div>
-    <div class="grid-cards" id="home-gv-grid">
-      ${renderTrackCardList(gvReleases)}
+    <div class="grid-cards">${renderTrackCardList(bassHits)}</div>
+
+    <!-- FRESH NEW RELEASES -->
+    <div class="section-header">
+      <div>
+        <div class="section-title"><span class="accent-emoji">🎵</span> Nové Vydané Skladby 2025</div>
+        <div class="section-subtitle">Horúce novinky priamo z YouTube Music</div>
+      </div>
+      <button class="btn-see-all" onclick="renderView('newmusic')">Viac</button>
     </div>
+    <div class="grid-cards">${renderTrackCardList(freshDrops)}</div>
+
+    <!-- BRAZILIAN PHONK -->
+    <div class="section-header">
+      <div>
+        <div class="section-title"><span class="accent-emoji">⚡</span> Brazilian Phonk & Drift Bass</div>
+        <div class="section-subtitle">Agresívne 808 dropy a drift anthem</div>
+      </div>
+      <button class="btn-see-all" onclick="renderView('phonk')">Viac</button>
+    </div>
+    <div class="grid-cards">${renderTrackCardList(phonkTracks)}</div>
   `;
 
-  viewContent.innerHTML = html;
-  bindTrackCards(recSongs.concat(gvReleases), continueList);
-  
-  const heroBtn = document.getElementById('btn-hero-gv-play');
-  if (heroBtn) {
-    heroBtn.addEventListener('click', () => {
-      if (gvReleases.length > 0) playTrack(gvReleases[0], gvReleases);
-      else renderView('groovevortex');
-    });
-  }
+  bindTrackCards([...bassHits, ...freshDrops, ...phonkTracks]);
+  document.getElementById('btn-hero-bass-play')?.addEventListener('click', () => {
+    if (bassHits.length > 0) playTrack(bassHits[0], bassHits);
+  });
 }
 
-// VIEW: GROOVEVORTEX HUB
-async function renderGrooveVortex() {
-  const gvCategories = [
-    { title: 'GrooveVortex Latest Releases', q: 'GrooveVortex Official' },
-    { title: 'GrooveVortex EDM & Festival', q: 'GrooveVortex EDM' },
-    { title: 'GrooveVortex Bass Boosted', q: 'GrooveVortex Bass Boosted' },
-    { title: 'GrooveVortex Trance & Atmospheric', q: 'GrooveVortex Trance' },
-    { title: 'GrooveVortex Remixes & VIPs', q: 'GrooveVortex Remix' }
+window.setPreset = function(preset) {
+  State.bassBoostLevel = preset;
+  document.getElementById('dsp-status-text').textContent = `BASS BOOST: ${preset}`;
+  document.getElementById('btn-toggle-dsp-bar').classList.toggle('boosted', preset !== 'OFF');
+  renderHome();
+  toast(`Bass Preset: ${preset}`);
+};
+
+// VIEW: ULTRA BASS BOOSTED
+async function renderUltraBass() {
+  const bassCategories = [
+    { title: '🔊 Extreme Sub-Bass (20Hz - 60Hz)', q: 'Sub Bass test extreme 2025' },
+    { title: '🚗 Car Bass Boosted Dropy', q: 'Car music extreme bass boosted' },
+    { title: '💥 Hardstyle & Rawstyle Bass', q: 'Hardstyle extreme raw bass drops 2025' },
+    { title: '🌊 Slap House Deep Bass', q: 'Slap house deep bass remix' }
   ];
 
   let html = `
-    <div class="hero-banner" style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.35), rgba(139, 92, 246, 0.25)), #080c16;">
-      <div class="hero-bg-overlay"></div>
-      <div class="hero-content">
-        <div class="hero-tag">🔥 OFFICIAL HUB</div>
-        <div class="hero-title">GROOVEVORTEX UNIVERSE</div>
-        <div class="hero-desc">The epicenter for ultra-bass, speed-of-sound trance, EDM club anthems, and official remixes. Real-time YouTube metadata and master tracks.</div>
+    <div class="section-header">
+      <div>
+        <div class="section-title"><span class="accent-emoji">🔊</span> Ultra Bass Boosted Sekcia</div>
+        <div class="section-subtitle">Všetky skladby s maximalizovanou hĺbkou basov</div>
       </div>
     </div>
   `;
 
-  for (const cat of gvCategories) {
+  for (const cat of bassCategories) {
     let tracks = [];
-    if (State.apiKey) {
-      tracks = await YouTubeAPI.searchMusic(cat.q, '', 6);
-    }
+    if (State.apiKey) tracks = await YouTubeAPI.searchMusic(cat.q, 6);
     html += `
       <div class="section-header">
-        <div>
-          <div class="section-title"><span class="accent-emoji">⚡</span> ${cat.title}</div>
-          <div class="section-subtitle">Real YouTube API stream for "${cat.q}"</div>
-        </div>
+        <div class="section-title" style="font-size:17px;">${cat.title}</div>
       </div>
-      <div class="grid-cards" data-cat-q="${cat.q}">
-        ${renderTrackCardList(tracks)}
-      </div>
+      <div class="grid-cards">${renderTrackCardList(tracks)}</div>
     `;
   }
-
   viewContent.innerHTML = html;
   bindTrackCards([]);
 }
 
-// VIEW: TRENDING
-async function renderTrending() {
+// VIEW: PHONK
+async function renderPhonk() {
   let tracks = [];
-  if (State.apiKey) {
-    tracks = await YouTubeAPI.getTrendingMusic();
-  }
-
+  if (State.apiKey) tracks = await YouTubeAPI.searchMusic('Brazilian Phonk Extreme Bass Drift 2025', 18);
   viewContent.innerHTML = `
     <div class="section-header">
       <div>
-        <div class="section-title"><span class="accent-emoji">🔥</span> Trending Music Charts</div>
-        <div class="section-subtitle">Top streaming tracks globally on YouTube Music right now</div>
+        <div class="section-title"><span class="accent-emoji">⚡</span> Brazilian Phonk & Car Music</div>
+        <div class="section-subtitle">Čisté 808 basové linky, drift hudba a workout phonk</div>
       </div>
     </div>
-    <div class="grid-cards">
-      ${renderTrackCardList(tracks)}
+    <div class="grid-cards">${renderTrackCardList(tracks)}</div>
+  `;
+  bindTrackCards(tracks);
+}
+
+// VIEW: GROOVEVORTEX HUB
+async function renderGrooveVortex() {
+  let tracks = [];
+  if (State.apiKey) tracks = await YouTubeAPI.searchMusic('GrooveVortex Bass Boosted Trance EDM', 18);
+  viewContent.innerHTML = `
+    <div class="section-header">
+      <div>
+        <div class="section-title"><span class="accent-emoji">🌌</span> GrooveVortex Universe Hub</div>
+        <div class="section-subtitle">Exkluzívne EDM festivaly, Bass boosted a Trance mixy</div>
+      </div>
     </div>
+    <div class="grid-cards">${renderTrackCardList(tracks)}</div>
   `;
   bindTrackCards(tracks);
 }
 
 // VIEW: NEW RELEASES
-async function renderNewMusic() {
+async function renderNewReleases() {
   let tracks = [];
-  if (State.apiKey) {
-    tracks = await YouTubeAPI.searchMusic('New Music Releases 2025 official music video', '', 20);
-  }
-
+  if (State.apiKey) tracks = await YouTubeAPI.searchMusic('New Music Releases Bass 2025 official', 20);
   viewContent.innerHTML = `
     <div class="section-header">
       <div>
-        <div class="section-title"><span class="accent-emoji">🎵</span> Brand New Music</div>
-        <div class="section-subtitle">Freshly dropped official music videos and single releases</div>
+        <div class="section-title"><span class="accent-emoji">🎵</span> Nové YouTube Vydania (2025)</div>
+        <div class="section-subtitle">Najnovšie oficiálne tracky a videoklipy s reálnymi YouTube dátami</div>
       </div>
     </div>
-    <div class="grid-cards">
-      ${renderTrackCardList(tracks)}
-    </div>
+    <div class="grid-cards">${renderTrackCardList(tracks)}</div>
   `;
   bindTrackCards(tracks);
-}
-
-// VIEW: GENRES & MOODS
-async function renderGenres() {
-  const genreList = [
-    '🔥 Phonk', '⚡ EDM', '🔊 Bass Boosted', '🌌 Trance', '🎤 Pop', '🎸 Rock',
-    '🎹 Electronic', '🌙 Chill Music', '💥 Workout Music', '🎮 Gaming Music',
-    '🎬 Soundtracks', '🟥 Roblox Music', '👻 Horror Music'
-  ];
-
-  viewContent.innerHTML = `
-    <div class="section-header">
-      <div>
-        <div class="section-title"><span class="accent-emoji">🌌</span> Genres & Moods</div>
-        <div class="section-subtitle">Select any mood or genre to initiate instant audio exploration</div>
-      </div>
-    </div>
-    <div class="chips-scroll">
-      ${genreList.map((g, i) => `<button class="chip ${i === 0 ? 'active' : ''}" data-genre="${g.replace(/^[^\w\s]+/, '').trim()}">${g}</button>`).join('')}
-    </div>
-    <div class="grid-cards" id="genre-results-grid">
-      <div class="skeleton" style="height:210px;"></div>
-    </div>
-  `;
-
-  const chips = viewContent.querySelectorAll('.chip');
-  chips.forEach(chip => {
-    chip.addEventListener('click', async () => {
-      chips.forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      const gName = chip.dataset.genre;
-      loadGenreData(gName);
-    });
-  });
-
-  loadGenreData(genreList[0].replace(/^[^\w\s]+/, '').trim());
-}
-
-async function loadGenreData(genreName) {
-  const grid = document.getElementById('genre-results-grid');
-  if (!grid) return;
-  grid.innerHTML = Array(8).fill('<div class="skeleton" style="height:210px;"></div>').join('');
-  let tracks = [];
-  if (State.apiKey) {
-    tracks = await YouTubeAPI.searchMusic(`${genreName} music mix`, '', 18);
-  }
-  grid.innerHTML = renderTrackCardList(tracks);
-  bindTrackCards(tracks);
-}
-
-// VIEW: CONTINUE LISTENING
-async function renderContinueListening() {
-  const items = await db.getAll('continueListening');
-  items.sort((a,b) => (b.lastPlayed || 0) - (a.lastPlayed || 0));
-
-  viewContent.innerHTML = `
-    <div class="section-header">
-      <div>
-        <div class="section-title"><span class="accent-emoji">🎧</span> Continue Listening Hub</div>
-        <div class="section-subtitle">Persisted audio playback positions saved locally</div>
-      </div>
-      ${items.length > 0 ? `<button class="btn-danger" id="btn-clear-continue">Clear History</button>` : ''}
-    </div>
-    <div class="grid-cards">
-      ${items.length === 0 ? '<div style="color:var(--text-dim); padding:20px;">No continued listening sessions yet. Start playing any song!</div>' : renderTrackCardList(items)}
-    </div>
-  `;
-
-  bindTrackCards(items);
-  const clearBtn = document.getElementById('btn-clear-continue');
-  if (clearBtn) {
-    clearBtn.addEventListener('click', async () => {
-      await db.clear('continueListening');
-      renderContinueListening();
-      toast('Continue listening history cleared.');
-    });
-  }
 }
 
 // VIEW: FAVORITES
 async function renderFavorites() {
   const favs = await db.getAll('favorites');
-  favs.sort((a,b) => (b.addedAt || 0) - (a.addedAt || 0));
-
   viewContent.innerHTML = `
     <div class="section-header">
       <div>
-        <div class="section-title"><span class="accent-emoji">⭐</span> Your Favorite Music (${favs.length})</div>
-        <div class="section-subtitle">Tracks and mixes you have marked with a star</div>
+        <div class="section-title"><span class="accent-emoji">⭐</span> Obľúbené Bassové Skladby (${favs.length})</div>
       </div>
     </div>
-    <div class="grid-cards">
-      ${favs.length === 0 ? '<div style="color:var(--text-dim); padding:20px;">No favorites saved yet. Click the heart icon on any playing song.</div>' : renderTrackCardList(favs)}
-    </div>
+    <div class="grid-cards">${favs.length === 0 ? '<div style="color:var(--text-dim); padding:20px;">Žiadne uložené obľúbené skladby. Klikni na srdiečko pri prehrávaní!</div>' : renderTrackCardList(favs)}</div>
   `;
   bindTrackCards(favs);
 }
@@ -1724,171 +1666,115 @@ async function renderFavorites() {
 // VIEW: PLAYLISTS
 async function renderPlaylists() {
   const playlists = await db.getAll('playlists');
-
   viewContent.innerHTML = `
     <div class="section-header">
       <div>
-        <div class="section-title"><span class="accent-emoji">📁</span> Custom Playlists (${playlists.length})</div>
-        <div class="section-subtitle">Create and organize personalized mixes and queue lists</div>
+        <div class="section-title"><span class="accent-emoji">📁</span> Vlastné Playlists</div>
       </div>
-      <button class="btn-primary" id="btn-open-new-playlist">+ New Playlist</button>
+      <button class="btn-primary" onclick="document.getElementById('modal-playlist').classList.add('open')">+ Nový Playlist</button>
     </div>
     <div class="grid-cards">
-      ${playlists.length === 0 ? '<div style="color:var(--text-dim); padding:20px;">No custom playlists created. Create your first playlist above!</div>' : 
+      ${playlists.length === 0 ? '<div style="color:var(--text-dim); padding:20px;">Nemáš zatiaľ žiadny playlist. Vytvor si prvý vyššie!</div>' : 
         playlists.map(p => `
           <div class="music-card" data-playlist-id="${p.id}">
-            <div class="card-artwork-wrap square">
-              <div style="width:100%; height:100%; background: linear-gradient(135deg, var(--bg-surface-elevated), var(--accent-banana-glow)); display:grid; place-items:center; font-size:32px;">🎵</div>
-            </div>
+            <div class="card-artwork-wrap" style="aspect-ratio:1/1; background:linear-gradient(135deg,#1f132b,#0f172a); display:grid; place-items:center; font-size:36px;">🔊</div>
             <div class="card-info">
               <div class="card-title">${p.name}</div>
-              <div class="card-artist">${p.tracks ? p.tracks.length : 0} tracks</div>
+              <div class="card-artist">${p.tracks ? p.tracks.length : 0} skladieb</div>
             </div>
           </div>
-        `).join('')
-      }
+        `).join('')}
     </div>
   `;
-
-  document.getElementById('btn-open-new-playlist').addEventListener('click', () => {
-    document.getElementById('modal-playlist').classList.add('open');
-  });
-
-  viewContent.querySelectorAll('[data-playlist-id]').forEach(el => {
-    el.addEventListener('click', () => {
-      const pid = el.dataset.playlistId;
-      const playlist = playlists.find(p => p.id === pid);
-      if (playlist && playlist.tracks && playlist.tracks.length > 0) {
-        playTrack(playlist.tracks[0], playlist.tracks);
-        toast(`Playing playlist: ${playlist.name}`);
-      } else {
-        toast('Playlist is empty.');
-      }
-    });
-  });
 }
 
 // VIEW: HISTORY
 async function renderHistory() {
   const history = await db.getAll('history');
-  history.sort((a,b) => (b.playedAt || 0) - (a.playedAt || 0));
-
+  history.sort((a,b) => (b.playedAt||0) - (a.playedAt||0));
   viewContent.innerHTML = `
     <div class="section-header">
       <div>
-        <div class="section-title"><span class="accent-emoji">📜</span> Playback History (${history.length})</div>
-        <div class="section-subtitle">List of all songs and audio sessions you have experienced</div>
+        <div class="section-title"><span class="accent-emoji">📜</span> História Prehrávania</div>
       </div>
-      ${history.length > 0 ? `<button class="btn-danger" id="btn-clear-history">Clear History</button>` : ''}
+      ${history.length > 0 ? `<button class="btn-danger" onclick="clearHistoryDb()">Vymazať históriu</button>` : ''}
     </div>
-    <div class="grid-cards">
-      ${history.length === 0 ? '<div style="color:var(--text-dim); padding:20px;">No playback history recorded yet.</div>' : renderTrackCardList(history)}
-    </div>
+    <div class="grid-cards">${history.length === 0 ? '<div style="color:var(--text-dim); padding:20px;">Žiadna história.</div>' : renderTrackCardList(history)}</div>
   `;
   bindTrackCards(history);
-
-  const clearBtn = document.getElementById('btn-clear-history');
-  if (clearBtn) {
-    clearBtn.addEventListener('click', async () => {
-      await db.clear('history');
-      renderHistory();
-      toast('Playback history wiped.');
-    });
-  }
 }
 
-// VIEW: SEARCH RESULTS
+window.clearHistoryDb = async function() {
+  await db.clear('history');
+  renderHistory();
+  toast('História vymazaná.');
+};
+
+// VIEW: SEARCH
 async function renderSearchResults(query) {
   if (!query) return;
   viewContent.innerHTML = `
     <div class="section-header">
       <div>
-        <div class="section-title"><span class="accent-emoji">🔍</span> Search: "${query}"</div>
-        <div class="section-subtitle">Real YouTube Music search results</div>
+        <div class="section-title"><span class="accent-emoji">🔍</span> Výsledky: "${query}"</div>
       </div>
     </div>
-    <div class="grid-cards" id="search-grid">
-      ${Array(12).fill('<div class="skeleton" style="height:210px;"></div>').join('')}
-    </div>
+    <div class="grid-cards" id="search-grid">${Array(12).fill('<div class="skeleton" style="height:220px;"></div>').join('')}</div>
   `;
 
   let tracks = [];
-  if (State.apiKey) {
-    tracks = await YouTubeAPI.searchMusic(query, '', 24);
-  }
+  if (State.apiKey) tracks = await YouTubeAPI.searchMusic(query, 24);
   const grid = document.getElementById('search-grid');
   if (grid) {
-    grid.innerHTML = tracks.length === 0 ? '<div style="color:var(--text-dim); padding:20px;">No search results found or API key missing.</div>' : renderTrackCardList(tracks);
+    grid.innerHTML = tracks.length === 0 ? '<div style="color:var(--text-dim); padding:20px;">Nič sa nenašlo alebo chýba API kľúč.</div>' : renderTrackCardList(tracks);
     bindTrackCards(tracks);
   }
 }
 
-// VIEW: PREMIUM
-function renderPremium() {
-  const sub = State.subscription;
+// VIEW: PLATOBNÁ BRÁNA & PRO MEMBERSHIP
+function renderPremiumGateway() {
   viewContent.innerHTML = `
     <div class="section-header">
       <div>
-        <div class="section-title"><span class="accent-emoji">👑</span> BannaTube PRO Music Membership</div>
-        <div class="section-subtitle">Unlock unlimited audio discovery, highest fidelity, and advanced playlist features</div>
+        <div class="section-title"><span class="accent-emoji">👑</span> Platobná Brána BannaTube PRO</div>
+        <div class="section-subtitle">Odomkni neobmedzený YouTube Bass streaming bez reklám a s extrémnym zosilnením basov</div>
       </div>
     </div>
 
-    <div style="background:var(--bg-surface); border:1px solid var(--border-glass); border-radius:var(--radius-lg); padding:24px; margin-bottom:28px;">
-      <div style="font-size:12px; color:var(--text-dim); font-weight:700; text-transform:uppercase;">Active Subscription</div>
-      <div style="display:flex; align-items:center; justify-content:space-between; margin-top:8px;">
-        <div style="font-size:24px; font-weight:800; font-family:'Space Grotesk'">${sub.plan} PLAN</div>
-        <div style="font-size:13px; color:var(--accent-banana); font-weight:600;">Status: Active (Demo Sandbox)</div>
-      </div>
-    </div>
-
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <div class="tier-tag">Standard</div>
-        <div class="tier-price">FREE</div>
-        <ul class="tier-features">
-          <li>✓ Standard YouTube Audio Stream</li>
-          <li>✓ Basic Search & Discovery</li>
-          <li>✓ Local IndexedDB Cache</li>
-          <li>✕ High Bitrate Mode</li>
+    <div class="pricing-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:20px; margin-top:20px;">
+      <div class="modal-card" style="padding:24px; display:flex; flex-direction:column;">
+        <div style="font-size:11px; font-weight:800; color:var(--text-dim); text-transform:uppercase;">Štandard</div>
+        <div style="font-size:32px; font-weight:900; margin:10px 0;">ZADARMO</div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; font-size:13px; color:var(--text-muted); margin-bottom:24px; flex:1;">
+          <li>✓ Štandardný YouTube Stream</li>
+          <li>✓ Základný Bass Boost</li>
+          <li>✓ AdShield Ochrana</li>
         </ul>
-        <button class="btn-secondary" onclick="setDemoPlan('FREE')">Current Plan</button>
+        <button class="btn-secondary" style="width:100%;" disabled>Aktívny Základný Plán</button>
       </div>
 
-      <div class="pricing-card featured">
-        <div class="tier-tag">Popular</div>
-        <div class="tier-price">$4.99 <span style="font-size:14px; color:var(--text-dim)">/ mo</span></div>
-        <ul class="tier-features">
-          <li>✓ 320kbps High-Fidelity Audio Mode</li>
-          <li>✓ Unlimited GrooveVortex Hub Access</li>
-          <li>✓ Dynamic AI Recommendation Queue</li>
-          <li>✓ Unlimited Custom Playlists</li>
+      <div class="modal-card" style="padding:24px; display:flex; flex-direction:column; border-color:var(--accent-bass); box-shadow:var(--shadow-bass);">
+        <div style="font-size:11px; font-weight:800; color:var(--accent-bass); text-transform:uppercase;">Najobľúbenejší</div>
+        <div style="font-size:32px; font-weight:900; margin:10px 0;">4.99 € <span style="font-size:14px; color:var(--text-dim)">/ mesiac</span></div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; font-size:13px; color:var(--text-muted); margin-bottom:24px; flex:1;">
+          <li>✓ 320kbps Extreme Sub-Bass Mode</li>
+          <li>✓ Neobmedzený GrooveVortex VIP prístup</li>
+          <li>✓ 0% YouTube Reklám (Okamžitý Skip)</li>
+          <li>✓ Neobmedzené Bass Playlisty</li>
         </ul>
-        <button class="btn-primary" onclick="setDemoPlan('PRO')">Upgrade to PRO</button>
+        <button class="btn-primary" style="width:100%;" onclick="openCheckout('PRO')">Kúpiť cez Platobnú Bránu</button>
       </div>
 
-      <div class="pricing-card">
-        <div class="tier-tag">Plus</div>
-        <div class="tier-price">$9.99 <span style="font-size:14px; color:var(--text-dim)">/ mo</span></div>
-        <ul class="tier-features">
-          <li>✓ All PRO Features Included</li>
-          <li>✓ Dolby Surround Simulation</li>
-          <li>✓ Priority YouTube API Bandwidth</li>
-          <li>✓ Studio Equalizer Presets</li>
+      <div class="modal-card" style="padding:24px; display:flex; flex-direction:column; border-color:var(--accent-banana-bright);">
+        <div style="font-size:11px; font-weight:800; color:var(--accent-banana-bright); text-transform:uppercase;">Doživotná Licencia</div>
+        <div style="font-size:32px; font-weight:900; margin:10px 0;">19.99 € <span style="font-size:14px; color:var(--text-dim)">jednorazovo</span></div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; font-size:13px; color:var(--text-muted); margin-bottom:24px; flex:1;">
+          <li>✓ Všetko z PRO balíka navždy</li>
+          <li>✓ Doživotný Prístup bez poplatkov</li>
+          <li>✓ Hardvérové DSP Zosilnenie 60Hz Drop</li>
+          <li>✓ Prioritný YouTube Bandwidth Server</li>
         </ul>
-        <button class="btn-primary" onclick="setDemoPlan('PRO PLUS')">Upgrade to PLUS</button>
-      </div>
-
-      <div class="pricing-card">
-        <div class="tier-tag">Ultimate</div>
-        <div class="tier-price">$19.99 <span style="font-size:14px; color:var(--text-dim)">/ mo</span></div>
-        <ul class="tier-features">
-          <li>✓ Lifetime VIP Status</li>
-          <li>✓ Exclusive GrooveVortex Stems & VIPs</li>
-          <li>✓ Lossless Audio Simulation Engine</li>
-          <li>✓ 24/7 Dedicated Server Relay</li>
-        </ul>
-        <button class="btn-primary" onclick="setDemoPlan('ULTIMATE')">Get ULTIMATE</button>
+        <button class="btn-primary" style="width:100%; background:var(--accent-banana-bright);" onclick="openCheckout('ULTIMATE')">Kúpiť ULTIMATE</button>
       </div>
     </div>
   `;
@@ -1899,140 +1785,128 @@ function renderSettings() {
   viewContent.innerHTML = `
     <div class="section-header">
       <div>
-        <div class="section-title"><span class="accent-emoji">⚙️</span> Settings & Diagnostics</div>
-        <div class="section-subtitle">Manage API connectivity, player behaviors, and local IndexedDB storage</div>
+        <div class="section-title"><span class="accent-emoji">⚙️</span> Nastavenia & YouTube API</div>
       </div>
     </div>
-
     <div style="display:flex; flex-direction:column; gap:20px; max-width:700px;">
-      <!-- YOUTUBE API CARD -->
-      <div style="background:var(--bg-surface); border:1px solid var(--border-glass); border-radius:var(--radius-lg); padding:24px;">
-        <div style="font-size:16px; font-weight:700; margin-bottom:6px;">YouTube Data API v3 Configuration</div>
-        <div style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Supply your Google Cloud YouTube v3 key for direct live queries and stream metadata.</div>
+      <div class="modal-card" style="max-width:100%;">
+        <div style="font-size:16px; font-weight:800; margin-bottom:6px;">YouTube Data API v3 Kľúč</div>
+        <div style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Vlož svoj Google API kľúč pre priame YouTube vyhľadávanie a načítanie skladieb.</div>
         <div style="display:flex; gap:10px;">
-          <input type="password" id="settings-api-key" class="form-input" style="flex:1;" placeholder="Enter AIzaSy... API Key" value="${State.apiKey}">
-          <button class="btn-primary" id="btn-settings-save-key">Connect</button>
-          <button class="btn-danger" id="btn-settings-forget-key">Forget</button>
+          <input type="password" id="settings-api-key" class="form-input" style="flex:1;" placeholder="AIzaSy..." value="${State.apiKey}">
+          <button class="btn-primary" onclick="saveAndTestApiKey(document.getElementById('settings-api-key').value)">Uložiť</button>
+          <button class="btn-danger" onclick="forgetApiKey()">Zmazať</button>
         </div>
       </div>
-
-      <!-- STORAGE MANAGEMENT -->
-      <div style="background:var(--bg-surface); border:1px solid var(--border-glass); border-radius:var(--radius-lg); padding:24px;">
-        <div style="font-size:16px; font-weight:700; margin-bottom:6px;">IndexedDB Local Data & Cache</div>
-        <div style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Purge temporary cached music data or reset the entire BannaTube PRO client storage.</div>
-        <div style="display:flex; gap:12px; flex-wrap:wrap;">
-          <button class="btn-secondary" id="btn-clear-cache">Clear API Cache</button>
-          <button class="btn-secondary" id="btn-clear-all-history">Clear All History</button>
-          <button class="btn-danger" id="btn-reset-app">Reset Entire App</button>
+      <div class="modal-card" style="max-width:100%;">
+        <div style="font-size:16px; font-weight:800; margin-bottom:6px;">Správa pamäte & Cache</div>
+        <div style="display:flex; gap:12px; margin-top:14px;">
+          <button class="btn-secondary" onclick="db.clear('cachedMusic'); toast('Cache vyčistená.');">Vymazať Cache</button>
+          <button class="btn-danger" onclick="resetEntireApp()">Resetovať celú aplikáciu</button>
         </div>
-      </div>
-
-      <!-- ABOUT -->
-      <div style="background:var(--bg-surface); border:1px solid var(--border-glass); border-radius:var(--radius-lg); padding:24px;">
-        <div style="font-size:16px; font-weight:700; margin-bottom:6px;">BannaTube PRO Music v3.4.0</div>
-        <div style="font-size:13px; color:var(--text-dim); line-height:1.6;">Cinematic client-side single-page music station. Direct YouTube v3 integration, zero external backend requirement, IndexedDB persistence, GrooveVortex dedicated sound architecture.</div>
       </div>
     </div>
   `;
-
-  document.getElementById('btn-settings-save-key').addEventListener('click', async () => {
-    const key = document.getElementById('settings-api-key').value.trim();
-    if (!key) return;
-    saveAndTestApiKey(key);
-  });
-
-  document.getElementById('btn-settings-forget-key').addEventListener('click', forgetApiKey);
-
-  document.getElementById('btn-clear-cache').addEventListener('click', async () => {
-    await db.clear('cachedMusic');
-    toast('API Cache Cleared.');
-  });
-
-  document.getElementById('btn-clear-all-history').addEventListener('click', async () => {
-    await db.clear('history');
-    await db.clear('continueListening');
-    toast('All playback history cleared.');
-  });
-
-  document.getElementById('btn-reset-app').addEventListener('click', async () => {
-    if (confirm('Are you sure you want to completely reset all BannaTube data?')) {
-      for (const s of STORES) await db.clear(s);
-      location.reload();
-    }
-  });
 }
 
-// 7. CARD GENERATOR & EVENT BINDINGS
+// 7. PAYMENT CHECKOUT HANDLERS
+window.openCheckout = function(plan) {
+  const select = document.getElementById('checkout-plan-select');
+  if (select) select.value = plan;
+  document.getElementById('modal-checkout').classList.add('open');
+};
+
+document.querySelectorAll('.payment-method-card').forEach(card => {
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.payment-method-card').forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+  });
+});
+
+async function processCheckoutPayment() {
+  const btn = document.getElementById('btn-pay-submit');
+  btn.textContent = 'Spracovávam platbu...';
+  btn.disabled = true;
+
+  setTimeout(async () => {
+    const plan = document.getElementById('checkout-plan-select').value;
+    State.subscription.plan = plan;
+    await db.set('subscription', 'tier', plan);
+    document.getElementById('tier-indicator').textContent = `${plan} AKTÍVNE`;
+    document.getElementById('modal-checkout').classList.remove('open');
+    btn.textContent = 'Zaplatiť & Aktivovať PRO';
+    btn.disabled = false;
+    toast(`🎉 Platba Úspešná! Aktivovaný balík: ${plan}`);
+    renderView('home');
+  }, 1400);
+}
+
+// 8. CARD GENERATOR & EVENTS
 function renderTrackCardList(tracks) {
   if (!tracks || tracks.length === 0) {
     if (!State.apiKey) {
       return `
         <div style="grid-column: 1/-1; padding: 40px 20px; text-align: center; background: var(--bg-surface); border: 1px dashed var(--border-glass); border-radius: var(--radius-lg);">
-          <div style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">YouTube API Key Required</div>
-          <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px; max-width: 480px; margin-left: auto; margin-right: auto;">
-            Connect your official YouTube Data API v3 key to stream live music, GrooveVortex mixes, and personalized recommendations.
-          </div>
-          <button class="btn-primary" onclick="document.getElementById('modal-api').classList.add('open')">Connect API Key</button>
+          <div style="font-size: 18px; font-weight: 800; margin-bottom: 8px;">Pripoj svoj YouTube API Kľúč</div>
+          <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 18px;">Pre živé sťahovanie najnovších bassových peciek z YouTube vlož svoj kľúč.</div>
+          <button class="btn-primary" onclick="document.getElementById('modal-api').classList.add('open')">Zadať YouTube Kľúč</button>
         </div>
       `;
     }
-    return '<div style="color:var(--text-dim); padding:20px;">No tracks found for this view.</div>';
+    return '<div style="color:var(--text-dim); padding:20px;">Žiadne skladby sa nenašli.</div>';
   }
 
   return tracks.map(t => `
     <div class="music-card" data-track-id="${t.id}">
       <div class="card-artwork-wrap">
-        <img src="${t.thumbnail || 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'180\' fill=\'%23111\'%3E%3Crect width=\'300\' height=\'180\'/%3E%3C/svg%3E'}" alt="${t.title}" loading="lazy">
-        <button class="card-play-btn" title="Play">
+        <img src="${t.thumbnail || ''}" alt="${t.title}" loading="lazy">
+        <div class="card-tag-bass">BASS</div>
+        <button class="card-play-btn" title="Prehrať">
           <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
         </button>
       </div>
       <div class="card-info">
         <div class="card-title" title="${t.title}">${t.title}</div>
-        <div class="card-artist">${t.artist || 'YouTube Artist'}</div>
+        <div class="card-artist">${t.artist || 'Bass Master'}</div>
       </div>
     </div>
   `).join('');
 }
 
-function bindTrackCards(trackList = [], fallbackList = []) {
-  const merged = [...trackList, ...fallbackList];
-  viewContent.querySelectorAll('.music-card[data-track-id], .continue-card[data-track-id]').forEach(el => {
+function bindTrackCards(trackList = []) {
+  viewContent.querySelectorAll('.music-card[data-track-id]').forEach(el => {
     el.addEventListener('click', () => {
       const id = el.dataset.trackId;
-      const target = merged.find(t => t.id === id) || {
+      const target = trackList.find(t => t.id === id) || {
         id,
-        title: el.querySelector('.card-title')?.textContent || 'Playing Track',
-        artist: el.querySelector('.card-artist')?.textContent || 'YouTube Artist',
+        title: el.querySelector('.card-title')?.textContent || 'Bass Track',
+        artist: el.querySelector('.card-artist')?.textContent || 'YouTube',
         thumbnail: el.querySelector('img')?.src || ''
       };
-      playTrack(target, merged);
+      playTrack(target, trackList);
     });
-  });
-
-  // Re-bind see-all / nav buttons
-  viewContent.querySelectorAll('[data-nav]').forEach(btn => {
-    btn.addEventListener('click', () => renderView(btn.dataset.nav));
   });
 }
 
-// 8. API KEY MANAGEMENT & VALIDATION
+// 9. API KEY VALIDATION
 async function saveAndTestApiKey(key) {
-  toast('Validating YouTube API key...');
+  key = key.trim();
+  if (!key) return;
+  toast('Overujem YouTube API kľúč...');
   const status = await YouTubeAPI.validateKey(key);
   if (status === 'connected') {
     State.apiKey = key;
     await db.set('api', 'yt_key', key);
     updateApiStatus('connected');
-    toast('✓ YouTube API Connected Successfully!');
+    toast('✓ YouTube API Úspešne Pripojené!');
     document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('open'));
     renderView(State.currentView);
   } else if (status === 'quota') {
     updateApiStatus('quota');
-    toast('⚠ YouTube API Quota Exceeded');
+    toast('⚠ YouTube API Quota Prekročená!');
   } else {
     updateApiStatus('invalid');
-    toast('✕ Invalid API Key! Please verify in Google Cloud Console.');
+    toast('✕ Neplatný YouTube API Kľúč');
   }
 }
 
@@ -2040,9 +1914,8 @@ async function forgetApiKey() {
   State.apiKey = '';
   await db.delete('api', 'yt_key');
   updateApiStatus('disconnected');
-  toast('API Key forgotten.');
+  toast('API Kľúč zmazaný.');
   document.getElementById('input-api-key').value = '';
-  document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('open'));
   renderView(State.currentView);
 }
 
@@ -2051,35 +1924,23 @@ function updateApiStatus(status) {
   const badge = document.getElementById('yt-status-badge');
   const txt = document.getElementById('yt-status-text');
   badge.className = 'api-badge ' + status;
-
-  if (status === 'connected') txt.textContent = '✓ YouTube Connected';
+  if (status === 'connected') txt.textContent = '✓ YouTube Pripojené';
   else if (status === 'quota') txt.textContent = '⚠ Quota Exceeded';
-  else if (status === 'invalid') txt.textContent = '✕ Invalid Key';
-  else txt.textContent = 'Set YouTube Key';
+  else if (status === 'invalid') txt.textContent = '✕ Chyba Kľúča';
+  else txt.textContent = 'YouTube Kľúč';
 }
 
-// 9. SEARCH WITH DEBOUNCE
-let searchDebounceTimer = null;
-const globalSearchInput = document.getElementById('global-search-input');
-globalSearchInput.addEventListener('input', (e) => {
-  const val = e.target.value.trim();
-  clearTimeout(searchDebounceTimer);
-  if (!val) return;
-  searchDebounceTimer = setTimeout(() => {
-    renderView('search', val);
-  }, 450);
+// 10. SEARCH DEBOUNCE
+let searchTimer = null;
+document.getElementById('global-search-input').addEventListener('input', (e) => {
+  clearTimeout(searchTimer);
+  const q = e.target.value.trim();
+  if (!q) return;
+  searchTimer = setTimeout(() => renderView('search', q), 400);
 });
 
-globalSearchInput.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
-    clearTimeout(searchDebounceTimer);
-    const val = e.target.value.trim();
-    if (val) renderView('search', val);
-  }
-});
-
-// 10. FAVORITES TOGGLE
-async function toggleFavoriteCurrentTrack() {
+// 11. FAVORITES & CONTROLS
+async function toggleFavorite() {
   if (!State.currentTrack) return;
   const track = State.currentTrack;
   const btn = document.getElementById('btn-player-like');
@@ -2087,70 +1948,43 @@ async function toggleFavoriteCurrentTrack() {
     State.favoritesMap.delete(track.id);
     await db.delete('favorites', track.id);
     btn.classList.remove('liked');
-    toast('Removed from Favorites');
+    toast('Odstránené z obľúbených');
   } else {
-    const item = { ...track, addedAt: Date.now() };
-    State.favoritesMap.set(track.id, item);
-    await db.set('favorites', item);
+    State.favoritesMap.set(track.id, track);
+    await db.set('favorites', track);
     btn.classList.add('liked');
-    toast('Added to Favorites ⭐');
+    toast('⭐ Pridané do obľúbených!');
   }
-  if (State.currentView === 'favorites') renderFavorites();
 }
 
-// 11. AUDIO CONTROLS & TIMELINE
 document.getElementById('btn-playpause').addEventListener('click', togglePlayPause);
 document.getElementById('btn-next').addEventListener('click', playNextTrack);
 document.getElementById('btn-prev').addEventListener('click', playPrevTrack);
-document.getElementById('btn-player-like').addEventListener('click', toggleFavoriteCurrentTrack);
+document.getElementById('btn-player-like').addEventListener('click', toggleFavorite);
+document.getElementById('btn-top-checkout').addEventListener('click', () => openCheckout('ULTIMATE'));
 
 document.getElementById('player-progress').addEventListener('input', (e) => {
   if (!ytPlayer || !ytPlayer.getDuration) return;
-  const dur = ytPlayer.getDuration();
-  const seekSec = (e.target.value / 100) * dur;
-  ytPlayer.seekTo(seekSec, true);
+  ytPlayer.seekTo((e.target.value / 100) * ytPlayer.getDuration(), true);
 });
 
 document.getElementById('player-volume').addEventListener('input', (e) => {
-  const vol = e.target.value;
-  if (ytPlayer && ytPlayer.setVolume) ytPlayer.setVolume(vol);
+  if (ytPlayer && ytPlayer.setVolume) ytPlayer.setVolume(e.target.value);
 });
 
-document.getElementById('btn-shuffle').addEventListener('click', (e) => {
-  State.shuffle = !State.shuffle;
-  e.currentTarget.classList.toggle('active', State.shuffle);
-  toast(State.shuffle ? 'Shuffle On' : 'Shuffle Off');
-});
-
-document.getElementById('btn-repeat').addEventListener('click', (e) => {
-  if (State.repeat === 'off') {
-    State.repeat = 'all';
-    e.currentTarget.classList.add('active');
-    toast('Repeat All');
-  } else if (State.repeat === 'all') {
-    State.repeat = 'one';
-    e.currentTarget.classList.add('active');
-    toast('Repeat Current Track');
-  } else {
-    State.repeat = 'off';
-    e.currentTarget.classList.remove('active');
-    toast('Repeat Off');
-  }
-});
-
-// 12. FULLSCREEN IMMERSIVE PLAYER & VISUALIZER
-const fsModal = document.getElementById('fullscreen-player');
+// 12. FULLSCREEN IMMERSIVE PLAYER
+const fsPlayer = document.getElementById('fullscreen-player');
 const fsCanvas = document.getElementById('fs-visualizer');
 const fsCtx = fsCanvas.getContext('2d');
-let animFrame = null;
+let fsAnim = null;
 
 document.getElementById('btn-expand-player').addEventListener('click', () => {
-  fsModal.classList.add('open');
+  fsPlayer.classList.add('open');
   startVisualizer();
 });
 document.getElementById('btn-close-fs').addEventListener('click', () => {
-  fsModal.classList.remove('open');
-  if (animFrame) cancelAnimationFrame(animFrame);
+  fsPlayer.classList.remove('open');
+  if (fsAnim) cancelAnimationFrame(fsAnim);
 });
 
 function startVisualizer() {
@@ -2158,87 +1992,68 @@ function startVisualizer() {
   fsCanvas.height = fsCanvas.offsetHeight;
   function draw() {
     fsCtx.clearRect(0, 0, fsCanvas.width, fsCanvas.height);
-    const bars = 48;
+    const bars = 40;
     const barWidth = fsCanvas.width / bars;
     const isPlaying = State.isPlaying;
     for (let i = 0; i < bars; i++) {
-      const height = isPlaying ? Math.random() * (fsCanvas.height * 0.85) + 6 : 4;
+      const height = isPlaying ? Math.random() * (fsCanvas.height * 0.9) + 8 : 4;
       const x = i * barWidth;
       const y = fsCanvas.height - height;
       const grad = fsCtx.createLinearGradient(0, y, 0, fsCanvas.height);
-      grad.addColorStop(0, '#fbbf24');
-      grad.addColorStop(1, '#06b6d4');
+      grad.addColorStop(0, '#ec4899');
+      grad.addColorStop(1, '#fbbf24');
       fsCtx.fillStyle = grad;
       fsCtx.fillRect(x, y, barWidth - 3, height);
     }
-    animFrame = requestAnimationFrame(draw);
+    fsAnim = requestAnimationFrame(draw);
   }
   draw();
 }
 
-// 13. PLAYLIST CREATION LOGIC
+// 13. PLAYLISTS CREATION
 document.getElementById('btn-create-playlist-submit').addEventListener('click', async () => {
   const name = document.getElementById('input-playlist-name').value.trim();
   if (!name) return;
-  const newPl = {
+  await db.set('playlists', {
     id: 'pl_' + Date.now(),
     name,
-    createdAt: Date.now(),
     tracks: State.currentTrack ? [State.currentTrack] : []
-  };
-  await db.set('playlists', newPl);
-  toast(`Playlist "${name}" created!`);
-  document.getElementById('input-playlist-name').value = '';
+  });
+  toast(`Playlist "${name}" vytvorený!`);
   document.getElementById('modal-playlist').classList.remove('open');
   if (State.currentView === 'playlists') renderPlaylists();
 });
 
-// 14. DEMO PLAN UPGRADING
-window.setDemoPlan = async function(planName) {
-  State.subscription.plan = planName;
-  await db.set('subscription', 'tier', planName);
-  document.getElementById('tier-indicator').textContent = planName;
-  toast(`🎉 Upgraded to ${planName} Plan (Demo Active)`);
-  renderPremium();
-};
-
-// 15. TOAST NOTIFICATIONS & HELPERS
+// 14. HELPERS
 function toast(msg) {
-  const container = document.getElementById('toast-container');
-  const el = document.createElement('div');
-  el.className = 'toast';
-  el.textContent = msg;
-  container.appendChild(el);
-  setTimeout(() => {
-    el.style.opacity = '0';
-    el.style.transition = '0.3s';
-    setTimeout(() => el.remove(), 300);
-  }, 3200);
+  const c = document.getElementById('toast-container');
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.textContent = msg;
+  c.appendChild(t);
+  setTimeout(() => { t.style.opacity = '0'; setTimeout(() => t.remove(), 300); }, 3000);
 }
 
 function formatSeconds(sec) {
-  const s = Math.floor(sec || 0);
-  const m = Math.floor(s / 60);
-  const rem = s % 60;
-  return `${m}:${rem < 10 ? '0' : ''}${rem}`;
-}
-
-function parseDuration(e) {
-  if (!e) return '3:45';
-  const m = e.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
-  if (!m) return '3:45';
-  const mins = (m[2] ? m[2].replace('M','') : '0');
-  const secs = (m[3] ? m[3].replace('S','') : '0');
-  return `${mins}:${secs.padStart(2, '0')}`;
+  const m = Math.floor((sec || 0) / 60);
+  const s = Math.floor((sec || 0) % 60);
+  return `${m}:${s < 10 ? '0' : ''}${s}`;
 }
 
 function unescapeHtml(str) {
   const d = document.createElement('div');
   d.innerHTML = str;
-  return d.textContent || d.innerText || '';
+  return d.textContent || '';
 }
 
-// 16. MODAL HANDLERS & ROUTING LISTENERS
+window.resetEntireApp = async function() {
+  if (confirm('Naozaj chceš vyresetovať všetky nastavenia a uložené playlisty?')) {
+    for (const s of STORES) await db.clear(s);
+    location.reload();
+  }
+};
+
+// 15. NAVIGATION & MODALS
 document.querySelectorAll('[data-view]').forEach(el => {
   el.addEventListener('click', () => renderView(el.dataset.view));
 });
@@ -2247,58 +2062,47 @@ document.getElementById('yt-status-badge').addEventListener('click', () => {
   document.getElementById('modal-api').classList.add('open');
 });
 
-document.getElementById('btn-top-premium').addEventListener('click', () => {
-  renderView('premium');
-});
-
-document.getElementById('btn-user-profile').addEventListener('click', () => {
-  renderView('settings');
-});
-
 document.querySelectorAll('[data-close-modal]').forEach(b => {
-  b.addEventListener('click', () => {
-    document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('open'));
-  });
+  b.addEventListener('click', () => document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('open')));
 });
 
 document.getElementById('btn-save-key').addEventListener('click', () => {
-  const key = document.getElementById('input-api-key').value.trim();
-  if (key) saveAndTestApiKey(key);
+  saveAndTestApiKey(document.getElementById('input-api-key').value);
 });
 
 document.getElementById('btn-forget-key').addEventListener('click', forgetApiKey);
 
-// 17. BOOTSTRAP APP
-async function initApp() {
+// 16. INIT BOOTSTRAP
+async function init() {
   await db.init();
 
-  // Load saved API Key
   const savedKey = await db.get('api', 'yt_key');
   if (savedKey) {
     State.apiKey = savedKey;
     document.getElementById('input-api-key').value = savedKey;
-    const status = await YouTubeAPI.validateKey(savedKey);
-    updateApiStatus(status);
-  } else {
-    updateApiStatus('disconnected');
+    const s = await YouTubeAPI.validateKey(savedKey);
+    updateApiStatus(s);
   }
 
-  // Load Favorites into Cache Map
+  const savedAds = await db.get('adshield', 'skipped_count');
+  if (savedAds) {
+    State.adsSkipped = savedAds;
+    document.getElementById('ads-skipped-counter').textContent = savedAds;
+  }
+
+  const savedTier = await db.get('subscription', 'tier');
+  if (savedTier) {
+    State.subscription.plan = savedTier;
+    document.getElementById('tier-indicator').textContent = `${savedTier} AKTÍVNE`;
+  }
+
   const favs = await db.getAll('favorites');
   favs.forEach(f => State.favoritesMap.set(f.id, f));
 
-  // Load Subscription Tier
-  const savedSub = await db.get('subscription', 'tier');
-  if (savedSub) {
-    State.subscription.plan = savedSub;
-    document.getElementById('tier-indicator').textContent = savedSub;
-  }
-
-  // Render Initial View
   renderView('home');
 }
 
-window.addEventListener('DOMContentLoaded', initApp);
+window.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
 </html>
