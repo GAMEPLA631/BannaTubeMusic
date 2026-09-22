@@ -23,7 +23,6 @@
   --accent-bass: #ec4899;
   --accent-bass-glow: rgba(236, 72, 153, 0.45);
   --accent-emerald: #10b981;
-  --accent-xmas: #ef4444;
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --text-dim: #64748b;
@@ -55,7 +54,6 @@ button { cursor: pointer; transition: var(--transition-fast); }
 ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 999px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
 
-/* APP LAYOUT */
 #app-container {
   display: flex;
   flex: 1;
@@ -64,7 +62,6 @@ button { cursor: pointer; transition: var(--transition-fast); }
   overflow: hidden;
 }
 
-/* SIDEBAR */
 aside#sidebar {
   width: var(--sidebar-width);
   background: var(--bg-surface);
@@ -133,7 +130,6 @@ aside#sidebar {
   border-radius: 999px;
   font-weight: 800;
   letter-spacing: 0.5px;
-  animation: pulse-glow 2s infinite;
 }
 .badge-xmas {
   margin-left: auto;
@@ -144,14 +140,12 @@ aside#sidebar {
   border-radius: 999px;
   font-weight: 800;
 }
-@keyframes pulse-glow { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.75; transform: scale(1.05); } }
 
-/* ADSHIELD STATUS IN SIDEBAR */
 .adshield-box {
   margin: 12px;
   padding: 14px;
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(6, 182, 212, 0.05));
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 182, 212, 0.08));
+  border: 1px solid rgba(16, 185, 129, 0.4);
   border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
@@ -161,7 +155,6 @@ aside#sidebar {
 .adshield-desc { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
 .adshield-stat { font-size: 13px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 6px; }
 
-/* MAIN VIEWPORT */
 main#viewport {
   flex: 1;
   display: flex;
@@ -173,7 +166,6 @@ main#viewport {
   position: relative;
 }
 
-/* TOP HEADER */
 header#topbar {
   height: 74px;
   padding: 0 32px;
@@ -288,7 +280,6 @@ header#topbar {
   box-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);
 }
 
-/* CONTENT SCROLLER */
 #view-content {
   flex: 1;
   overflow-y: auto;
@@ -296,7 +287,6 @@ header#topbar {
   scroll-behavior: smooth;
 }
 
-/* CARDS & GRIDS */
 .section-header {
   display: flex;
   align-items: flex-end;
@@ -409,7 +399,6 @@ header#topbar {
   text-overflow: ellipsis;
 }
 
-/* HERO BANNER */
 .hero-banner {
   min-height: 290px;
   border-radius: var(--radius-xl);
@@ -476,7 +465,6 @@ header#topbar {
 }
 .btn-hero-play:hover { transform: scale(1.05); }
 
-/* BASS BOOST HARDWARE EQUALIZER DRAWER */
 .bass-dsp-box {
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-glass);
@@ -501,7 +489,6 @@ header#topbar {
 }
 .dsp-preset-btn.active { background: var(--accent-bass); color: #fff; box-shadow: 0 0 15px var(--accent-bass-glow); }
 
-/* BOTTOM PLAYER */
 footer#bottom-player {
   height: var(--player-height);
   background: rgba(8, 12, 20, 0.96);
@@ -620,7 +607,6 @@ footer#bottom-player {
 }
 .volume-wrap { display: flex; align-items: center; gap: 8px; width: 120px; }
 
-/* AD-SKIPPER OVERLAY BANNER */
 .ad-skip-indicator {
   position: absolute;
   top: -34px;
@@ -640,7 +626,6 @@ footer#bottom-player {
 }
 .ad-skip-indicator.show { display: flex; }
 
-/* MODALS */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -704,7 +689,6 @@ footer#bottom-player {
   font-size: 14px;
 }
 
-/* SHARE & DOWNLOAD MODAL */
 .download-options-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -731,7 +715,6 @@ footer#bottom-player {
 }
 .download-option-card svg { width: 32px; height: 32px; fill: var(--accent-banana-bright); }
 
-/* PAYMENT GATEWAY */
 .payment-methods-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -758,7 +741,6 @@ footer#bottom-player {
 }
 .card-input-row { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; }
 
-/* FULLSCREEN PLAYER */
 #fullscreen-player {
   position: fixed;
   inset: 0;
@@ -794,7 +776,6 @@ footer#bottom-player {
 .fs-artist { font-size: 19px; color: var(--accent-banana-bright); font-weight: 600; }
 .fs-canvas { width: 100%; height: 70px; margin-top: 24px; }
 
-/* SKELETON LOADERS */
 .skeleton {
   background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
   background-size: 200% 100%;
@@ -803,7 +784,6 @@ footer#bottom-player {
 }
 @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
-/* TOASTS */
 #toast-container {
   position: fixed;
   bottom: 115px;
@@ -827,7 +807,6 @@ footer#bottom-player {
   gap: 10px;
 }
 
-/* MOBILE NAV */
 #mobile-nav {
   display: none;
   height: 62px;
@@ -871,7 +850,6 @@ footer#bottom-player {
 <body>
 
 <div id="app-container">
-  <!-- SIDEBAR -->
   <aside id="sidebar">
     <div class="brand">
       <div class="brand-icon">⚡</div>
@@ -900,15 +878,14 @@ footer#bottom-player {
         </ul>
       </div>
 
-      <!-- ADSHIELD LIVE STATUS -->
       <div class="adshield-box">
         <div class="adshield-header">
           <span>🛡️ ADSHIELD ULTRA</span>
           <span style="font-size:10px; background:#10b981; color:#000; padding:1px 5px; border-radius:4px; font-weight:900;">ACTIVE</span>
         </div>
-        <div class="adshield-desc">Automatické preskakovanie YouTube reklám bez prerušenia hudby.</div>
+        <div class="adshield-desc">Plynulé prehrávanie bez 4-sekundových prerušení a reklám.</div>
         <div class="adshield-stat">
-          <span id="ads-skipped-counter">0</span> reklám preskočených
+          <span id="ads-skipped-counter">0</span> reklám zablokovaných
         </div>
       </div>
 
@@ -922,7 +899,6 @@ footer#bottom-player {
     </div>
   </aside>
 
-  <!-- MAIN VIEWPORT -->
   <main id="viewport">
     <header id="topbar">
       <div class="search-wrapper">
@@ -949,13 +925,10 @@ footer#bottom-player {
       </div>
     </header>
 
-    <div id="view-content">
-      <!-- Dynamic View Injection -->
-    </div>
+    <div id="view-content"></div>
   </main>
 </div>
 
-<!-- BOTTOM PLAYER -->
 <footer id="bottom-player">
   <div class="ad-skip-indicator" id="ad-skip-alert">
     <span>🛡️</span> YouTube Reklama Automaticky Preskočená!
@@ -1003,7 +976,6 @@ footer#bottom-player {
   </div>
 </footer>
 
-<!-- FULLSCREEN IMMERSIVE PLAYER -->
 <div id="fullscreen-player">
   <div class="fs-top">
     <div class="brand-title">BannaTube <span>BASS & MIX CINEMA</span></div>
@@ -1024,7 +996,6 @@ footer#bottom-player {
   </div>
 </div>
 
-<!-- SHARE & MP3 / MP4 DOWNLOAD MODAL -->
 <div class="modal-overlay" id="modal-share">
   <div class="modal-card">
     <button class="modal-close" data-close-modal><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
@@ -1054,7 +1025,6 @@ footer#bottom-player {
   </div>
 </div>
 
-<!-- PLATOBNÁ BRÁNA (CHECKOUT PAYMENT MODAL) -->
 <div class="modal-overlay" id="modal-checkout">
   <div class="modal-card checkout-modal">
     <button class="modal-close" data-close-modal><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
@@ -1083,9 +1053,7 @@ footer#bottom-player {
     <form id="checkout-form" onsubmit="event.preventDefault(); processCheckoutPayment();">
       <div class="form-group">
         <label class="form-label">Zvolený Balík</label>
-        <select id="checkout-plan-select" class="form-input">
-          <!-- Populated dynamically (with holiday discounts if Christmas) -->
-        </select>
+        <select id="checkout-plan-select" class="form-input"></select>
       </div>
 
       <div class="form-group">
@@ -1116,7 +1084,6 @@ footer#bottom-player {
   </div>
 </div>
 
-<!-- API KEY MODAL -->
 <div class="modal-overlay" id="modal-api">
   <div class="modal-card">
     <button class="modal-close" data-close-modal><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
@@ -1133,7 +1100,6 @@ footer#bottom-player {
   </div>
 </div>
 
-<!-- PLAYLIST MODAL -->
 <div class="modal-overlay" id="modal-playlist">
   <div class="modal-card">
     <button class="modal-close" data-close-modal><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
@@ -1153,7 +1119,6 @@ footer#bottom-player {
 <div id="toast-container"></div>
 <div id="yt-embed-host"><div id="yt-player-target"></div></div>
 
-<!-- MOBILE BOTTOM NAV -->
 <nav id="mobile-nav">
   <div class="mobile-nav-item active" data-view="home"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>Bass</div>
   <div class="mobile-nav-item" data-view="magicmusic"><svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>Magic 4h</div>
@@ -1165,11 +1130,6 @@ footer#bottom-player {
 <script src="https://www.youtube.com/iframe_api"></script>
 
 <script>
-/**
- * BANNA TUBE PRO - BASS, MAGIC MUSIC (4H & 55M), ADSHIELD, CHRISTMAS AUTO-SYSTEM & DOWNLOAD/SHARE
- */
-
-// 1. INDEXED DB PERSISTENCE
 const DB_NAME = 'BannaTubeProMusic';
 const DB_VERSION = 3;
 const STORES = ['settings', 'api', 'history', 'continueListening', 'favorites', 'playlists', 'cachedMusic', 'subscription', 'adshield'];
@@ -1239,18 +1199,14 @@ class StorageManager {
 }
 const db = new StorageManager();
 
-// 2. CHRISTMAS SEASON AUTOMATION ENGINE
 function checkIsChristmasSeason() {
   const now = new Date();
-  const month = now.getMonth(); // 11 = December, 0 = January
+  const month = now.getMonth();
   const day = now.getDate();
-  // Active in December (1.12 - 31.12) and until 6th January (Trom Kráľom)
   return (month === 11) || (month === 0 && day <= 6);
 }
-
 const isChristmas = checkIsChristmasSeason();
 
-// 3. STATE MANAGER
 const State = {
   apiKey: '',
   apiStatus: 'disconnected',
@@ -1265,10 +1221,9 @@ const State = {
   bassBoostLevel: 'OFF',
   subscription: { plan: 'FREE', active: true },
   favoritesMap: new Map(),
-  syncToken: Date.now() // Scalable dynamic sync token
+  syncToken: Date.now()
 };
 
-// 4. YOUTUBE API CLIENT WITH DYNAMIC SYNC & SCALABILITY
 class YouTubeAPI {
   static async request(endpoint, params = {}) {
     if (!State.apiKey) return null;
@@ -1276,7 +1231,6 @@ class YouTubeAPI {
     params.key = State.apiKey;
     Object.keys(params).forEach(k => url.searchParams.append(k, params[k]));
 
-    // Cache key incorporates sync token for scalable dynamic freshness
     const cacheKey = `${url.toString()}_sync_${Math.floor(State.syncToken / 600000)}`;
     const cached = await db.get('cachedMusic', cacheKey);
     if (cached && (Date.now() - cached.timestamp < 600000)) {
@@ -1339,7 +1293,6 @@ class YouTubeAPI {
   }
 }
 
-// 5. PLAYER & AUTOMATIC YOUTUBE AD-SKIPPER ENGINE
 let ytPlayer = null;
 let playerUpdateInterval = null;
 let adCheckInterval = null;
@@ -1355,7 +1308,8 @@ window.onYouTubeIframeAPIReady = function() {
       fs: 0,
       modestbranding: 1,
       rel: 0,
-      iv_load_policy: 3
+      iv_load_policy: 3,
+      autoplay: 1
     },
     events: {
       onReady: onPlayerReady,
@@ -1387,16 +1341,20 @@ function onPlayerStateChange(event) {
 function startAdShieldEngine() {
   if (adCheckInterval) clearInterval(adCheckInterval);
   adCheckInterval = setInterval(() => {
-    if (!ytPlayer || !ytPlayer.getPlayerResponse) return;
+    if (!ytPlayer || !ytPlayer.getVideoData) return;
     try {
-      const resp = ytPlayer.getPlayerResponse();
-      const isAd = resp && (resp.adPlacements || resp.playerAds || ytPlayer.getDuration() < 30 && ytPlayer.getVideoData()?.isAd);
-      if (isAd || (ytPlayer.getVideoUrl && ytPlayer.getVideoUrl().includes('adformat'))) {
-        ytPlayer.seekTo(ytPlayer.getDuration() + 1, true);
-        triggerAdSkipNotification();
+      const vData = ytPlayer.getVideoData();
+      const curTime = ytPlayer.getCurrentTime ? ytPlayer.getCurrentTime() : 0;
+      const dur = ytPlayer.getDuration ? ytPlayer.getDuration() : 0;
+
+      if (vData && vData.video_id && State.currentTrack && vData.video_id !== State.currentTrack.id) {
+        if (dur > 0 && dur < 35 && curTime < dur) {
+          ytPlayer.seekTo(dur + 1, true);
+          triggerAdSkipNotification();
+        }
       }
     } catch (err) {}
-  }, 400);
+  }, 1000);
 }
 
 async function triggerAdSkipNotification() {
@@ -1495,7 +1453,6 @@ function updatePlayerUI(track) {
   else btnLike.classList.remove('liked');
 }
 
-// 6. SHARE & MP3 / MP4 DOWNLOAD SYSTEM
 function openShareDownloadModal() {
   if (!State.currentTrack) {
     toast('Najprv spusti skladbu na stiahnutie alebo zdieľanie.');
@@ -1532,7 +1489,6 @@ document.getElementById('btn-download-mp4').addEventListener('click', () => {
   toast('🎬 Otváram generátor MP4 pre: ' + State.currentTrack.title);
 });
 
-// 7. HARDWARE BASS EQUALIZER SIMULATOR
 function cycleBassBoost() {
   const levels = ['OFF', 'SUB-BASS', 'DEEP PUNCH', 'EXTREME BASS 3000'];
   const curIdx = levels.indexOf(State.bassBoostLevel);
@@ -1553,7 +1509,6 @@ function cycleBassBoost() {
 }
 document.getElementById('btn-toggle-dsp-bar').addEventListener('click', cycleBassBoost);
 
-// 8. VIEWS RENDERER (FEATURING MAGIC MUSIC 4H & 55M, BASS & CHRISTMAS)
 const viewContent = document.getElementById('view-content');
 
 async function renderView(viewName, param = null) {
@@ -1612,7 +1567,6 @@ function updateNavUI(viewName) {
   });
 }
 
-// VIEW: HOME CENTRAL
 async function renderHome() {
   let magicMixes = [];
   let bassHits = [];
@@ -1629,7 +1583,6 @@ async function renderHome() {
   }
 
   let html = `
-    <!-- HERO BANNER -->
     <div class="hero-banner ${isChristmas ? 'xmas-theme' : ''}">
       <div class="hero-bg-overlay"></div>
       <div class="hero-content">
@@ -1646,7 +1599,6 @@ async function renderHome() {
       </div>
     </div>
 
-    <!-- HARDWARE EQUALIZER WIDGET -->
     <div class="bass-dsp-box">
       <div class="dsp-header">
         <div class="dsp-title">⚡ BannaTube Bass Engine & Subwoofer DSP</div>
@@ -1660,7 +1612,6 @@ async function renderHome() {
     </div>
   `;
 
-  // Dynamic Christmas Section (Shown only during Christmas season)
   if (isChristmas) {
     html += `
       <div class="section-header">
@@ -1674,7 +1625,6 @@ async function renderHome() {
     `;
   }
 
-  // Magic Music Section
   html += `
     <div class="section-header">
       <div>
@@ -1685,7 +1635,6 @@ async function renderHome() {
     </div>
     <div class="grid-cards">${renderTrackCardList(magicMixes, 'magic')}</div>
 
-    <!-- ULTRA BASS BOOSTED -->
     <div class="section-header">
       <div>
         <div class="section-title"><span class="accent-emoji">🔊</span> Najsilnejší Bass Boosted Výber</div>
@@ -1695,7 +1644,6 @@ async function renderHome() {
     </div>
     <div class="grid-cards">${renderTrackCardList(bassHits)}</div>
 
-    <!-- FRESH NEW RELEASES -->
     <div class="section-header">
       <div>
         <div class="section-title"><span class="accent-emoji">🎵</span> Nové Vydané Skladby 2025</div>
@@ -1715,7 +1663,14 @@ async function renderHome() {
   });
 }
 
-// VIEW: MAGIC MUSIC DEDICATED (4H & 55 MINUTE MIXES)
+window.setPreset = function(preset) {
+  State.bassBoostLevel = preset;
+  document.getElementById('dsp-status-text').textContent = `BASS BOOST: ${preset}`;
+  document.getElementById('btn-toggle-dsp-bar').classList.toggle('boosted', preset !== 'OFF');
+  renderHome();
+  toast(`Bass Preset: ${preset}`);
+};
+
 async function renderMagicMusic() {
   const magicCategories = [
     { title: '🎧 Magic Music 4-Hodinové Non-Stop Mixy (4:00:00)', q: 'Magic Music 4 hours mix EDM' },
@@ -1747,7 +1702,6 @@ async function renderMagicMusic() {
   bindTrackCards([]);
 }
 
-// VIEW: VIANOČNÁ HUDBA (CHRISTMAS DEDICATED)
 async function renderChristmasView() {
   let xmasTracks = [];
   if (State.apiKey) {
@@ -1766,7 +1720,6 @@ async function renderChristmasView() {
   bindTrackCards(xmasTracks);
 }
 
-// VIEW: ULTRA BASS BOOSTED
 async function renderUltraBass() {
   const bassCategories = [
     { title: '🔊 Extreme Sub-Bass (20Hz - 60Hz)', q: 'Sub Bass test extreme 2025' },
@@ -1798,7 +1751,6 @@ async function renderUltraBass() {
   bindTrackCards([]);
 }
 
-// VIEW: PHONK
 async function renderPhonk() {
   let tracks = [];
   if (State.apiKey) tracks = await YouTubeAPI.searchMusic('Brazilian Phonk Extreme Bass Drift 2025', 18);
@@ -1814,7 +1766,6 @@ async function renderPhonk() {
   bindTrackCards(tracks);
 }
 
-// VIEW: GROOVEVORTEX HUB
 async function renderGrooveVortex() {
   let tracks = [];
   if (State.apiKey) tracks = await YouTubeAPI.searchMusic('GrooveVortex Bass Boosted Trance EDM', 18);
@@ -1830,7 +1781,6 @@ async function renderGrooveVortex() {
   bindTrackCards(tracks);
 }
 
-// VIEW: NEW RELEASES
 async function renderNewReleases() {
   let tracks = [];
   if (State.apiKey) tracks = await YouTubeAPI.searchMusic('New Music Releases Bass 2025 official', 20);
@@ -1846,7 +1796,6 @@ async function renderNewReleases() {
   bindTrackCards(tracks);
 }
 
-// VIEW: FAVORITES
 async function renderFavorites() {
   const favs = await db.getAll('favorites');
   viewContent.innerHTML = `
@@ -1860,7 +1809,6 @@ async function renderFavorites() {
   bindTrackCards(favs);
 }
 
-// VIEW: PLAYLISTS
 async function renderPlaylists() {
   const playlists = await db.getAll('playlists');
   viewContent.innerHTML = `
@@ -1885,7 +1833,6 @@ async function renderPlaylists() {
   `;
 }
 
-// VIEW: HISTORY
 async function renderHistory() {
   const history = await db.getAll('history');
   history.sort((a,b) => (b.playedAt||0) - (a.playedAt||0));
@@ -1907,7 +1854,6 @@ window.clearHistoryDb = async function() {
   toast('História vymazaná.');
 };
 
-// VIEW: SEARCH
 async function renderSearchResults(query) {
   if (!query) return;
   viewContent.innerHTML = `
@@ -1928,9 +1874,7 @@ async function renderSearchResults(query) {
   }
 }
 
-// VIEW: PLATOBNÁ BRÁNA & VIANOČNÉ ZĽAVY
 function renderPremiumGateway() {
-  // Christmas discounts vs normal pricing
   const proPrice = isChristmas ? '1.99 €' : '4.99 €';
   const proOriginal = isChristmas ? '<span style="text-decoration:line-through; color:var(--text-dim); font-size:16px;">4.99 €</span> ' : '';
   const ultPrice = isChristmas ? '7.99 €' : '19.99 €';
@@ -1983,7 +1927,6 @@ function renderPremiumGateway() {
   `;
 }
 
-// VIEW: SETTINGS
 function renderSettings() {
   viewContent.innerHTML = `
     <div class="section-header">
@@ -2013,7 +1956,6 @@ function renderSettings() {
   `;
 }
 
-// 9. DYNAMIC CONTENT SYNCHRONIZATION (Scalable Refresh)
 function syncFreshContent() {
   State.syncToken = Date.now();
   db.clear('cachedMusic');
@@ -2022,7 +1964,6 @@ function syncFreshContent() {
 }
 document.getElementById('btn-manual-sync').addEventListener('click', syncFreshContent);
 
-// 10. PAYMENT CHECKOUT HANDLERS
 window.openCheckout = function(plan) {
   const select = document.getElementById('checkout-plan-select');
   if (select) {
@@ -2062,7 +2003,6 @@ async function processCheckoutPayment() {
   }, 1400);
 }
 
-// 11. CARD GENERATOR & EVENTS
 function renderTrackCardList(tracks, tagType = 'bass') {
   if (!tracks || tracks.length === 0) {
     if (!State.apiKey) {
@@ -2113,7 +2053,6 @@ function bindTrackCards(trackList = []) {
   });
 }
 
-// 12. API KEY VALIDATION
 async function saveAndTestApiKey(key) {
   key = key.trim();
   if (!key) return;
@@ -2155,7 +2094,6 @@ function updateApiStatus(status) {
   else txt.textContent = 'YouTube Kľúč';
 }
 
-// 13. SEARCH DEBOUNCE
 let searchTimer = null;
 document.getElementById('global-search-input').addEventListener('input', (e) => {
   clearTimeout(searchTimer);
@@ -2164,7 +2102,6 @@ document.getElementById('global-search-input').addEventListener('input', (e) => 
   searchTimer = setTimeout(() => renderView('search', q), 400);
 });
 
-// 14. FAVORITES & AUDIO CONTROLS
 async function toggleFavorite() {
   if (!State.currentTrack) return;
   const track = State.currentTrack;
@@ -2197,7 +2134,6 @@ document.getElementById('player-volume').addEventListener('input', (e) => {
   if (ytPlayer && ytPlayer.setVolume) ytPlayer.setVolume(e.target.value);
 });
 
-// 15. FULLSCREEN IMMERSIVE PLAYER
 const fsPlayer = document.getElementById('fullscreen-player');
 const fsCanvas = document.getElementById('fs-visualizer');
 const fsCtx = fsCanvas.getContext('2d');
@@ -2235,7 +2171,6 @@ function startVisualizer() {
   draw();
 }
 
-// 16. PLAYLISTS CREATION
 document.getElementById('btn-create-playlist-submit').addEventListener('click', async () => {
   const name = document.getElementById('input-playlist-name').value.trim();
   if (!name) return;
@@ -2249,7 +2184,6 @@ document.getElementById('btn-create-playlist-submit').addEventListener('click', 
   if (State.currentView === 'playlists') renderPlaylists();
 });
 
-// 17. HELPERS
 function toast(msg) {
   const c = document.getElementById('toast-container');
   const t = document.createElement('div');
@@ -2280,7 +2214,6 @@ window.resetEntireApp = async function() {
   }
 };
 
-// 18. NAVIGATION & MODALS
 document.querySelectorAll('[data-view]').forEach(el => {
   el.addEventListener('click', () => renderView(el.dataset.view));
 });
@@ -2299,7 +2232,6 @@ document.getElementById('btn-save-key').addEventListener('click', () => {
 
 document.getElementById('btn-forget-key').addEventListener('click', forgetApiKey);
 
-// 19. BOOTSTRAP INIT
 async function init() {
   await db.init();
 
@@ -2336,7 +2268,6 @@ async function init() {
   const favs = await db.getAll('favorites');
   favs.forEach(f => State.favoritesMap.set(f.id, f));
 
-  // Auto-sync content on every page reload/visit
   renderView('home');
 }
 
