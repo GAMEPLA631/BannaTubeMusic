@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BannaTube PRO Music - Bass Edition & AdShield</title>
+<title>BannaTube PRO Music - Bass Edition, Magic Music & AdShield</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
@@ -23,6 +23,7 @@
   --accent-bass: #ec4899;
   --accent-bass-glow: rgba(236, 72, 153, 0.45);
   --accent-emerald: #10b981;
+  --accent-xmas: #ef4444;
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --text-dim: #64748b;
@@ -134,6 +135,15 @@ aside#sidebar {
   letter-spacing: 0.5px;
   animation: pulse-glow 2s infinite;
 }
+.badge-xmas {
+  margin-left: auto;
+  font-size: 10px;
+  background: linear-gradient(135deg, #ef4444, #10b981);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 800;
+}
 @keyframes pulse-glow { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.75; transform: scale(1.05); } }
 
 /* ADSHIELD STATUS IN SIDEBAR */
@@ -178,7 +188,7 @@ header#topbar {
 }
 .search-wrapper {
   position: relative;
-  width: 480px;
+  width: 440px;
   max-width: 100%;
 }
 .search-wrapper input {
@@ -209,7 +219,24 @@ header#topbar {
 .topbar-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+}
+.btn-sync-content {
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid var(--border-glass);
+  background: rgba(255,255,255,0.05);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-sync-content:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border-color: var(--accent-cyan);
 }
 .api-badge {
   display: flex;
@@ -240,7 +267,6 @@ header#topbar {
   display: flex;
   align-items: center;
   gap: 6px;
-  box-shadow: 0 0 15px rgba(236, 72, 153, 0.25);
 }
 .btn-bass-dsp.boosted { background: linear-gradient(135deg, var(--accent-bass), #f43f5e); color: #fff; box-shadow: var(--shadow-bass); }
 
@@ -255,6 +281,11 @@ header#topbar {
   align-items: center;
   gap: 6px;
   box-shadow: 0 4px 15px var(--accent-banana-glow);
+}
+.btn-upgrade-nav.xmas-glow {
+  background: linear-gradient(135deg, #ef4444, #10b981);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);
 }
 
 /* CONTENT SCROLLER */
@@ -287,7 +318,7 @@ header#topbar {
 
 .grid-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 22px;
   margin-bottom: 42px;
 }
@@ -345,20 +376,22 @@ header#topbar {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
-.card-tag-bass {
+.card-tag-badge {
   position: absolute;
   top: 8px;
   left: 8px;
-  background: rgba(236, 72, 153, 0.85);
+  background: rgba(236, 72, 153, 0.9);
   backdrop-filter: blur(4px);
   color: #fff;
   font-size: 9px;
   font-weight: 900;
   letter-spacing: 0.5px;
-  padding: 2px 7px;
+  padding: 3px 8px;
   border-radius: 4px;
   text-transform: uppercase;
 }
+.card-tag-badge.magic { background: linear-gradient(135deg, #8b5cf6, #3b82f6); }
+.card-tag-badge.xmas { background: linear-gradient(135deg, #ef4444, #10b981); }
 .card-info { display: flex; flex-direction: column; gap: 3px; }
 .card-title {
   font-size: 14px;
@@ -390,13 +423,17 @@ header#topbar {
   background: linear-gradient(135deg, rgba(236, 72, 153, 0.35), rgba(6, 182, 212, 0.2)), #070a12;
   border: 1px solid rgba(255,255,255,0.12);
 }
+.hero-banner.xmas-theme {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.4), rgba(16, 185, 129, 0.25)), #080e14;
+  border-color: rgba(239, 68, 68, 0.3);
+}
 .hero-bg-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(to top, rgba(4, 6, 10, 0.96) 10%, rgba(4, 6, 10, 0.45) 60%, transparent 100%);
   z-index: 1;
 }
-.hero-content { position: relative; z-index: 2; max-width: 660px; }
+.hero-content { position: relative; z-index: 2; max-width: 680px; }
 .hero-tag {
   display: inline-flex;
   align-items: center;
@@ -439,7 +476,7 @@ header#topbar {
 }
 .btn-hero-play:hover { transform: scale(1.05); }
 
-/* BASS BOOST HARDWARE EQUALIZER DRAWER / POPUP */
+/* BASS BOOST HARDWARE EQUALIZER DRAWER */
 .bass-dsp-box {
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-glass);
@@ -463,8 +500,6 @@ header#topbar {
   color: var(--text-muted);
 }
 .dsp-preset-btn.active { background: var(--accent-bass); color: #fff; box-shadow: 0 0 15px var(--accent-bass-glow); }
-.dsp-sliders { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 16px; }
-.dsp-ctrl { display: flex; flex-direction: column; gap: 6px; font-size: 11px; font-weight: 600; color: var(--text-muted); }
 
 /* BOTTOM PLAYER */
 footer#bottom-player {
@@ -482,7 +517,7 @@ footer#bottom-player {
 .player-left {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   width: 320px;
   min-width: 220px;
 }
@@ -505,8 +540,10 @@ footer#bottom-player {
 .player-info { display: flex; flex-direction: column; overflow: hidden; }
 .player-title { font-size: 14px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .player-artist { font-size: 12px; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
-.player-like-btn { color: var(--text-dim); padding: 6px; border-radius: 50%; }
-.player-like-btn.liked { color: var(--accent-bass); }
+.player-actions-row { display: flex; align-items: center; gap: 4px; }
+.player-btn-icon { color: var(--text-dim); padding: 6px; border-radius: 50%; }
+.player-btn-icon:hover { color: #fff; }
+.player-btn-icon.liked { color: var(--accent-bass); }
 
 .player-center {
   display: flex;
@@ -577,13 +614,13 @@ footer#bottom-player {
 .player-right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   width: 320px;
   justify-content: flex-end;
 }
-.volume-wrap { display: flex; align-items: center; gap: 8px; width: 130px; }
+.volume-wrap { display: flex; align-items: center; gap: 8px; width: 120px; }
 
-/* AD-SKIPPER OVERLAY BANNER ON PLAYER */
+/* AD-SKIPPER OVERLAY BANNER */
 .ad-skip-indicator {
   position: absolute;
   top: -34px;
@@ -600,89 +637,8 @@ footer#bottom-player {
   gap: 6px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.5);
   z-index: 60;
-  animation: bounce-in 0.3s ease;
 }
 .ad-skip-indicator.show { display: flex; }
-@keyframes bounce-in { 0% { transform: translate(-50%, 10px); opacity: 0; } 100% { transform: translate(-50%, 0); opacity: 1; } }
-
-/* PAYMENT GATEWAY MODAL (CHECKOUT & PLATOBNÁ BRÁNA) */
-.checkout-modal {
-  max-width: 580px;
-}
-.payment-methods-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-bottom: 20px;
-}
-.payment-method-card {
-  border: 1px solid var(--border-glass);
-  background: rgba(255,255,255,0.03);
-  padding: 10px;
-  border-radius: var(--radius-md);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: var(--transition-fast);
-}
-.payment-method-card.active {
-  border-color: var(--accent-banana-bright);
-  background: rgba(245, 158, 11, 0.1);
-  color: var(--accent-banana-bright);
-}
-.card-input-row {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 10px;
-}
-.security-note {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  color: #34d399;
-  margin-top: 14px;
-}
-
-/* FULLSCREEN PLAYER */
-#fullscreen-player {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at center, #150a1c 0%, #030408 100%);
-  z-index: 90;
-  display: none;
-  flex-direction: column;
-  padding: 40px;
-}
-#fullscreen-player.open { display: flex; }
-.fs-top { display: flex; justify-content: space-between; align-items: center; }
-.fs-body {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 70px;
-  max-width: 1100px;
-  margin: 0 auto;
-  width: 100%;
-}
-.fs-artwork-wrap {
-  position: relative;
-  width: 380px;
-  height: 380px;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.85);
-}
-.fs-artwork { width: 100%; height: 100%; object-fit: cover; }
-.fs-meta { display: flex; flex-direction: column; gap: 10px; max-width: 480px; }
-.fs-title { font-size: 34px; font-weight: 800; font-family: 'Space Grotesk', sans-serif; line-height: 1.2; }
-.fs-artist { font-size: 19px; color: var(--accent-banana-bright); font-weight: 600; }
-.fs-canvas { width: 100%; height: 70px; margin-top: 24px; }
 
 /* MODALS */
 .modal-overlay {
@@ -701,7 +657,7 @@ footer#bottom-player {
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-xl);
   width: 100%;
-  max-width: 520px;
+  max-width: 540px;
   padding: 34px;
   position: relative;
   box-shadow: 0 25px 60px rgba(0,0,0,0.85);
@@ -747,6 +703,96 @@ footer#bottom-player {
   border-radius: var(--radius-md);
   font-size: 14px;
 }
+
+/* SHARE & DOWNLOAD MODAL */
+.download-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 14px;
+}
+.download-option-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+.download-option-card:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: var(--accent-banana-bright);
+  transform: translateY(-2px);
+}
+.download-option-card svg { width: 32px; height: 32px; fill: var(--accent-banana-bright); }
+
+/* PAYMENT GATEWAY */
+.payment-methods-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.payment-method-card {
+  border: 1px solid var(--border-glass);
+  background: rgba(255,255,255,0.03);
+  padding: 10px;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.payment-method-card.active {
+  border-color: var(--accent-banana-bright);
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--accent-banana-bright);
+}
+.card-input-row { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; }
+
+/* FULLSCREEN PLAYER */
+#fullscreen-player {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #150a1c 0%, #030408 100%);
+  z-index: 90;
+  display: none;
+  flex-direction: column;
+  padding: 40px;
+}
+#fullscreen-player.open { display: flex; }
+.fs-top { display: flex; justify-content: space-between; align-items: center; }
+.fs-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+.fs-artwork-wrap {
+  position: relative;
+  width: 380px;
+  height: 380px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.85);
+}
+.fs-artwork { width: 100%; height: 100%; object-fit: cover; }
+.fs-meta { display: flex; flex-direction: column; gap: 10px; max-width: 480px; }
+.fs-title { font-size: 34px; font-weight: 800; font-family: 'Space Grotesk', sans-serif; line-height: 1.2; }
+.fs-artist { font-size: 19px; color: var(--accent-banana-bright); font-weight: 600; }
+.fs-canvas { width: 100%; height: 70px; margin-top: 24px; }
 
 /* SKELETON LOADERS */
 .skeleton {
@@ -833,10 +879,12 @@ footer#bottom-player {
     </div>
     <div class="nav-scroll">
       <div>
-        <div class="nav-group-title">Bass & Music Discovery</div>
+        <div class="nav-group-title">Bass & Mix Discovery</div>
         <ul class="nav-list">
           <li><button class="nav-item active" data-view="home"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>Bass Central</button></li>
-          <li><button class="nav-item" data-view="bassboost"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>Ultra Bass Boosted <span class="badge-pill">MAX BASS</span></button></li>
+          <li><button class="nav-item" data-view="magicmusic"><svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>Magic Music Mixes <span class="badge-pill">4H & 55M</span></button></li>
+          <li id="nav-item-xmas" style="display:none;"><button class="nav-item" data-view="christmas"><svg viewBox="0 0 24 24"><path d="M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2z"/></svg>Vianočná Hudba <span class="badge-xmas">VIANOCE 🎄</span></button></li>
+          <li><button class="nav-item" data-view="bassboost"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>Ultra Bass Boosted</button></li>
           <li><button class="nav-item" data-view="phonk"><svg viewBox="0 0 24 24"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7z"/></svg>Brazilian Phonk & Car</button></li>
           <li><button class="nav-item" data-view="groovevortex"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>GrooveVortex Hub</button></li>
           <li><button class="nav-item" data-view="newmusic"><svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>Fresh YouTube Releases</button></li>
@@ -879,9 +927,13 @@ footer#bottom-player {
     <header id="topbar">
       <div class="search-wrapper">
         <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-        <input type="text" id="global-search-input" placeholder="Hľadaj Bass Boosted, Brazilian Phonk, GrooveVortex, EDM...">
+        <input type="text" id="global-search-input" placeholder="Hľadaj Magic Music 4h mix, Bass Boosted, Brazilian Phonk...">
       </div>
       <div class="topbar-actions">
+        <button class="btn-sync-content" id="btn-manual-sync" title="Zosynchronizovať čerstvý obsah z YouTube">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
+          <span>Sync Nový Obsah</span>
+        </button>
         <button class="btn-bass-dsp" id="btn-toggle-dsp-bar">
           <span>🔊</span>
           <span id="dsp-status-text">BASS BOOST: OFF</span>
@@ -914,12 +966,17 @@ footer#bottom-player {
       <img id="track-thumb" class="player-thumb" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' fill='%23111'%3E%3Crect width='60' height='60'/%3E%3C/svg%3E" alt="Artwork">
     </div>
     <div class="player-info">
-      <div id="track-title" class="player-title">Vyber bassovú pecku</div>
-      <div id="track-artist" class="player-artist">BannaTube Bass Station</div>
+      <div id="track-title" class="player-title">Vyber bassovú pecku alebo Magic Music mix</div>
+      <div id="track-artist" class="player-artist">BannaTube Station</div>
     </div>
-    <button class="player-like-btn" id="btn-player-like" title="Pridať do obľúbených">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-    </button>
+    <div class="player-actions-row">
+      <button class="player-btn-icon" id="btn-player-like" title="Pridať do obľúbených">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      </button>
+      <button class="player-btn-icon" id="btn-player-share" title="Zdieľať a Stiahnuť MP3 / MP4">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+      </button>
+    </div>
   </div>
 
   <div class="player-center">
@@ -949,7 +1006,7 @@ footer#bottom-player {
 <!-- FULLSCREEN IMMERSIVE PLAYER -->
 <div id="fullscreen-player">
   <div class="fs-top">
-    <div class="brand-title">BannaTube <span>BASS CINEMA</span></div>
+    <div class="brand-title">BannaTube <span>BASS & MIX CINEMA</span></div>
     <button class="control-btn" id="btn-close-fs"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
   </div>
   <div class="fs-body">
@@ -960,9 +1017,39 @@ footer#bottom-player {
       <div id="fs-title" class="fs-title">Song Title</div>
       <div id="fs-artist" class="fs-artist">Artist</div>
       <div style="font-size:12px; color:#10b981; font-weight:700; display:flex; align-items:center; gap:6px;">
-        <span>🛡️ YouTube Ad-Shield Pro: Zero Reklám</span>
+        <span>🛡️ YouTube Ad-Shield Pro: Zero Reklám | ⚡ Sync Live</span>
       </div>
       <canvas id="fs-visualizer" class="fs-canvas"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- SHARE & MP3 / MP4 DOWNLOAD MODAL -->
+<div class="modal-overlay" id="modal-share">
+  <div class="modal-card">
+    <button class="modal-close" data-close-modal><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+    <div class="modal-title">Zdieľať a Stiahnuť Skladbu</div>
+    <div class="modal-subtitle" id="share-modal-track-name">Stiahni si audio alebo video priamo z YouTube streamu.</div>
+    
+    <div class="form-group">
+      <label class="form-label">Priamy YouTube Odkaz</label>
+      <div style="display:flex; gap:8px;">
+        <input type="text" id="share-yt-url-input" class="form-input" style="flex:1;" readonly>
+        <button class="btn-secondary" id="btn-copy-yt-link">Kopírovať</button>
+      </div>
+    </div>
+
+    <div class="download-options-grid">
+      <div class="download-option-card" id="btn-download-mp3">
+        <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+        <div style="font-weight:800; font-size:14px;">Stiahnuť MP3</div>
+        <div style="font-size:11px; color:var(--text-muted);">Audio Stopa 320kbps</div>
+      </div>
+      <div class="download-option-card" id="btn-download-mp4">
+        <svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+        <div style="font-weight:800; font-size:14px;">Stiahnuť MP4</div>
+        <div style="font-size:11px; color:var(--text-muted);">HD Video Formát</div>
+      </div>
     </div>
   </div>
 </div>
@@ -971,8 +1058,8 @@ footer#bottom-player {
 <div class="modal-overlay" id="modal-checkout">
   <div class="modal-card checkout-modal">
     <button class="modal-close" data-close-modal><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
-    <div class="modal-title">Bezpečná Platobná Brána BannaTube</div>
-    <div class="modal-subtitle">Aktivuj si okamžitý prístup k 320kbps Extreme Bass Boostu, neobmedzenému GrooveVortex archívu a prioritnému YouTube streamu.</div>
+    <div class="modal-title" id="checkout-main-title">Bezpečná Platobná Brána BannaTube</div>
+    <div class="modal-subtitle" id="checkout-main-subtitle">Aktivuj si okamžitý prístup k 320kbps Extreme Bass Boostu, neobmedzenému GrooveVortex archívu a prioritnému YouTube streamu.</div>
     
     <div class="payment-methods-grid">
       <div class="payment-method-card active" data-pay="card">
@@ -985,7 +1072,7 @@ footer#bottom-player {
       </div>
       <div class="payment-method-card" data-pay="crypto">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.5v1.5h-2v-1.5H9V15h1a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H9V9.5h2V8h2v1.5h2V11h-2v2h2z"/></svg>
-        <span>Crypto / USDT</span>
+        <span>Crypto</span>
       </div>
       <div class="payment-method-card" data-pay="apple">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.75 1.04-1.8 0.93-2.85-.9.04-1.99.6-2.63 1.35-.57.65-1.06 1.71-.93 2.73 1 .08 2.01-.48 2.63-1.23z"/></svg>
@@ -997,9 +1084,7 @@ footer#bottom-player {
       <div class="form-group">
         <label class="form-label">Zvolený Balík</label>
         <select id="checkout-plan-select" class="form-input">
-          <option value="PRO">PRO Bass Edition - 4.99 € / mesiac</option>
-          <option value="PRO PLUS">PRO PLUS Super Bass - 9.99 € / mesiac</option>
-          <option value="ULTIMATE" selected>ULTIMATE BASS GOD (Lifetime) - 19.99 €</option>
+          <!-- Populated dynamically (with holiday discounts if Christmas) -->
         </select>
       </div>
 
@@ -1021,11 +1106,6 @@ footer#bottom-player {
           <label class="form-label">CVC</label>
           <input type="password" class="form-input" placeholder="•••" required maxlength="4">
         </div>
-      </div>
-
-      <div class="security-note">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-        <span>256-Bit SSL Šifrovanie. Okamžitá aktivácia licencie.</span>
       </div>
 
       <div class="modal-actions">
@@ -1058,10 +1138,10 @@ footer#bottom-player {
   <div class="modal-card">
     <button class="modal-close" data-close-modal><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
     <div class="modal-title">Nový Bass Playlist</div>
-    <div class="modal-subtitle">Vytvor si vlastný zoznam s tvojimi najobľúbenejšími skladbami.</div>
+    <div class="modal-subtitle">Vytvor si vlastný zoznam s tvojimi najobľúbenejšími skladbami a Magic Music setmi.</div>
     <div class="form-group">
       <label class="form-label">Názov Playlistu</label>
-      <input type="text" id="input-playlist-name" class="form-input" placeholder="napr. Car Bass & Phonk 2025">
+      <input type="text" id="input-playlist-name" class="form-input" placeholder="napr. Magic Music 4h Marathon">
     </div>
     <div class="modal-actions">
       <button class="btn-secondary" data-close-modal>Zrušiť</button>
@@ -1076,8 +1156,8 @@ footer#bottom-player {
 <!-- MOBILE BOTTOM NAV -->
 <nav id="mobile-nav">
   <div class="mobile-nav-item active" data-view="home"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>Bass</div>
+  <div class="mobile-nav-item" data-view="magicmusic"><svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>Magic 4h</div>
   <div class="mobile-nav-item" data-view="bassboost"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>Ultra Bass</div>
-  <div class="mobile-nav-item" data-view="phonk"><svg viewBox="0 0 24 24"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7z"/></svg>Phonk</div>
   <div class="mobile-nav-item" data-view="premium"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>Platba</div>
   <div class="mobile-nav-item" data-view="settings"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>Kľúč</div>
 </nav>
@@ -1086,12 +1166,12 @@ footer#bottom-player {
 
 <script>
 /**
- * BANNA TUBE PRO - BASS ENGINE & ADSHIELD & PAYMENT SYSTEM
+ * BANNA TUBE PRO - BASS, MAGIC MUSIC (4H & 55M), ADSHIELD, CHRISTMAS AUTO-SYSTEM & DOWNLOAD/SHARE
  */
 
 // 1. INDEXED DB PERSISTENCE
 const DB_NAME = 'BannaTubeProMusic';
-const DB_VERSION = 2;
+const DB_VERSION = 3;
 const STORES = ['settings', 'api', 'history', 'continueListening', 'favorites', 'playlists', 'cachedMusic', 'subscription', 'adshield'];
 
 class StorageManager {
@@ -1159,7 +1239,18 @@ class StorageManager {
 }
 const db = new StorageManager();
 
-// 2. STATE MANAGER
+// 2. CHRISTMAS SEASON AUTOMATION ENGINE
+function checkIsChristmasSeason() {
+  const now = new Date();
+  const month = now.getMonth(); // 11 = December, 0 = January
+  const day = now.getDate();
+  // Active in December (1.12 - 31.12) and until 6th January (Trom Kráľom)
+  return (month === 11) || (month === 0 && day <= 6);
+}
+
+const isChristmas = checkIsChristmasSeason();
+
+// 3. STATE MANAGER
 const State = {
   apiKey: '',
   apiStatus: 'disconnected',
@@ -1171,12 +1262,13 @@ const State = {
   shuffle: false,
   currentView: 'home',
   adsSkipped: 0,
-  bassBoostLevel: 'OFF', // OFF, SUB, BASS, EXTREME
+  bassBoostLevel: 'OFF',
   subscription: { plan: 'FREE', active: true },
-  favoritesMap: new Map()
+  favoritesMap: new Map(),
+  syncToken: Date.now() // Scalable dynamic sync token
 };
 
-// 3. YOUTUBE API CLIENT (LIVE QUERIES WITH BASS FOCUS)
+// 4. YOUTUBE API CLIENT WITH DYNAMIC SYNC & SCALABILITY
 class YouTubeAPI {
   static async request(endpoint, params = {}) {
     if (!State.apiKey) return null;
@@ -1184,9 +1276,10 @@ class YouTubeAPI {
     params.key = State.apiKey;
     Object.keys(params).forEach(k => url.searchParams.append(k, params[k]));
 
-    const cacheKey = url.toString();
+    // Cache key incorporates sync token for scalable dynamic freshness
+    const cacheKey = `${url.toString()}_sync_${Math.floor(State.syncToken / 600000)}`;
     const cached = await db.get('cachedMusic', cacheKey);
-    if (cached && (Date.now() - cached.timestamp < 3600000)) {
+    if (cached && (Date.now() - cached.timestamp < 600000)) {
       return cached.data;
     }
 
@@ -1246,7 +1339,7 @@ class YouTubeAPI {
   }
 }
 
-// 4. PLAYER & AUTOMATIC YOUTUBE AD-SKIPPER ENGINE
+// 5. PLAYER & AUTOMATIC YOUTUBE AD-SKIPPER ENGINE
 let ytPlayer = null;
 let playerUpdateInterval = null;
 let adCheckInterval = null;
@@ -1291,7 +1384,6 @@ function onPlayerStateChange(event) {
   }
 }
 
-// ADSHIELD: Active YouTube Ad Detection & Ultra-Fast Auto-Skip
 function startAdShieldEngine() {
   if (adCheckInterval) clearInterval(adCheckInterval);
   adCheckInterval = setInterval(() => {
@@ -1299,15 +1391,11 @@ function startAdShieldEngine() {
     try {
       const resp = ytPlayer.getPlayerResponse();
       const isAd = resp && (resp.adPlacements || resp.playerAds || ytPlayer.getDuration() < 30 && ytPlayer.getVideoData()?.isAd);
-      
-      // If ad detected or iframe enters ad state
       if (isAd || (ytPlayer.getVideoUrl && ytPlayer.getVideoUrl().includes('adformat'))) {
-        ytPlayer.seekTo(ytPlayer.getDuration() + 1, true); // Instant skip over ad
+        ytPlayer.seekTo(ytPlayer.getDuration() + 1, true);
         triggerAdSkipNotification();
       }
-    } catch (err) {
-      // Fallback monitor for sudden duration spikes (common in mid-rolls)
-    }
+    } catch (err) {}
   }, 400);
 }
 
@@ -1395,11 +1483,11 @@ function updatePlayPauseUI(playing) {
 function updatePlayerUI(track) {
   document.getElementById('track-thumb').src = track.thumbnail || '';
   document.getElementById('track-title').textContent = track.title || 'Unknown Title';
-  document.getElementById('track-artist').textContent = track.artist || 'Bass Master';
+  document.getElementById('track-artist').textContent = track.artist || 'Magic & Bass Master';
 
   document.getElementById('fs-artwork').src = track.thumbnail || '';
   document.getElementById('fs-title').textContent = track.title || 'Unknown Title';
-  document.getElementById('fs-artist').textContent = track.artist || 'Bass Master';
+  document.getElementById('fs-artist').textContent = track.artist || 'Magic & Bass Master';
 
   const isLiked = State.favoritesMap.has(track.id);
   const btnLike = document.getElementById('btn-player-like');
@@ -1407,7 +1495,44 @@ function updatePlayerUI(track) {
   else btnLike.classList.remove('liked');
 }
 
-// 5. HARDWARE BASS EQUALIZER SIMULATOR
+// 6. SHARE & MP3 / MP4 DOWNLOAD SYSTEM
+function openShareDownloadModal() {
+  if (!State.currentTrack) {
+    toast('Najprv spusti skladbu na stiahnutie alebo zdieľanie.');
+    return;
+  }
+  const track = State.currentTrack;
+  const ytUrl = `https://www.youtube.com/watch?v=${track.id}`;
+  
+  document.getElementById('share-modal-track-name').textContent = track.title;
+  document.getElementById('share-yt-url-input').value = ytUrl;
+  document.getElementById('modal-share').classList.add('open');
+}
+
+document.getElementById('btn-player-share').addEventListener('click', openShareDownloadModal);
+
+document.getElementById('btn-copy-yt-link').addEventListener('click', () => {
+  const input = document.getElementById('share-yt-url-input');
+  input.select();
+  navigator.clipboard.writeText(input.value);
+  toast('📋 YouTube odkaz skopírovaný do schránky!');
+});
+
+document.getElementById('btn-download-mp3').addEventListener('click', () => {
+  if (!State.currentTrack) return;
+  const url = `https://www.youtube.com/watch?v=${State.currentTrack.id}`;
+  window.open(`https://y2mate.nu/en1/youtube-to-mp3?url=${encodeURIComponent(url)}`, '_blank');
+  toast('🎵 Otváram generátor MP3 pre: ' + State.currentTrack.title);
+});
+
+document.getElementById('btn-download-mp4').addEventListener('click', () => {
+  if (!State.currentTrack) return;
+  const url = `https://www.youtube.com/watch?v=${State.currentTrack.id}`;
+  window.open(`https://y2mate.nu/en1/youtube-to-mp4?url=${encodeURIComponent(url)}`, '_blank');
+  toast('🎬 Otváram generátor MP4 pre: ' + State.currentTrack.title);
+});
+
+// 7. HARDWARE BASS EQUALIZER SIMULATOR
 function cycleBassBoost() {
   const levels = ['OFF', 'SUB-BASS', 'DEEP PUNCH', 'EXTREME BASS 3000'];
   const curIdx = levels.indexOf(State.bassBoostLevel);
@@ -1420,7 +1545,7 @@ function cycleBassBoost() {
 
   if (State.bassBoostLevel !== 'OFF') {
     btn.classList.add('boosted');
-    toast(`🔊 Bass Boost Aktivovaný: ${State.bassBoostLevel}`);
+    toast(`🔊 Bass Boost: ${State.bassBoostLevel}`);
   } else {
     btn.classList.remove('boosted');
     toast('Bass Boost vypnutý.');
@@ -1428,7 +1553,7 @@ function cycleBassBoost() {
 }
 document.getElementById('btn-toggle-dsp-bar').addEventListener('click', cycleBassBoost);
 
-// 6. VIEWS RENDERER (FEATURING BASS AND NEW YOUTUBE MUSIC)
+// 8. VIEWS RENDERER (FEATURING MAGIC MUSIC 4H & 55M, BASS & CHRISTMAS)
 const viewContent = document.getElementById('view-content');
 
 async function renderView(viewName, param = null) {
@@ -1439,6 +1564,12 @@ async function renderView(viewName, param = null) {
   switch(viewName) {
     case 'home':
       await renderHome();
+      break;
+    case 'magicmusic':
+      await renderMagicMusic();
+      break;
+    case 'christmas':
+      await renderChristmasView();
       break;
     case 'bassboost':
       await renderUltraBass();
@@ -1481,32 +1612,36 @@ function updateNavUI(viewName) {
   });
 }
 
-// VIEW: HOME BASS CENTRAL
+// VIEW: HOME CENTRAL
 async function renderHome() {
+  let magicMixes = [];
   let bassHits = [];
+  let xmasTracks = [];
   let freshDrops = [];
-  let phonkTracks = [];
 
   if (State.apiKey) {
+    magicMixes = await YouTubeAPI.searchMusic('Magic Music 4 hours mix EDM gaming 2025', 6);
     bassHits = await YouTubeAPI.searchMusic('Extreme Bass Boosted 2025 songs', 6);
     freshDrops = await YouTubeAPI.searchMusic('New Music Releases Bass EDM 2025', 6);
-    phonkTracks = await YouTubeAPI.searchMusic('Brazilian Phonk Bass 2025', 6);
+    if (isChristmas) {
+      xmasTracks = await YouTubeAPI.searchMusic('Christmas Bass Boosted remix Magic Music 2025', 6);
+    }
   }
 
-  viewContent.innerHTML = `
-    <!-- HERO BASS BANNER -->
-    <div class="hero-banner">
+  let html = `
+    <!-- HERO BANNER -->
+    <div class="hero-banner ${isChristmas ? 'xmas-theme' : ''}">
       <div class="hero-bg-overlay"></div>
       <div class="hero-content">
-        <div class="hero-tag">🔊 100% SUB-BASS & ADSHIELD</div>
-        <div class="hero-title">ULTRA BASS & CAR DROPS</div>
-        <div class="hero-desc">Vychutnaj si najsilnejšie bass boosted skladby, Brazilian Phonk a čerstvé novinky z YouTube s automatickým preskakovaním reklám v reálnom čase.</div>
+        <div class="hero-tag">${isChristmas ? '🎄 VIANOČNÝ ŠPECIÁL & MEGA ZĽAVY' : '🔊 100% SUB-BASS & MAGIC MUSIC 4H'}</div>
+        <div class="hero-title">${isChristmas ? 'VIANOČNÁ BASS EDÍCIA' : 'MAGIC MUSIC 4H & BASS DROPS'}</div>
+        <div class="hero-desc">${isChristmas ? 'Šťastné a Veselé Vianoce! Vychutnaj si vianočné remixy, zľavnené balíčky a 4-hodinové Magic Music sety s aktívnym YouTube Ad-Shieldom.' : 'Vychutnaj si odporúčané 4h a 55-minútové mixy od Magic Music, najsilnejšie bass boosted skladby a čerstvé novinky synchronizované v reálnom čase.'}</div>
         <div class="hero-btns">
-          <button class="btn-hero-play" id="btn-hero-bass-play">
+          <button class="btn-hero-play" id="btn-hero-play-action">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            Spustiť Extreme Bass Mix
+            ${isChristmas ? 'Prehrať Vianočný Bass Mix' : 'Prehrať Magic Music 4H Mix'}
           </button>
-          <button class="btn-secondary" onclick="renderView('bassboost')">Všetky Bass Kategórie</button>
+          <button class="btn-secondary" onclick="renderView('magicmusic')">Magic Music 4h & 55m Hub</button>
         </div>
       </div>
     </div>
@@ -1523,6 +1658,32 @@ async function renderHome() {
         </div>
       </div>
     </div>
+  `;
+
+  // Dynamic Christmas Section (Shown only during Christmas season)
+  if (isChristmas) {
+    html += `
+      <div class="section-header">
+        <div>
+          <div class="section-title"><span class="accent-emoji">🎄</span> Vianočná Hudba & Magic Christmas Remixy</div>
+          <div class="section-subtitle">Vianočné bass boosted sety a sviatočná atmosféra</div>
+        </div>
+        <button class="btn-see-all" onclick="renderView('christmas')">Celý Vianočný Výber</button>
+      </div>
+      <div class="grid-cards">${renderTrackCardList(xmasTracks, 'xmas')}</div>
+    `;
+  }
+
+  // Magic Music Section
+  html += `
+    <div class="section-header">
+      <div>
+        <div class="section-title"><span class="accent-emoji">🎧</span> Magic Music Špeciál (4h & 55 minútové mixy)</div>
+        <div class="section-subtitle">Dlhé continuous mixy pre gaming, workout a car audio</div>
+      </div>
+      <button class="btn-see-all" onclick="renderView('magicmusic')">Viac Setov</button>
+    </div>
+    <div class="grid-cards">${renderTrackCardList(magicMixes, 'magic')}</div>
 
     <!-- ULTRA BASS BOOSTED -->
     <div class="section-header">
@@ -1538,36 +1699,72 @@ async function renderHome() {
     <div class="section-header">
       <div>
         <div class="section-title"><span class="accent-emoji">🎵</span> Nové Vydané Skladby 2025</div>
-        <div class="section-subtitle">Horúce novinky priamo z YouTube Music</div>
+        <div class="section-subtitle">Čerstvo synchronizované z YouTube</div>
       </div>
       <button class="btn-see-all" onclick="renderView('newmusic')">Viac</button>
     </div>
     <div class="grid-cards">${renderTrackCardList(freshDrops)}</div>
-
-    <!-- BRAZILIAN PHONK -->
-    <div class="section-header">
-      <div>
-        <div class="section-title"><span class="accent-emoji">⚡</span> Brazilian Phonk & Drift Bass</div>
-        <div class="section-subtitle">Agresívne 808 dropy a drift anthem</div>
-      </div>
-      <button class="btn-see-all" onclick="renderView('phonk')">Viac</button>
-    </div>
-    <div class="grid-cards">${renderTrackCardList(phonkTracks)}</div>
   `;
 
-  bindTrackCards([...bassHits, ...freshDrops, ...phonkTracks]);
-  document.getElementById('btn-hero-bass-play')?.addEventListener('click', () => {
-    if (bassHits.length > 0) playTrack(bassHits[0], bassHits);
+  viewContent.innerHTML = html;
+  bindTrackCards([...magicMixes, ...bassHits, ...xmasTracks, ...freshDrops]);
+
+  document.getElementById('btn-hero-play-action')?.addEventListener('click', () => {
+    if (isChristmas && xmasTracks.length > 0) playTrack(xmasTracks[0], xmasTracks);
+    else if (magicMixes.length > 0) playTrack(magicMixes[0], magicMixes);
   });
 }
 
-window.setPreset = function(preset) {
-  State.bassBoostLevel = preset;
-  document.getElementById('dsp-status-text').textContent = `BASS BOOST: ${preset}`;
-  document.getElementById('btn-toggle-dsp-bar').classList.toggle('boosted', preset !== 'OFF');
-  renderHome();
-  toast(`Bass Preset: ${preset}`);
-};
+// VIEW: MAGIC MUSIC DEDICATED (4H & 55 MINUTE MIXES)
+async function renderMagicMusic() {
+  const magicCategories = [
+    { title: '🎧 Magic Music 4-Hodinové Non-Stop Mixy (4:00:00)', q: 'Magic Music 4 hours mix EDM' },
+    { title: '⚡ Magic Music 55-Minútové Gaming & Bass Sety (55:00)', q: 'Magic Music 55 minutes mix' },
+    { title: '🔥 Magic Music Best EDM & Car Music Hits', q: 'Magic Music best car music mix' },
+    { title: '🌌 Magic Music Bass Boosted Electro House', q: 'Magic Music bass boosted mix 2025' }
+  ];
+
+  let html = `
+    <div class="section-header">
+      <div>
+        <div class="section-title"><span class="accent-emoji">🎧</span> Magic Music Hub (4h & 55:00 Sety)</div>
+        <div class="section-subtitle">Oficiálne odporúčané 4-hodinové a 55-minútové maratóny z kanálu Magic Music</div>
+      </div>
+    </div>
+  `;
+
+  for (const cat of magicCategories) {
+    let tracks = [];
+    if (State.apiKey) tracks = await YouTubeAPI.searchMusic(cat.q, 6);
+    html += `
+      <div class="section-header">
+        <div class="section-title" style="font-size:17px;">${cat.title}</div>
+      </div>
+      <div class="grid-cards">${renderTrackCardList(tracks, 'magic')}</div>
+    `;
+  }
+  viewContent.innerHTML = html;
+  bindTrackCards([]);
+}
+
+// VIEW: VIANOČNÁ HUDBA (CHRISTMAS DEDICATED)
+async function renderChristmasView() {
+  let xmasTracks = [];
+  if (State.apiKey) {
+    xmasTracks = await YouTubeAPI.searchMusic('Christmas Bass Boosted remix Magic Music holiday 2025', 18);
+  }
+
+  viewContent.innerHTML = `
+    <div class="section-header">
+      <div>
+        <div class="section-title"><span class="accent-emoji">🎄</span> Vianočná Hudba & Holiday Bass</div>
+        <div class="section-subtitle">Vianočné sety, remixy a sviatočné EDM mixy (aktívne počas vianočného obdobia)</div>
+      </div>
+    </div>
+    <div class="grid-cards">${renderTrackCardList(xmasTracks, 'xmas')}</div>
+  `;
+  bindTrackCards(xmasTracks);
+}
 
 // VIEW: ULTRA BASS BOOSTED
 async function renderUltraBass() {
@@ -1641,7 +1838,7 @@ async function renderNewReleases() {
     <div class="section-header">
       <div>
         <div class="section-title"><span class="accent-emoji">🎵</span> Nové YouTube Vydania (2025)</div>
-        <div class="section-subtitle">Najnovšie oficiálne tracky a videoklipy s reálnymi YouTube dátami</div>
+        <div class="section-subtitle">Najnovšie oficiálne tracky a videoklipy synchronizované naživo</div>
       </div>
     </div>
     <div class="grid-cards">${renderTrackCardList(tracks)}</div>
@@ -1655,7 +1852,7 @@ async function renderFavorites() {
   viewContent.innerHTML = `
     <div class="section-header">
       <div>
-        <div class="section-title"><span class="accent-emoji">⭐</span> Obľúbené Bassové Skladby (${favs.length})</div>
+        <div class="section-title"><span class="accent-emoji">⭐</span> Obľúbené Skladby (${favs.length})</div>
       </div>
     </div>
     <div class="grid-cards">${favs.length === 0 ? '<div style="color:var(--text-dim); padding:20px;">Žiadne uložené obľúbené skladby. Klikni na srdiečko pri prehrávaní!</div>' : renderTrackCardList(favs)}</div>
@@ -1731,13 +1928,19 @@ async function renderSearchResults(query) {
   }
 }
 
-// VIEW: PLATOBNÁ BRÁNA & PRO MEMBERSHIP
+// VIEW: PLATOBNÁ BRÁNA & VIANOČNÉ ZĽAVY
 function renderPremiumGateway() {
+  // Christmas discounts vs normal pricing
+  const proPrice = isChristmas ? '1.99 €' : '4.99 €';
+  const proOriginal = isChristmas ? '<span style="text-decoration:line-through; color:var(--text-dim); font-size:16px;">4.99 €</span> ' : '';
+  const ultPrice = isChristmas ? '7.99 €' : '19.99 €';
+  const ultOriginal = isChristmas ? '<span style="text-decoration:line-through; color:var(--text-dim); font-size:16px;">19.99 €</span> ' : '';
+
   viewContent.innerHTML = `
     <div class="section-header">
       <div>
-        <div class="section-title"><span class="accent-emoji">👑</span> Platobná Brána BannaTube PRO</div>
-        <div class="section-subtitle">Odomkni neobmedzený YouTube Bass streaming bez reklám a s extrémnym zosilnením basov</div>
+        <div class="section-title"><span class="accent-emoji">${isChristmas ? '🎄' : '👑'}</span> Platobná Brána BannaTube PRO ${isChristmas ? '(VIANOČNÉ ZĽAVY -60%)' : ''}</div>
+        <div class="section-subtitle">${isChristmas ? 'Sviatočná akcia: Lacnejšie balíčky a plný prístup ku všetkým Magic Music a Bass funkciám!' : 'Odomkni neobmedzený YouTube Bass streaming bez reklám a s extrémnym zosilnením basov'}</div>
       </div>
     </div>
 
@@ -1754,27 +1957,27 @@ function renderPremiumGateway() {
       </div>
 
       <div class="modal-card" style="padding:24px; display:flex; flex-direction:column; border-color:var(--accent-bass); box-shadow:var(--shadow-bass);">
-        <div style="font-size:11px; font-weight:800; color:var(--accent-bass); text-transform:uppercase;">Najobľúbenejší</div>
-        <div style="font-size:32px; font-weight:900; margin:10px 0;">4.99 € <span style="font-size:14px; color:var(--text-dim)">/ mesiac</span></div>
+        <div style="font-size:11px; font-weight:800; color:var(--accent-bass); text-transform:uppercase;">${isChristmas ? '🎁 Vianočná Zľava' : 'Najobľúbenejší'}</div>
+        <div style="font-size:32px; font-weight:900; margin:10px 0;">${proOriginal}${proPrice} <span style="font-size:14px; color:var(--text-dim)">/ mesiac</span></div>
         <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; font-size:13px; color:var(--text-muted); margin-bottom:24px; flex:1;">
           <li>✓ 320kbps Extreme Sub-Bass Mode</li>
-          <li>✓ Neobmedzený GrooveVortex VIP prístup</li>
+          <li>✓ Neobmedzený Magic Music 4h archív</li>
           <li>✓ 0% YouTube Reklám (Okamžitý Skip)</li>
-          <li>✓ Neobmedzené Bass Playlisty</li>
+          <li>✓ MP3 / MP4 Rýchly Export</li>
         </ul>
-        <button class="btn-primary" style="width:100%;" onclick="openCheckout('PRO')">Kúpiť cez Platobnú Bránu</button>
+        <button class="btn-primary" style="width:100%;" onclick="openCheckout('PRO')">Kúpiť za ${proPrice}</button>
       </div>
 
-      <div class="modal-card" style="padding:24px; display:flex; flex-direction:column; border-color:var(--accent-banana-bright);">
-        <div style="font-size:11px; font-weight:800; color:var(--accent-banana-bright); text-transform:uppercase;">Doživotná Licencia</div>
-        <div style="font-size:32px; font-weight:900; margin:10px 0;">19.99 € <span style="font-size:14px; color:var(--text-dim)">jednorazovo</span></div>
+      <div class="modal-card" style="padding:24px; display:flex; flex-direction:column; border-color:${isChristmas ? '#ef4444' : 'var(--accent-banana-bright)'};">
+        <div style="font-size:11px; font-weight:800; color:${isChristmas ? '#ef4444' : 'var(--accent-banana-bright)'}; text-transform:uppercase;">${isChristmas ? '🎅 Vianočný Darček: Doživotne' : 'Doživotná Licencia'}</div>
+        <div style="font-size:32px; font-weight:900; margin:10px 0;">${ultOriginal}${ultPrice} <span style="font-size:14px; color:var(--text-dim)">jednorazovo</span></div>
         <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; font-size:13px; color:var(--text-muted); margin-bottom:24px; flex:1;">
           <li>✓ Všetko z PRO balíka navždy</li>
           <li>✓ Doživotný Prístup bez poplatkov</li>
           <li>✓ Hardvérové DSP Zosilnenie 60Hz Drop</li>
           <li>✓ Prioritný YouTube Bandwidth Server</li>
         </ul>
-        <button class="btn-primary" style="width:100%; background:var(--accent-banana-bright);" onclick="openCheckout('ULTIMATE')">Kúpiť ULTIMATE</button>
+        <button class="btn-primary" style="width:100%; background:${isChristmas ? 'linear-gradient(135deg,#ef4444,#10b981)' : 'var(--accent-banana-bright)'};" onclick="openCheckout('ULTIMATE')">Kúpiť ULTIMATE (${ultPrice})</button>
       </div>
     </div>
   `;
@@ -1799,8 +2002,9 @@ function renderSettings() {
         </div>
       </div>
       <div class="modal-card" style="max-width:100%;">
-        <div style="font-size:16px; font-weight:800; margin-bottom:6px;">Správa pamäte & Cache</div>
-        <div style="display:flex; gap:12px; margin-top:14px;">
+        <div style="font-size:16px; font-weight:800; margin-bottom:6px;">Správa pamäte & Synchronizácia</div>
+        <div style="display:flex; gap:12px; margin-top:14px; flex-wrap:wrap;">
+          <button class="btn-secondary" onclick="syncFreshContent()">Zosynchronizovať čerstvý obsah</button>
           <button class="btn-secondary" onclick="db.clear('cachedMusic'); toast('Cache vyčistená.');">Vymazať Cache</button>
           <button class="btn-danger" onclick="resetEntireApp()">Resetovať celú aplikáciu</button>
         </div>
@@ -1809,10 +2013,27 @@ function renderSettings() {
   `;
 }
 
-// 7. PAYMENT CHECKOUT HANDLERS
+// 9. DYNAMIC CONTENT SYNCHRONIZATION (Scalable Refresh)
+function syncFreshContent() {
+  State.syncToken = Date.now();
+  db.clear('cachedMusic');
+  toast('🔄 Stránka sa synchronizuje s čerstvým obsahom z YouTube...');
+  renderView(State.currentView);
+}
+document.getElementById('btn-manual-sync').addEventListener('click', syncFreshContent);
+
+// 10. PAYMENT CHECKOUT HANDLERS
 window.openCheckout = function(plan) {
   const select = document.getElementById('checkout-plan-select');
-  if (select) select.value = plan;
+  if (select) {
+    const proP = isChristmas ? '1.99 € (Vianočná Zľava)' : '4.99 €';
+    const ultP = isChristmas ? '7.99 € (Vianočná Zľava -60%)' : '19.99 €';
+    select.innerHTML = `
+      <option value="PRO" ${plan==='PRO'?'selected':''}>PRO Bass Edition - ${proP} / mesiac</option>
+      <option value="PRO PLUS" ${plan==='PRO PLUS'?'selected':''}>PRO PLUS Super Bass - ${isChristmas?'3.99 €':'9.99 €'} / mesiac</option>
+      <option value="ULTIMATE" ${plan==='ULTIMATE'?'selected':''}>ULTIMATE BASS GOD - ${ultP}</option>
+    `;
+  }
   document.getElementById('modal-checkout').classList.add('open');
 };
 
@@ -1841,14 +2062,14 @@ async function processCheckoutPayment() {
   }, 1400);
 }
 
-// 8. CARD GENERATOR & EVENTS
-function renderTrackCardList(tracks) {
+// 11. CARD GENERATOR & EVENTS
+function renderTrackCardList(tracks, tagType = 'bass') {
   if (!tracks || tracks.length === 0) {
     if (!State.apiKey) {
       return `
         <div style="grid-column: 1/-1; padding: 40px 20px; text-align: center; background: var(--bg-surface); border: 1px dashed var(--border-glass); border-radius: var(--radius-lg);">
           <div style="font-size: 18px; font-weight: 800; margin-bottom: 8px;">Pripoj svoj YouTube API Kľúč</div>
-          <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 18px;">Pre živé sťahovanie najnovších bassových peciek z YouTube vlož svoj kľúč.</div>
+          <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 18px;">Pre živé sťahovanie Magic Music setov a bassových peciek vlož svoj kľúč.</div>
           <button class="btn-primary" onclick="document.getElementById('modal-api').classList.add('open')">Zadať YouTube Kľúč</button>
         </div>
       `;
@@ -1856,18 +2077,22 @@ function renderTrackCardList(tracks) {
     return '<div style="color:var(--text-dim); padding:20px;">Žiadne skladby sa nenašli.</div>';
   }
 
+  let tagHtml = '<div class="card-tag-badge">BASS</div>';
+  if (tagType === 'magic') tagHtml = '<div class="card-tag-badge magic">MAGIC 4H/55M</div>';
+  else if (tagType === 'xmas') tagHtml = '<div class="card-tag-badge xmas">VIANOCE 🎄</div>';
+
   return tracks.map(t => `
     <div class="music-card" data-track-id="${t.id}">
       <div class="card-artwork-wrap">
         <img src="${t.thumbnail || ''}" alt="${t.title}" loading="lazy">
-        <div class="card-tag-bass">BASS</div>
+        ${tagHtml}
         <button class="card-play-btn" title="Prehrať">
           <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
         </button>
       </div>
       <div class="card-info">
         <div class="card-title" title="${t.title}">${t.title}</div>
-        <div class="card-artist">${t.artist || 'Bass Master'}</div>
+        <div class="card-artist">${t.artist || 'Magic & Bass Master'}</div>
       </div>
     </div>
   `).join('');
@@ -1880,7 +2105,7 @@ function bindTrackCards(trackList = []) {
       const target = trackList.find(t => t.id === id) || {
         id,
         title: el.querySelector('.card-title')?.textContent || 'Bass Track',
-        artist: el.querySelector('.card-artist')?.textContent || 'YouTube',
+        artist: el.querySelector('.card-artist')?.textContent || 'Magic Music',
         thumbnail: el.querySelector('img')?.src || ''
       };
       playTrack(target, trackList);
@@ -1888,7 +2113,7 @@ function bindTrackCards(trackList = []) {
   });
 }
 
-// 9. API KEY VALIDATION
+// 12. API KEY VALIDATION
 async function saveAndTestApiKey(key) {
   key = key.trim();
   if (!key) return;
@@ -1930,7 +2155,7 @@ function updateApiStatus(status) {
   else txt.textContent = 'YouTube Kľúč';
 }
 
-// 10. SEARCH DEBOUNCE
+// 13. SEARCH DEBOUNCE
 let searchTimer = null;
 document.getElementById('global-search-input').addEventListener('input', (e) => {
   clearTimeout(searchTimer);
@@ -1939,7 +2164,7 @@ document.getElementById('global-search-input').addEventListener('input', (e) => 
   searchTimer = setTimeout(() => renderView('search', q), 400);
 });
 
-// 11. FAVORITES & CONTROLS
+// 14. FAVORITES & AUDIO CONTROLS
 async function toggleFavorite() {
   if (!State.currentTrack) return;
   const track = State.currentTrack;
@@ -1972,7 +2197,7 @@ document.getElementById('player-volume').addEventListener('input', (e) => {
   if (ytPlayer && ytPlayer.setVolume) ytPlayer.setVolume(e.target.value);
 });
 
-// 12. FULLSCREEN IMMERSIVE PLAYER
+// 15. FULLSCREEN IMMERSIVE PLAYER
 const fsPlayer = document.getElementById('fullscreen-player');
 const fsCanvas = document.getElementById('fs-visualizer');
 const fsCtx = fsCanvas.getContext('2d');
@@ -2010,7 +2235,7 @@ function startVisualizer() {
   draw();
 }
 
-// 13. PLAYLISTS CREATION
+// 16. PLAYLISTS CREATION
 document.getElementById('btn-create-playlist-submit').addEventListener('click', async () => {
   const name = document.getElementById('input-playlist-name').value.trim();
   if (!name) return;
@@ -2024,7 +2249,7 @@ document.getElementById('btn-create-playlist-submit').addEventListener('click', 
   if (State.currentView === 'playlists') renderPlaylists();
 });
 
-// 14. HELPERS
+// 17. HELPERS
 function toast(msg) {
   const c = document.getElementById('toast-container');
   const t = document.createElement('div');
@@ -2035,8 +2260,10 @@ function toast(msg) {
 }
 
 function formatSeconds(sec) {
-  const m = Math.floor((sec || 0) / 60);
+  const h = Math.floor((sec || 0) / 3600);
+  const m = Math.floor(((sec || 0) % 3600) / 60);
   const s = Math.floor((sec || 0) % 60);
+  if (h > 0) return `${h}:${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
   return `${m}:${s < 10 ? '0' : ''}${s}`;
 }
 
@@ -2053,7 +2280,7 @@ window.resetEntireApp = async function() {
   }
 };
 
-// 15. NAVIGATION & MODALS
+// 18. NAVIGATION & MODALS
 document.querySelectorAll('[data-view]').forEach(el => {
   el.addEventListener('click', () => renderView(el.dataset.view));
 });
@@ -2072,9 +2299,19 @@ document.getElementById('btn-save-key').addEventListener('click', () => {
 
 document.getElementById('btn-forget-key').addEventListener('click', forgetApiKey);
 
-// 16. INIT BOOTSTRAP
+// 19. BOOTSTRAP INIT
 async function init() {
   await db.init();
+
+  if (isChristmas) {
+    const xmasNav = document.getElementById('nav-item-xmas');
+    if (xmasNav) xmasNav.style.display = 'block';
+    const topUpgradeBtn = document.getElementById('btn-top-checkout');
+    if (topUpgradeBtn) {
+      topUpgradeBtn.classList.add('xmas-glow');
+      document.getElementById('tier-indicator').textContent = '🎁 VIANOČNÁ ZĽAVA -60%';
+    }
+  }
 
   const savedKey = await db.get('api', 'yt_key');
   if (savedKey) {
@@ -2099,6 +2336,7 @@ async function init() {
   const favs = await db.getAll('favorites');
   favs.forEach(f => State.favoritesMap.set(f.id, f));
 
+  // Auto-sync content on every page reload/visit
   renderView('home');
 }
 
